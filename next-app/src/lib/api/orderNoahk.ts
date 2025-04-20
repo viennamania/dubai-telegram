@@ -80,7 +80,7 @@ export async function getUsdtPrice(data: any) {
   }
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('setup');
+  const collection = client.db('dubai').collection('setup');
 
   const result = await collection.findOne<UserProps>(
     { $and: [ { walletAddress: data.walletAddress }, { usdtPrice: { $exists: true } } ] }
@@ -118,7 +118,7 @@ export async function updatePrice(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('setup');
+  const collection = client.db('dubai').collection('setup');
 
   // update and return update, or if not exists, insert and return insert
 
@@ -179,7 +179,7 @@ export async function insertSellOrder(data: any) {
 
   // get user mobile number by wallet address
 
-  const userCollection = client.db('shinemywinter').collection('usersNoahk');
+  const userCollection = client.db('dubai').collection('usersNoahk');
 
 
   const user = await userCollection.findOne<UserProps>(
@@ -207,7 +207,7 @@ export async function insertSellOrder(data: any) {
 
 
 
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
  
   const result = await collection.insertOne(
@@ -254,7 +254,7 @@ export async function getOrderById(orderId: string): Promise<UserProps | null> {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   
   // check orderId is valid ObjectId
@@ -283,7 +283,7 @@ export async function getOrderById(orderId: string): Promise<UserProps | null> {
 export async function getOrderbyEscrowWalletAddress(escrowWalletAddress: string): Promise<UserProps | null> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   const result = await collection.findOne<UserProps>(
     {
@@ -307,7 +307,7 @@ export async function getOrderbyEscrowWalletAddress(escrowWalletAddress: string)
 export async function getOpenOrdersCount(): Promise<number> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   const result = await collection.countDocuments(
     { status: 'ordered', createdAt: { $gt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() } }
@@ -343,7 +343,7 @@ export async function getSellOrders(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // status is not 'paymentConfirmed'
@@ -420,7 +420,7 @@ export async function getAllSellOrders(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // status is not 'paymentConfirmed'
@@ -514,7 +514,7 @@ export async function getAllSellOpenOrders(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // status is 'ordered'
   // exclude my orders
@@ -548,7 +548,7 @@ export async function getOneSellOrderForEscrow(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -581,7 +581,7 @@ export async function getOneSellOrder(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // status is not 'paymentConfirmed'
@@ -643,7 +643,7 @@ export async function deleteSellOrder(
 ): Promise<boolean> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -688,7 +688,7 @@ export async function cancelTradeByBuyer(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -739,7 +739,7 @@ export async function cancelTradeByBuyer(
 export async function cancelTradeByAdmin() {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // status is 'accepted'
   // acceptedAt is more than 1 hour ago
@@ -782,7 +782,7 @@ export async function getSellOrdersForBuyer(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // status is not 'paymentConfirmed'
@@ -864,7 +864,7 @@ export async function getSellOrdersByWalletAddress(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   const results = await collection.find<UserProps>(
@@ -908,7 +908,7 @@ export async function acceptSellOrder(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   // random number for tradeId
   // 100000 ~ 999999 string
@@ -1039,7 +1039,7 @@ export async function requestPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   const result = await collection.updateOne(
@@ -1084,7 +1084,7 @@ export async function confirmPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   const result = await collection.updateOne(
@@ -1141,7 +1141,7 @@ export async function getTradesByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1188,7 +1188,7 @@ export async function getTradesByWalletAddressProcessing(
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1237,7 +1237,7 @@ export async function getSellTradesByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1280,7 +1280,7 @@ export async function getSellTradesByWalletAddressProcessing(
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1320,7 +1320,7 @@ export async function getPaymentRequestedUsdtAmountByWalletAddress(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
   const results = await collection.aggregate([
     {
@@ -1355,7 +1355,7 @@ export async function getPaymentRequestedUsdtAmountByWalletAddress(
 
 export async function updateOne(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('usersNoahk');
+  const collection = client.db('dubai').collection('usersNoahk');
 
 
   // update and return updated user
@@ -1392,7 +1392,7 @@ export async function getOneByWalletAddress(
   console.log('getOneByWalletAddress walletAddress: ' + walletAddress);
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('usersNoahk');
+  const collection = client.db('dubai').collection('usersNoahk');
 
 
   // id is number
@@ -1428,7 +1428,7 @@ export async function sellOrderRollbackPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('ordersNoahk');
+  const collection = client.db('dubai').collection('ordersNoahk');
 
 
   const result = await collection.updateOne(
@@ -1497,7 +1497,7 @@ export async function insertBuyOrder(data: any) {
 
   // get user mobile number by wallet address
 
-  const userCollection = client.db('shinemywinter').collection('usersNoahk');
+  const userCollection = client.db('dubai').collection('usersNoahk');
 
 
   const user = await userCollection.findOne<UserProps>(
@@ -1528,7 +1528,7 @@ export async function insertBuyOrder(data: any) {
 
 
 
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
  
   const result = await collection.insertOne(
@@ -1597,7 +1597,7 @@ export async function getBuyOrders(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   // status is not 'paymentConfirmed'
@@ -1673,7 +1673,7 @@ export async function deleteBuyOrder(
 ): Promise<boolean> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -1728,7 +1728,7 @@ export async function getBuyOrdersForSeller(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   // status is not 'paymentConfirmed'
@@ -1840,7 +1840,7 @@ export async function acceptBuyOrder(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
   // random number for tradeId
   // 100000 ~ 999999 string
@@ -1931,7 +1931,7 @@ export async function buyOrderRequestPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   const result = await collection.updateOne(
@@ -1977,7 +1977,7 @@ export async function buyOrderConfirmPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   const result = await collection.updateOne(
@@ -2024,7 +2024,7 @@ export async function buyOrderRollbackPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   const result = await collection.updateOne(
@@ -2062,7 +2062,7 @@ export async function buyOrderRollbackPayment(data: any) {
 export async function buyOrderGetOrderById(orderId: string): Promise<UserProps | null> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
   const result = await collection.findOne<UserProps>(
     { _id: new ObjectId(orderId) }
@@ -2096,7 +2096,7 @@ export async function cancelTradeBySeller(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -2158,7 +2158,7 @@ export async function getOneBuyOrder(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
 
   // status is not 'paymentConfirmed'
@@ -2214,7 +2214,7 @@ export async function updateBuyOrderByQueueId(data: any) {
   }
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('buyorders');
+  const collection = client.db('dubai').collection('buyorders');
 
   const result = await collection.updateOne(
     { queueId: data.queueId },

@@ -18,7 +18,7 @@ export interface ResultProps {
 // insertOne
 export async function insertOne(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
 
   // check if latest data is within 30 seconds
@@ -171,7 +171,7 @@ export async function insertOne(data: any) {
 // getOneByWalletAddressAndSequence
 export async function getOneByWalletAddressAndSequence(walletAddress: string, sequence: number) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
   const result = await collection.findOne(
     { walletAddress: walletAddress, sequence: sequence }
@@ -230,7 +230,7 @@ export async function updateResultByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
   // finde one
   // sequence is integer
@@ -346,7 +346,7 @@ export async function updateResultByWalletAddressAndSequence(
 // getAllWinGames
 export async function getAllWinGames() {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
   const result = await collection.find(
     {
@@ -361,7 +361,7 @@ export async function getAllWinGames() {
 // getAllGamesSettlement
 export async function getAllGamesSettlement() {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
   const result = await collection.find(
     {
@@ -385,7 +385,7 @@ export async function setGamesSettlementByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienGames');
+  const collection = client.db('dubai').collection('cebienGames');
 
   // finde one and updaate
   // sequence is integer
@@ -423,7 +423,7 @@ export async function setGamesSettlementByWalletAddressAndSequence(
 // insertOneRaceGame
 export async function insertOneRaceGame(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienRaceGames');
+  const collection = client.db('dubai').collection('cebienRaceGames');
 
 
   // check if latest data is within 30 seconds
@@ -578,7 +578,7 @@ export async function insertOneRaceGame(data: any) {
 // getOneRaceGameByWalletAddressAndSequence
 export async function getOneRaceGameByWalletAddressAndSequence(walletAddress: string, sequence: string) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienRaceGames');
+  const collection = client.db('dubai').collection('cebienRaceGames');
 
   const result = await collection.findOne(
     {
@@ -619,7 +619,7 @@ export async function updateRaceGameResultByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienRaceGames');
+  const collection = client.db('dubai').collection('cebienRaceGames');
 
   // finde one
   // sequence is integer
@@ -734,7 +734,7 @@ export async function updateRaceGameResultByWalletAddressAndSequence(
 // getAllRaceGamesSettlement
 export async function getAllRaceGamesSettlement() {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienRaceGames');
+  const collection = client.db('dubai').collection('cebienRaceGames');
 
   // status is closed and settlementStatus is false
   const result = await collection.find(
@@ -761,7 +761,7 @@ export async function setRaceGamesSettlementByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('cebienRaceGames');
+  const collection = client.db('dubai').collection('cebienRaceGames');
 
   // finde one and updaate
   // sequence is integer

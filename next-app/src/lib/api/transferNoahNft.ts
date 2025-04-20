@@ -51,11 +51,11 @@ export async function insertOne(data: any) {
     // if toAddress is user wallet address, then insert into userTransfers collection
 
 
-    const collectionUsers = client.db('shinemywinter').collection('usersNoahk');
+    const collectionUsers = client.db('dubai').collection('usersNoahk');
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfersNoahNft');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfersNoahNft');
 
-    const collection = client.db('shinemywinter').collection('transfersNft');
+    const collection = client.db('dubai').collection('transfersNft');
 
 
     
@@ -146,7 +146,7 @@ export async function insertOne(data: any) {
             // NFT 이름: data.nftInfo.name
             // NFT 설명: data.nftInfo.description
 
-            const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+            const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
             await collectionTelegramMessages.insertOne(
             {
@@ -199,7 +199,7 @@ export async function getTransferByWalletAddress(data: any) {
 
     const client = await clientPromise;
 
-    const collectionUsers = client.db('shinemywinter').collection('usersNoahk');
+    const collectionUsers = client.db('dubai').collection('usersNoahk');
 
     
     const user = await collectionUsers.findOne(
@@ -217,7 +217,7 @@ export async function getTransferByWalletAddress(data: any) {
     // timestamp desc
     
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfersNoahNft');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfersNoahNft');
 
 
     /*

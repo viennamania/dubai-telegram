@@ -42,14 +42,14 @@ export async function insertOne(data: any) {
     // if toAddress is user wallet address, then insert into userTransfers collection
 
 
-    const collectionUsers = client.db('shinemywinter').collection('users');
+    const collectionUsers = client.db('dubai').collection('users');
 
 
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfersCebien');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfersCebien');
 
     
-    const collection = client.db('shinemywinter').collection('transfersCebien');
+    const collection = client.db('dubai').collection('transfersCebien');
 
 
     
@@ -128,7 +128,7 @@ export async function insertOne(data: any) {
 
         // if data.fromAddress is escrow.walletAddress of ordersCebien collection
 
-        const collectionOrders = client.db('shinemywinter').collection('ordersCebien');
+        const collectionOrders = client.db('dubai').collection('ordersCebien');
 
         const sellOrder = await collectionOrders.findOne(
             { "escrow.walletAddress": data.fromAddress },
@@ -166,7 +166,7 @@ export async function insertOne(data: any) {
                 ///const message = "You have received " + Number(amount).toFixed(6) + " USDT";
                 const message = Number(amount).toFixed(2) + " CEBIEN 를 받았습니다";
 
-                const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+                const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
                 await collectionTelegramMessages.insertOne(
                 {
@@ -197,7 +197,7 @@ export async function insertOne(data: any) {
 
 
     // ordersCebien collection
-    const collectionOrders = client.db('shinemywinter').collection('ordersCebien');
+    const collectionOrders = client.db('dubai').collection('ordersCebien');
 
 
     // if escrow.walletAddress is fromAddress
@@ -251,7 +251,7 @@ export async function insertOne(data: any) {
             ///const message = "You have received " + Number(amount).toFixed(6) + " USDT";
             const message = "판매가 완료되었습니다.";
 
-            const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+            const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
             await collectionTelegramMessages.insertOne(
             {
@@ -296,7 +296,7 @@ export async function getTransferByWalletAddress(data: any) {
 
     const client = await clientPromise;
 
-    const collectionUsers = client.db('shinemywinter').collection('users');
+    const collectionUsers = client.db('dubai').collection('users');
 
     
     const user = await collectionUsers.findOne(
@@ -313,7 +313,7 @@ export async function getTransferByWalletAddress(data: any) {
     // timestamp desc
     
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfersCebien');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfersCebien');
 
     const userTransfers = await collectionUserTransfers
     .find({ "user.walletAddress": data.walletAddress })

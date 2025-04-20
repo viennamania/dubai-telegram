@@ -38,7 +38,7 @@ export async function getMessagesByTelegramId(data: any) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
 
     try {
@@ -89,7 +89,7 @@ export async function getAllMessages(data: any) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     const messages = await collectionTelegramMessages
     .find({
@@ -121,7 +121,7 @@ export async function getAllMessagesByCenter(center: string) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     const messages = await collectionTelegramMessages
     .find({
@@ -142,7 +142,7 @@ export async function deleteAllMessagesByCenter(center: string) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     await collectionTelegramMessages.deleteMany(
         {
@@ -163,7 +163,7 @@ export async function fetchAllMessagesByCenter(center: string) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     const messages = await collectionTelegramMessages
     .find({
@@ -194,7 +194,7 @@ export async function deleteMessage(_id: string) {
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     await collectionTelegramMessages.deleteOne(
         {
@@ -216,7 +216,7 @@ export async function deleteMessage(_id: string) {
 
             const message = "You have received " + Number(amount).toFixed(6) + " USDT";
 
-            const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+            const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
             await collectionTelegramMessages.insertOne(
             {
@@ -243,7 +243,7 @@ export async function insertMessage(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     await collectionTelegramMessages.insertOne(
         {
@@ -284,7 +284,7 @@ export async function insertMessageRoulette(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     await collectionTelegramMessages.insertOne(
         {
@@ -328,7 +328,7 @@ export async function insertMessageRaceGame(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     await collectionTelegramMessages.insertOne(
         {
@@ -369,9 +369,9 @@ export async function insertMessageByWalletAddress(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
-    const user = await client.db('shinemywinter').collection('users').findOne(
+    const user = await client.db('dubai').collection('users').findOne(
         { walletAddress },
         { projection: { telegramId: 1 } }
     );
@@ -418,9 +418,9 @@ export async function insertAgentMessageByWalletAddress(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
-    const user = await client.db('shinemywinter').collection('users').findOne(
+    const user = await client.db('dubai').collection('users').findOne(
         { walletAddress },
         { projection: { telegramId: 1 } }
     );
@@ -474,9 +474,9 @@ export async function insertOtcMessageByWalletAddress(
 
     const client = await clientPromise;
 
-    const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
-    const user = await client.db('shinemywinter').collection('users').findOne(
+    const user = await client.db('dubai').collection('users').findOne(
         { walletAddress },
         { projection: { telegramId: 1 } }
     );

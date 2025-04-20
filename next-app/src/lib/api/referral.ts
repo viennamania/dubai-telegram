@@ -76,7 +76,7 @@ export async function insertOne(data: any) {
     || data.center === 'we_gogo_bot'
   ) {
 
-    const collection = client.db('shinemywinter').collection('referrals_center');
+    const collection = client.db('dubai').collection('referrals_center');
 
     // check duplicat telegramId, center
     const checkTelegramId = await collection.findOne<UserProps>(
@@ -118,7 +118,7 @@ export async function insertOne(data: any) {
 
   } else {
 
-    const collection = client.db('shinemywinter').collection('referrals');
+    const collection = client.db('dubai').collection('referrals');
 
     // check duplicat telegramId
     const checkTelegramId = await collection.findOne<UserProps>(
@@ -164,7 +164,7 @@ export async function insertOneVerified(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
   // check same walletAddress or smae nickname
 
@@ -250,7 +250,7 @@ export async function updateOne(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
 
   // update and return updated user
@@ -291,7 +291,7 @@ export async function updateOne(data: any) {
 
 export async function updateAvatar(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
 
   // update and return updated user
@@ -324,7 +324,7 @@ export async function updateAvatar(data: any) {
 
 export async function updateSellerStatus(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
 
   // update and return updated user
@@ -368,7 +368,7 @@ export async function updateSellerStatus(data: any) {
 
 export async function updateTelegramId(data: any) {
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
@@ -389,7 +389,7 @@ export async function getOneByWalletAddress(
 
   const client = await clientPromise;
 
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
 
 
@@ -418,7 +418,7 @@ export async function getReferralCodeByTelegramId(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
   const results = await collection.findOne<any>(
     { telegramId: telegramId },
@@ -447,7 +447,7 @@ export async function getOneByTelegramId(
     || center === 'we_gogo_bot'
   ) {
 
-    const collection = client.db('shinemywinter').collection('referrals_center');
+    const collection = client.db('dubai').collection('referrals_center');
 
     const results = await collection.findOne<UserProps>(
       {
@@ -461,7 +461,7 @@ export async function getOneByTelegramId(
 
 
   } else {
-    const collection = client.db('shinemywinter').collection('referrals');
+    const collection = client.db('dubai').collection('referrals');
 
     const results = await collection.findOne<UserProps>(
       { telegramId: telegramId },
@@ -488,7 +488,7 @@ export async function getOneByReferralCode(
     || center === 'we_gogo_bot'
   ) {
 
-    const collection = client.db('shinemywinter').collection('referrals_center');
+    const collection = client.db('dubai').collection('referrals_center');
 
     const results = await collection.findOne<UserProps>(
       {
@@ -500,7 +500,7 @@ export async function getOneByReferralCode(
     return results;
 
   } else {
-    const collection = client.db('shinemywinter').collection('referrals');
+    const collection = client.db('dubai').collection('referrals');
 
     const results = await collection.findOne<UserProps>(
       { referralCode: referralCode },
@@ -520,7 +520,7 @@ export async function getReferredMembers(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referrals');
+  const collection = client.db('dubai').collection('referrals');
 
   // join user telegramId, referrals telegramId
 
@@ -583,7 +583,7 @@ export async function getReferredMembersByCenter(
     || center === 'we_gogo_bot'
   ) {
 
-    const collection = client.db('shinemywinter').collection('referrals_center');
+    const collection = client.db('dubai').collection('referrals_center');
 
     // join user telegramId, referrals telegramId
 
@@ -629,7 +629,7 @@ export async function getReferredMembersByCenter(
     return results;
 
   } else {
-    const collection = client.db('shinemywinter').collection('referrals');
+    const collection = client.db('dubai').collection('referrals');
 
     // join user telegramId, referrals telegramId
 
@@ -705,12 +705,12 @@ export async function insertReferralRewards(data: any) {
   }
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referral_rewards');
+  const collection = client.db('dubai').collection('referral_rewards');
 
 
   // collection for check duplicat date day
 
-  const collectionDay = client.db('shinemywinter').collection('referral_rewards_day');
+  const collectionDay = client.db('dubai').collection('referral_rewards_day');
 
   // check duplicat date day and masterWalletAddress
 
@@ -803,7 +803,7 @@ export async function getRewardsByWalletAddress(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('shinemywinter').collection('referral_rewards');
+  const collection = client.db('dubai').collection('referral_rewards');
 
   const results = await collection.find<UserProps>(
     { walletAddress: walletAddress },

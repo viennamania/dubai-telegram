@@ -41,11 +41,11 @@ export async function insertOne(data: any) {
     // if toAddress is user wallet address, then insert into userTransfers collection
 
 
-    const collectionUsers = client.db('shinemywinter').collection('users');
+    const collectionUsers = client.db('dubai').collection('users');
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfers');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfers');
 
-    const collection = client.db('shinemywinter').collection('transfers');
+    const collection = client.db('dubai').collection('transfers');
 
 
     
@@ -141,7 +141,7 @@ export async function insertOne(data: any) {
                 ///const message = "You have received " + Number(amount).toFixed(6) + " USDT";
                 const message = Number(amount).toFixed(6) + " USDT 를 받았습니다";
 
-                const collectionTelegramMessages = client.db('shinemywinter').collection('telegramMessages');
+                const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
                 await collectionTelegramMessages.insertOne(
                 {
@@ -191,7 +191,7 @@ export async function getTransferByWalletAddress(data: any) {
 
     const client = await clientPromise;
 
-    const collectionUsers = client.db('shinemywinter').collection('users');
+    const collectionUsers = client.db('dubai').collection('users');
 
     
     const user = await collectionUsers.findOne(
@@ -208,7 +208,7 @@ export async function getTransferByWalletAddress(data: any) {
     // timestamp desc
     
 
-    const collectionUserTransfers = client.db('shinemywinter').collection('userTransfers');
+    const collectionUserTransfers = client.db('dubai').collection('userTransfers');
 
     const userTransfers = await collectionUserTransfers
     .find({ "user.walletAddress": data.walletAddress })
