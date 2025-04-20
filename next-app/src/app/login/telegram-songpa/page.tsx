@@ -100,7 +100,7 @@ function TelegramLoginContent() {
                     텔레그램 지갑 연결 중...
                 </div>
                 <Image
-                    src="/connecting-songpa.gif"
+                    src="/connecting-dubai.gif"
                     width={300}
                     height={300}
                     alt="Connecting..."
