@@ -187,7 +187,7 @@ function AgentPage() {
 
     const [referralCode, setReferralCode] = useState("");
 
-    const [erc721ContractAddress, setErc721ContractAddress] = useState("0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA");
+    const [erc721ContractAddress, setErc721ContractAddress] = useState("0xCCd98034702aD34694cD0Df80251497Bc7eFdD49");
 
     const [userCenter, setUserCenter] = useState("");
 

@@ -453,7 +453,7 @@ export async function GET(request: NextRequest) {
 
           // get center owner
           // if referralCode is "
-          // if rererralCode is "0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_73",
+          // if rererralCode is "0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_73",
           // then center owner
 
 
@@ -463,10 +463,10 @@ export async function GET(request: NextRequest) {
 
           console.log("tmpReferralCode=======> ", tmpReferralCode);
 
-          // 0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_73
+          // 0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_73
 
 
-          while (tmpReferralCode !== "0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_73") {
+          while (tmpReferralCode !== "0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_73") {
             
             const referralContractAddress = tmpReferralCode?.split("_")[0] || "";
             const referralTokenId = BigInt(tmpReferralCode?.split("_")[1] || "0");

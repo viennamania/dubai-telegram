@@ -1439,8 +1439,8 @@ function HomeContent() {
 
                                     <td className="p-2 text-center">
 
-                                      {/* if referralCode is 0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_73, then centerOwner */}
-                                      {user?.referralCode === "0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_73" && (
+                                      {/* if referralCode is 0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_73, then centerOwner */}
+                                      {user?.referralCode === "0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_73" && (
 
                                         <span className="text-white font-semibold bg-green-500 p-1 rounded">
                                           O

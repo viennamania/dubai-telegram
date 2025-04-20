@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     omitMetadata: false, // // Flag to omit metadata
 
     // https://opensea.io/collection/ai-agent-306
-    contractAddresses: ["0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA"], // contractAddresses: [erc721ContractAddress],
+    contractAddresses: ["0xCCd98034702aD34694cD0Df80251497Bc7eFdD49"], // contractAddresses: [erc721ContractAddress],
 
   });
 

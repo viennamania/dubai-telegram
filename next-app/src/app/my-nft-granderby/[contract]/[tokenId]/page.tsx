@@ -468,7 +468,7 @@ export default function AgentPage({ params }: any) {
   [
   {
     "telegramId": "1558409753",
-    "referralCode": "0x0276aE1b0768bBfe47d3Dd34493A225405aDB6AA_0",
+    "referralCode": "0xCCd98034702aD34694cD0Df80251497Bc7eFdD49_0",
     "user": {
         "id": 442301,
         "avatar": "https://thirdweb-assets.s3.ap-northeast-2.amazonaws.com/profile-default.png",

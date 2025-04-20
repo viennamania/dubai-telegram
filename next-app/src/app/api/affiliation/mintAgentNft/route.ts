@@ -17,8 +17,7 @@ import {
 
 
 import {
-    polygon,
-    bsc,
+    polygon,   
 } from "thirdweb/chains";
 
 import {
@@ -80,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     const contract = getContract({
         client,
-        chain: bsc,
+        chain: polygon,
         address: erc721ContractAddress,
     });
 
