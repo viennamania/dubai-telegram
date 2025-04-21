@@ -775,7 +775,7 @@ function ProfilePage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        나의 프로필
+                        My Profile
                     </div>
                 </div>
 
@@ -803,7 +803,7 @@ function ProfilePage() {
                                     onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}`)}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    내 지갑주소: {shortenAddress(address)}
+                                    My wallet: {shortenAddress(address)}
                                 </Button>
                                 <Button
                                     onClick={() => {
@@ -812,14 +812,13 @@ function ProfilePage() {
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    복사
+                                    Copy
                                 </Button>
                                 
                             </div>
                         ) : (
                             <p className="text-sm text-zinc-800">
-                                로그인 후 지갑주소가 표시됩니다.<br />
-                                창을 닫고 메뉴에서 지갑을 다시 시작해주세요.
+                                Wallet not connected. Please connect your wallet to see your profile.
                             </p>
                         )}      
                     </div>
@@ -834,7 +833,7 @@ function ProfilePage() {
                                 {/* dot */}
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="text-sm font-semibold text-gray-200">
-                                    텔레그램아이디
+                                    Telegram ID
                                 </span>
                             </div>
 
@@ -847,11 +846,11 @@ function ProfilePage() {
                             <button
                                 onClick={() => {
                                     navigator.clipboard.writeText(telegramId as string);
-                                    alert('텔레그램아이디가 복사되었습니다.');
+                                    alert('Telegram ID has been copied.');
                                 }}
                                 className="p-2 bg-blue-500 text-zinc-100 rounded"
                             >
-                                복사
+                                Copy
                             </button>
 
                             {/*}
@@ -905,7 +904,7 @@ function ProfilePage() {
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className="text-sm font-semibold text-gray-200">
-                                        회원아이디
+                                        Member ID
                                     </span>
                                 </div>
 
@@ -917,7 +916,7 @@ function ProfilePage() {
                                 <button
                                     onClick={() => {
                                         navigator.clipboard.writeText(nickname);
-                                        alert('회원아이디가 복사되었습니다.');
+                                        alert('Member ID has been copied.');
                                     }}
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
@@ -961,8 +960,8 @@ function ProfilePage() {
                                     <span
                                         className="text-sm font-semibold text-gray-200"
                                     >
-                                        {!userCode ? "회원아이디 설정" :
-                                            nicknameEdit ? "수정할 내 회원아이디" : "새로운 회원아이디"
+                                        {!userCode ? "Set Member ID" :
+                                        nicknameEdit ? "Update Member ID" : "Set new Member ID"
                                         }
                                     </span>
                                 </div>
@@ -974,7 +973,8 @@ function ProfilePage() {
                                         className="p-2 w-full text-2xl text-center font-semibold bg-zinc-800 rounded-lg text-zinc-100
                                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
 
-                                        placeholder="영문 소문자와 숫자"
+                                        placeholder="Alphabet and numbers"
+                                        //placeholder="영문 소문자와 숫자"
                                         
                                         //value={nickname}
                                         value={editedNickname}
@@ -1011,7 +1011,8 @@ function ProfilePage() {
                                     {editedNickname && isNicknameDuplicate && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-red-500'>
-                                                이미 사용중인 회원아이디입니다.
+                                                {/*이미 사용중인 회원아이디입니다.*/}
+                                                Member ID is already in use.
                                             </span>
                                         </div>
                                     )}
@@ -1022,7 +1023,8 @@ function ProfilePage() {
                                     && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-green-500'>
-                                                사용가능한 회원아이디입니다.
+                                                {/*사용가능한 회원아이디입니다.*/}
+                                                Member ID is available.
                                             </span>
                                         </div>
                                     )}
@@ -1032,7 +1034,8 @@ function ProfilePage() {
                                 <div className='flex flex-row gap-2 items-center justify-between'>
                                     <span className='text-sm text-zinc-100 font-semibold'>
 
-                                        회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
+                                        {/*회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.*/}
+                                        Member ID must be 5 to 10 characters long and contain only lowercase letters and numbers.
 
                                     </span>
                                 </div>
@@ -1057,10 +1060,12 @@ function ProfilePage() {
                                         w-full mt-5
                                     `}
                                     onClick={() => {
-                                        confirm('회원아이디를 저장하시겠습니까?') && setUserData();
+                                        //confirm('회원아이디를 저장하시겠습니까?') && setUserData();
+                                        confirm('Are you sure you want to save the Member ID?') && setUserData();
                                     }}
                                 >
-                                    {loadingSetUserData ? "저장중..." : "저장"}
+                                    {/*loadingSetUserData ? "저장중..." : "저장"*/}
+                                    {loadingSetUserData ? "Saving..." : "Save"}
                                     
                                 </button>
 
@@ -1181,7 +1186,7 @@ function ProfilePage() {
                         {/* seller */}
                         {/* 판매자 은행정보 */}
 
-                        {address && seller && seller && (
+                        {false && address && seller && seller && (
 
                             <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                             bg-zinc-800 bg-opacity-90
@@ -1287,7 +1292,7 @@ function ProfilePage() {
 
       
                         {/* 판매자 가상계좌 정보 sntVirtualAccount */}
-                        {address && (
+                        {false && address && (
                             <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                             bg-zinc-800 bg-opacity-90
                             '>
@@ -1368,7 +1373,7 @@ function ProfilePage() {
 
 
                         {/* 판매자 정보 저장하기 */}
-                        {address && (
+                        {false && address && (
 
                             <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                             bg-zinc-800 bg-opacity-90
