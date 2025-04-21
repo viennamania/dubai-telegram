@@ -96,15 +96,18 @@ function TelegramLoginContent() {
             */}
 
             <div className="flex flex-col gap-2 items-center justify-center">
-                <div className="text-lg font-semibold">
-                    Connecting Telegram wallet...
-                </div>
+
                 <Image
                     src="/connecting-dubai.gif"
                     width={300}
                     height={300}
                     alt="Connecting..."
                 />
+
+                <div className="text-lg font-semibold">
+                    Connecting Telegram wallet...
+                </div>
+
             </div>
         </div>
     );
