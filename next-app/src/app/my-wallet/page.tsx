@@ -971,7 +971,8 @@ function ProfilePage() {
                                         <input
                                             disabled={sending}
                                             className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-sm font-semibold"
-                                            placeholder="받는 사람 지갑주소(0x로 시작)"
+                                            ///placeholder="받는 사람 지갑주소(0x로 시작)"
+                                            placeholder="Recipient wallet (start with 0x)"
                                             type='text'
                                             onChange={(e) => {
                                                 // cheack prefix is "0x"
