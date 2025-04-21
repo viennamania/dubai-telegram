@@ -1616,7 +1616,7 @@ function AgentPage() {
                                             bg-gray-800 bg-opacity-90'
                                         >
 
-                                            <div className="w-full flex flex-row items-start justify-between gap-2">
+                                            <div className="w-full flex flex-row items-center justify-between gap-2">
                                             
                                                 <button
                                                     onClick={() => {
@@ -1636,44 +1636,46 @@ function AgentPage() {
                                                 </button>
 
 
-                                                <button
-                                                    onClick={() => {
-                                                        router.push('/affiliation-cebien/' + nft.contract.address + '/' + nft.tokenId);
-                                                    }}
-                                                    className="p-2 bg-blue-500 text-zinc-100 rounded
-                                                    hover:bg-blue-600 text-lg font-semibold"
-                                                >
-                                                        {/*상세보기*/}
+                                                <div className="w-full flex flex-row gap-2 items-center justify-start">
+                                                    <button
+                                                        onClick={() => {
+                                                            router.push('/affiliation-cebien/' + nft.contract.address + '/' + nft.tokenId);
+                                                        }}
+                                                        className="w-full flex p-2 bg-blue-500 text-zinc-100 rounded
+                                                        hover:bg-blue-600 text-sm"
+                                                    >
+                                                            {/*상세보기*/}
+                                                            {/* english */}
+                                                            View Details
+                                                    </button>
+
+
+                                                    {/* referral link button */}
+                                                    
+                                                    <button
+                                                        onClick={() => {
+                                                            navigator.clipboard.writeText(
+                                                                /*
+                                                                referralUrl + '/?center=' + center +
+                                                                '&agent=' + nft.contract.address + 
+                                                                '&tokenId=' + nft.tokenId
+                                                                */
+                                                                //'t.me/ppump_orry_bot?start=' + nft.contract.address + '_' + nft.tokenId
+
+                                                                't.me/' + userCenter + '?start=' + nft.contract.address + '_' + nft.tokenId
+                                                            );
+                                                            //toast.success('추천코드 URL 복사 완료');
+                                                            //alert('추천코드 복사되었습니다.');
+                                                            alert('Referral code copied to clipboard');
+                                                        }}
+                                                        className="w-full flex p-2 bg-blue-500 text-zinc-100 rounded
+                                                        hover:bg-blue-600 text-sm"
+                                                    >
+                                                        {/*추천코드 복사하기*/}
                                                         {/* english */}
-                                                        View Details
-                                                </button>
-
-
-                                                {/* referral link button */}
-                                                
-                                                <button
-                                                    onClick={() => {
-                                                        navigator.clipboard.writeText(
-                                                            /*
-                                                            referralUrl + '/?center=' + center +
-                                                            '&agent=' + nft.contract.address + 
-                                                            '&tokenId=' + nft.tokenId
-                                                            */
-                                                            //'t.me/ppump_orry_bot?start=' + nft.contract.address + '_' + nft.tokenId
-
-                                                            't.me/' + userCenter + '?start=' + nft.contract.address + '_' + nft.tokenId
-                                                        );
-                                                        //toast.success('추천코드 URL 복사 완료');
-                                                        //alert('추천코드 복사되었습니다.');
-                                                        alert('Referral code copied to clipboard');
-                                                    }}
-                                                    className="p-2 bg-blue-500 text-zinc-100 rounded
-                                                    hover:bg-blue-600 text-lg font-semibold"
-                                                >
-                                                    {/*추천코드 복사하기*/}
-                                                    {/* english */}
-                                                    Copy Referral Code
-                                                </button>
+                                                        Copy Referral Code
+                                                    </button>
+                                                </div>
 
                                             </div>
    
