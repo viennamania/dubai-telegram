@@ -703,13 +703,16 @@ function AgentPage() {
         */
 
         if (
-            confirm("추천코드 NFT를 발행하시겠습니까?") === false
+            //confirm("추천코드 NFT를 발행하시겠습니까?") === false
+            // english
+            confirm("Are you sure you want to mint the NFT?") === false
         ) {
             return;
         }
 
 
-        setMessageMintingAgentNft('NFT 발행중입니다');
+        //setMessageMintingAgentNft('NFT 발행중입니다');
+        setMessageMintingAgentNft('NFT minting in progress');
 
 
         setMintingAgentNft(true);
@@ -720,7 +723,8 @@ function AgentPage() {
             setGeneratingAgentImage(true);
 
 
-            setMessageMintingAgentNft('NFT 이미지 생성중입니다');
+            //setMessageMintingAgentNft('NFT 이미지 생성중입니다');
+            setMessageMintingAgentNft('Generating NFT image');
 
             // genrate image from api
             // /api/ai/generateImage
@@ -751,7 +755,8 @@ function AgentPage() {
             setAgentImage(imageUrl);
 
 
-            setMessageMintingAgentNft('NFT 발행중입니다');
+            //setMessageMintingAgentNft('NFT 발행중입니다');
+            setMessageMintingAgentNft('NFT minting in progress');
 
 
             /*
@@ -852,10 +857,12 @@ function AgentPage() {
 
 
             if (!transactionHash) {
-                throw new Error('NFT 발행 실패. 관리자에게 문의해주세요');
+                //throw new Error('NFT 발행 실패. 관리자에게 문의해주세요');
+                throw new Error('NFT minting failed. Please contact the administrator');
             }
 
-            setMessageMintingAgentNft('NFT 발행 완료');
+            //setMessageMintingAgentNft('NFT 발행 완료');
+            setMessageMintingAgentNft('NFT minting completed');
 
 
             // fetch the NFTs again
@@ -906,9 +913,11 @@ function AgentPage() {
             ///toast.error('AI 에이전트 NFT 발행 실패');
 
             if (error instanceof Error) {
-                setMessageMintingAgentNft('NFT 발행 실패:' + error.message);
+                //setMessageMintingAgentNft('NFT 발행 실패:' + error.message);
+                setMessageMintingAgentNft('NFT minting failed:' + error.message);
             } else {
-                setMessageMintingAgentNft('NFT 발행 실패: 알 수 없는 오류');
+                //setMessageMintingAgentNft('NFT 발행 실패: 알 수 없는 오류');
+                setMessageMintingAgentNft('NFT minting failed: unknown error');
             }
         }
 
@@ -969,7 +978,9 @@ function AgentPage() {
 
 
         if (confirm(
-            "NFT를 다른 사용자에게 전송하시겠습니까?"
+            //"NFT를 다른 사용자에게 전송하시겠습니까?"
+            // english
+            "Are you sure you want to transfer the NFT?"
         ) === false) {
             return;
         }
@@ -1564,7 +1575,9 @@ function AgentPage() {
                                             }}
                                             className="p-2 bg-blue-500 text-sm text-zinc-100 rounded"
                                         >
-                                            새로고침
+                                            {/*새로고침*/}
+                                            {/* english */}
+                                            Refresh
                                         </button>
                                     </div>
                                 
