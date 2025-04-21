@@ -36,7 +36,10 @@ export async function POST(request: NextRequest) {
     /*
     A fairy (female) who delivers happiness and hope is floating in the air at the center of a gathering of people. She wears a necklace that represents constellations and holds a coin (gold coin) in one hand. Please render it in 3D animation.
     */
-    const englishPrompt = "A fairy (female) who delivers happiness and hope is floating in the air at the center of a gathering of people. She wears a necklace that represents constellations and holds a coin (gold coin) in one hand. Please render it in 3D animation.";
+    //const englishPrompt = "A fairy (female) who delivers happiness and hope is floating in the air at the center of a gathering of people. She wears a necklace that represents constellations and holds a coin (gold coin) in one hand. Please render it in 3D animation.";
+
+
+    const englishPrompt = "A high-resolution, ultra-realistic 3D illustration featuring two randomly selected playing cards from a standard 52-card deck, \"[CARD1]\" and \"[CARD2]\", showcased side by side against a clear, transparent background. These unique cards are meticulously designed in a LEGO-inspired style, integrating LEGO minifigures and brick textures into their intricate details. Sharply lit to highlight vibrant colors and complex patterns, they resemble authentic LEGO creations. The illustration boasts a clean, vivid style with a strong emphasis on realism and clarity, perfect for showcasing the cards' LEGO-esque charm. Clean, high-definition photographic style ensures every detail is captured with precision.";
 
 
     const negative_prompt = "easynegative,ng_deepnegative_v1_75t,((monochrome)),((grayscale)),bad-picture-chill-75v, (worst quality, low quality:1.4), monochrome, grayscale, sketches, paintings, lowres, normalres, blurry, acnes on face, {{sperm}}, {{bra}}";
