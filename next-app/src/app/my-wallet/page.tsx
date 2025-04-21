@@ -782,7 +782,10 @@ function ProfilePage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        나의 지갑
+                        {/*나의 지갑*/}
+                        {/* english */}
+                        My Wallet
+
                     </div>
                 </div>
 
@@ -810,22 +813,24 @@ function ProfilePage() {
                                     onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}`)}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    내 지갑주소: {shortenAddress(address)}
+                                    My wallet: {shortenAddress(address)}
                                 </Button>
                                 <Button
                                     onClick={() => {
                                         navigator.clipboard.writeText(address);
-                                        alert('지갑주소가 복사되었습니다.');
+                                        //alert('지갑주소가 복사되었습니다.');
+                                        alert('Wallet address copied to clipboard');
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    복사
+                                    Copy
                                 </Button>
                                 
                             </div>
                         ) : (
                             <p className="text-sm text-zinc-400">
-                                연결된 지갑이 없습니다. 지갑을 연결해 주세요.
+                                {/*연결된 지갑이 없습니다. 지갑을 연결해 주세요.*/}
+                                No connected wallet. Please connect your wallet.
                             </p>
                         )}      
                     </div>
@@ -834,7 +839,8 @@ function ProfilePage() {
                     {loadingUser && (
                         <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                             <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                로딩중...
+                                {/*로딩중...*/}
+                                Loading...
                             </div>
                         </div>
                     )}
@@ -850,7 +856,8 @@ function ProfilePage() {
                             >
                                 <div className="flex flex-row gap-2 items-center justify-between">
                                     <span className="text-lg font-semibold">
-                                        새로고침
+                                        {/*새로고침*/}
+                                        Refresh
                                     </span>
                                 </div>
                             </button>
@@ -910,7 +917,8 @@ function ProfilePage() {
                                         {/* dot */}
                                         <div className="bg-green-500 w-3 h-3 rounded-full"></div>
                                         <span className="text-lg font-semibold text-zinc-800">
-                                            USDT 보내기
+                                            {/*USDT 보내기*/}
+                                            Send USDT
                                         </span>
                                     </div>
 
@@ -932,12 +940,14 @@ function ProfilePage() {
 
 
                                                 if (isNaN(Number(e.target.value))) {
-                                                    alert('숫자만 입력해주세요');
+                                                    //alert('숫자만 입력해주세요');
+                                                    alert('Please enter a number');
                                                     return;
                                                 }
 
                                                 if (Number(e.target.value) < 0) {
-                                                    alert('0보다 작은 숫자는 입력할 수 없습니다');
+                                                    //alert('0보다 작은 숫자는 입력할 수 없습니다');
+                                                    alert('Please enter a number greater than 0');
                                                     return;
                                                 }
 
@@ -950,7 +960,8 @@ function ProfilePage() {
                                                 // check input number less than balance
 
                                                 if (Number(e.target.value) > balance) {
-                                                    alert('잔액보다 많은 금액을 보낼 수 없습니다');
+                                                    //alert('잔액보다 많은 금액을 보낼 수 없습니다');
+                                                    alert('You cannot send more than your balance');
                                                     return;
                                                 }
 
@@ -979,7 +990,8 @@ function ProfilePage() {
                                             <button
                                                 disabled={sending || !sendAmount || !toWalletAddress}
                                                 onClick={() => {
-                                                    confirm('USDT를 보내시겠습니까?') &&
+                                                    //confirm('USDT를 보내시겠습니까?') &&
+                                                    confirm('Are you sure you want to send USDT?') &&
                                                     sendUsdt();
                                                 }}
                                                 className={`p-2 bg-blue-500 text-zinc-100 rounded
@@ -998,7 +1010,8 @@ function ProfilePage() {
                                                         />
                                                     )}
                                                     <span className='text-lg font-semibold'>
-                                                        보내기
+                                                        {/*보내기*/}
+                                                        Send
                                                     </span>
                                                 </div>
                                             </button>
@@ -1107,7 +1120,8 @@ function ProfilePage() {
                                     className="rounded"
                                 />
                                 <span className="text-sm font-semibold">
-                                    폴리스캔에서 거래내역 보기
+                                    {/*폴리스캔에서 거래내역 보기*/}
+                                    View transaction history on Polygonscan
                                 </span>
                             </div>
 
@@ -1130,7 +1144,8 @@ function ProfilePage() {
                                 {/* dot */}
                                 <div className="bg-green-500 w-3 h-3 rounded-full"></div>
                                 <span className="text-lg font-semibold text-zinc-800">
-                                    최근 10개 거래내역
+                                    {/*최근 10개 거래내역*/}
+                                    Recent 10 transactions
                                 </span>
                             </div>
 
@@ -1151,7 +1166,8 @@ function ProfilePage() {
 
                         {!loadingTransfers && transfers?.length === 0 && (
                             <span className="text-sm text-zinc-800">
-                                거래내역이 없습니다.
+                                {/*거래내역이 없습니다.*/}
+                                No transaction history.
                             </span>
                         )}
 
@@ -1174,10 +1190,20 @@ function ProfilePage() {
                                             </span>
                                         </th>
                                         <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
-                                            상대방
+                                            {/*상대방*/}
+                                            {/* english */}
+                                            Other User
                                         </th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">수량(USDT)</th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">시간</th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*수량(USDT)*/}
+                                            {/* english */}
+                                            Amount (USDT)
+                                        </th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*시간*/}
+                                            {/* english */}
+                                            Time
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1285,40 +1311,60 @@ function ProfilePage() {
 
                                                     (
                                                         new Date().getTime() - transfer.transferData.timestamp
-                                                    ) < 60000 ? "방금 전" : (
+                                                    ) < 60000 ?
+                                                        //"방금 전"
+                                                        "Just now"
+                                                        : (
                                                         (
                                                             new Date().getTime() - transfer.transferData.timestamp
                                                         ) < 3600000 ? 
                                                         Math.floor(
                                                             (new Date().getTime() - transfer.transferData.timestamp) / 60000
-                                                        ) + "분 전" : (
+                                                        ) +
+                                                        //"분 전"
+                                                        "minutes ago"
+                                                        : (
                                                             (
                                                                 new Date().getTime() - transfer.transferData.timestamp
                                                             ) < 86400000 ? 
                                                             Math.floor(
                                                                 (new Date().getTime() - transfer.transferData.timestamp) / 3600000
-                                                            ) + "시간 전" : (
+                                                            ) +
+                                                            //"시간 전"
+                                                            "hours ago"
+                                                            : (
                                                                 (
                                                                     new Date().getTime() - transfer.transferData.timestamp
                                                                 ) < 604800000 ? 
                                                                 Math.floor(
                                                                     (new Date().getTime() - transfer.transferData.timestamp) / 86400000
-                                                                ) + "일 전" : (
+                                                                ) +
+                                                                //"일 전"
+                                                                "days ago"
+                                                                : (
                                                                     (
                                                                         new Date().getTime() - transfer.transferData.timestamp
                                                                     ) < 2592000000 ? 
                                                                     Math.floor(
                                                                         (new Date().getTime() - transfer.transferData.timestamp) / 604800000
-                                                                    ) + "주 전" : (
+                                                                    ) +
+                                                                    //"주 전"
+                                                                    "weeks ago"
+                                                                    : (
                                                                         (
                                                                             new Date().getTime() - transfer.transferData.timestamp
                                                                         ) < 31536000000 ? 
                                                                         Math.floor(
                                                                             (new Date().getTime() - transfer.transferData.timestamp) / 2592000000
-                                                                        ) + "달 전" : (
+                                                                        ) +
+                                                                        //"달 전"
+                                                                        "months ago"
+                                                                        : (
                                                                             Math.floor(
                                                                                 (new Date().getTime() - transfer.transferData.timestamp) / 31536000000
-                                                                            ) + "년 전"
+                                                                            ) +
+                                                                            //"년 전"
+                                                                            "years ago"
                                                                         )
                                                                     )
                                                                 )
