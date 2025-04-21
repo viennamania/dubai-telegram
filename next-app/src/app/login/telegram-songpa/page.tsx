@@ -97,7 +97,7 @@ function TelegramLoginContent() {
 
             <div className="flex flex-col gap-2 items-center justify-center">
                 <div className="text-lg font-semibold">
-                    텔레그램 지갑 연결 중...
+                    Connecting Telegram wallet...
                 </div>
                 <Image
                     src="/connecting-dubai.gif"
