@@ -530,7 +530,9 @@ export default function AgentPage({ params }: any) {
                         className="rounded-lg"
                     />
                     <span className='text-lg font-semibold'>
-                        돌아가기
+                        {/*돌아가기*/}
+                        {/* english */}
+                        Back
                     </span>
                 </div>
             </button>
@@ -550,7 +552,9 @@ export default function AgentPage({ params }: any) {
                 className='rounded-lg'
               />
               <span className='text-lg font-semibold text-gray-800'>
-                  NFT 정보
+                  {/*NFT 정보*/}
+                  {/* english */}
+                  Referral NFT Info
               </span>
           </div>
 
@@ -566,7 +570,9 @@ export default function AgentPage({ params }: any) {
                 {/* dot */}
                 <div className='w-3 h-3 bg-red-500 rounded-full'></div>
                 <span className='text-lg text-green-500 font-semibold'>
-                    당신은 이 NFT의 소유자입니다.
+                    {/*당신은 이 NFT의 소유자입니다.*/}
+                    {/* english */}
+                    You are the owner of this NFT.
                 </span>
               </div>
             )}
@@ -603,7 +609,9 @@ export default function AgentPage({ params }: any) {
 
                       <div className='flex flex-row items-center justify-between gap-2'>
                         <span className='text-sm text-yellow-500'>
-                            NFT 계약번호
+                            {/*NFT 계약번호*/}
+                            {/* english */}
+                            NFT Contract Number
                         </span>
                         <span className='text-lg text-gray-800 font-semibold'>
                             #{agentTokenId?.length > 10 ? agentTokenId.slice(0, 10) + '...' : agentTokenId}
@@ -634,7 +642,9 @@ export default function AgentPage({ params }: any) {
 
                             <div className='flex flex-row items-start justify-between gap-2'>
                                 <span className='text-sm text-yellow-500'>
-                                    NFT 이름
+                                    {/*NFT 이름*/}
+                                    {/* english */}
+                                    NFT Name
                                 </span>
                                 <span className='text-xl font-semibold text-gray-200'>
                                     {agent.name}
@@ -679,12 +689,17 @@ export default function AgentPage({ params }: any) {
                         <div className='w-full flex flex-col items-start justify-between gap-2'>
                             
                             <span className='text-sm text-yellow-500'>
-                                NFT 소유자 정보
+                                {/*NFT 소유자 정보*/}
+                                {/* english */}
+                                NFT Owner Info
                             </span>
                             
                             <div className='w-full flex flex-row items-center justify-start gap-2'>
                                 <span className='text-xs text-gray-800'>
-                                    소유자 지갑주소: {holderWalletAddress?.slice(0, 5) + '...' + holderWalletAddress?.slice(-5)}
+                                    {/*소유자 지갑주소:*/}
+                                    {/* english */}
+                                    Owner Wallet Address:
+                                    {' '}{holderWalletAddress?.slice(0, 5) + '...' + holderWalletAddress?.slice(-5)}
                                 </span>
                                 {/* copy button */}
                                 <button
@@ -791,11 +806,15 @@ export default function AgentPage({ params }: any) {
                         {/* dot */}
                         <div className='w-3 h-3 bg-red-500 rounded-full'></div>
                         <span className='text-lg font-semibold text-gray-800'>
-                            추천인 목록
+                            {/*추천인 목록*/}
+                            {/* english */}
+                            Referral Members
                         </span>
                     </div>
                     <span className='text-sm text-gray-800'>
-                        추천인이 없습니다.
+                        {/*추천인이 없습니다.*/}
+                        {/* english */}
+                        No referral members.
                     </span>
                   </div>
                 )}
@@ -812,7 +831,9 @@ export default function AgentPage({ params }: any) {
                         {/* dot */}
                         <div className='w-3 h-3 bg-red-500 rounded-full'></div>
                         <span className='text-lg font-semibold text-gray-800'>
-                            추천인 목록
+                            {/*추천인 목록*/}
+                            {/* english */}
+                            Referral Members
                         </span>
                     </div>
 
