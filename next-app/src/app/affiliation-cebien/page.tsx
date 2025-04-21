@@ -1636,7 +1636,7 @@ function AgentPage() {
                                                 </button>
 
 
-                                                <div className="w-full flex flex-row gap-2 items-center justify-start">
+                                                <div className="w-full flex flex-col gap-2 items-center justify-center">
                                                     <button
                                                         onClick={() => {
                                                             router.push('/affiliation-cebien/' + nft.contract.address + '/' + nft.tokenId);
