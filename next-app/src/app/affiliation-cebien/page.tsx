@@ -1641,7 +1641,7 @@ function AgentPage() {
                                                         onClick={() => {
                                                             router.push('/affiliation-cebien/' + nft.contract.address + '/' + nft.tokenId);
                                                         }}
-                                                        className="w-full flex p-2 bg-blue-500 text-zinc-100 rounded
+                                                        className="w-full flex items-center justify-center p-2 bg-blue-500 text-zinc-100 rounded
                                                         hover:bg-blue-600 text-sm"
                                                     >
                                                             {/*상세보기*/}
@@ -1668,7 +1668,7 @@ function AgentPage() {
                                                             //alert('추천코드 복사되었습니다.');
                                                             alert('Referral code copied to clipboard');
                                                         }}
-                                                        className="w-full flex p-2 bg-blue-500 text-zinc-100 rounded
+                                                        className="w-full flex item-center justify-center p-2 bg-blue-500 text-zinc-100 rounded
                                                         hover:bg-blue-600 text-sm"
                                                     >
                                                         {/*추천코드 복사하기*/}
@@ -1784,7 +1784,7 @@ function AgentPage() {
                                                                 className="animate-spin"
                                                             />
                                                         )}
-                                                        <span className='text-lg font-semibold'>
+                                                        <span className='text-sm text-zinc-100'>
                                                             {/*NFT 전송하기*/}
                                                             {/* english */}
                                                             Transfer NFT
