@@ -808,7 +808,8 @@ function ProfilePage() {
                                 <Button
                                     onClick={() => {
                                         navigator.clipboard.writeText(address);
-                                        alert('지갑주소가 복사되었습니다.');
+                                        //alert('지갑주소가 복사되었습니다.');
+                                        alert('Wallet address has been copied.');
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
@@ -920,7 +921,7 @@ function ProfilePage() {
                                     }}
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
-                                    복사
+                                    Copy
                                 </button>
 
                                 
@@ -932,7 +933,8 @@ function ProfilePage() {
                                     } }
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
-                                    {nicknameEdit ? "취소" : "수정"}
+                                    {/*nicknameEdit ? "취소" : "수정"*/}
+                                    {nicknameEdit ? "Cancel" : "Edit"}
                                 </button>
 
                                 <Image
