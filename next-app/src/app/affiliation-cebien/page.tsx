@@ -1119,7 +1119,8 @@ function AgentPage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        추천코드 관리
+                        {/*추천코드 관리*/}
+                        Referral Code Management
                     </div>
                 </div>
         
@@ -1146,23 +1147,25 @@ function AgentPage() {
                                     onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}`)}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    내 지갑주소: {shortenAddress(address)}
+                                    My wallet: {shortenAddress(address)}
                                 </Button>
                                 <Button
                                     onClick={() => {
                                         navigator.clipboard.writeText(address);
-                                        alert('지갑주소가 복사되었습니다.');
+                                        //alert('지갑주소가 복사되었습니다.');
+                                        alert('Wallet address copied to clipboard');
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    복사
+                                    Copy
                                 </Button>
 
                                 
                             </div>
                         ) : (
                             <p className="text-sm text-zinc-400">
-                                연결된 지갑이 없습니다. 지갑을 연결해 주세요.
+                                {/*연결된 지갑이 없습니다. 지갑을 연결해 주세요.*/}
+                                No connected wallet. Please connect your wallet.
                             </p>
                         )}      
                     </div>
