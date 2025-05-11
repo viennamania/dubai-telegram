@@ -4,18 +4,24 @@ import {
 	updateDiceGameResultByWalletAddressAndSequence,
 } from '@lib/api/gameCebien';
 
-
+/*
+        walletAddress: walletAddress,
+        sequence: selectedSequence,
+        selectedDiceNumber: selectedDiceNumber,
+        resultDiceNumber: resultDiceNumber,
+        win: win,
+        */
 
 export async function POST(request: NextRequest) {
 
   const body = await request.json();
 
   /*
-          walletAddress,
-        sequence,
-        seletedOddOrEven,
-        resultOddOrEven, 
-        win
+walletAddress= 0x820401adfF23A01E2CaCF913A2642B781d470a95
+sequence= 2
+selectedDiceNumber= 1
+resultDiceNumber= 4
+win= false
         */
 
   const {
