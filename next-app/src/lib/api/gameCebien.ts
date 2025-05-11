@@ -18,7 +18,7 @@ export interface ResultProps {
 // insertOne
 export async function insertOne(data: any) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
 
   // check if latest data is within 30 seconds
@@ -159,7 +159,7 @@ export async function insertOne(data: any) {
 // getOneByWalletAddressAndSequence
 export async function getOneByWalletAddressAndSequence(walletAddress: string, sequence: number) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
   const result = await collection.findOne(
     { walletAddress: walletAddress, sequence: sequence }
@@ -218,7 +218,7 @@ export async function updateResultByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
   // finde one
   // sequence is integer
@@ -334,7 +334,7 @@ export async function updateResultByWalletAddressAndSequence(
 // getAllWinGames
 export async function getAllWinGames() {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
   const result = await collection.find(
     {
@@ -349,7 +349,7 @@ export async function getAllWinGames() {
 // getAllGamesSettlement
 export async function getAllGamesSettlement() {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
   const result = await collection.find(
     {
@@ -373,7 +373,7 @@ export async function setGamesSettlementByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienGames');
+  const collection = client.db('dubai').collection('oddEvenGames');
 
   // finde one and updaate
   // sequence is integer
@@ -410,7 +410,7 @@ export async function setGamesSettlementByWalletAddressAndSequence(
 // insertOneDiceGame
 export async function insertOneDiceGame(data: any) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienDiceGames');
+  const collection = client.db('dubai').collection('diceGames');
   // check if latest data is within 30 seconds
   // then return waiting message
   // // within 120 seconds
@@ -534,7 +534,7 @@ export async function updateDiceGameResultByWalletAddressAndSequence(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('cebienDiceGames');
+  const collection = client.db('dubai').collection('diceGames');
 
   // finde one
   // sequence is integer
