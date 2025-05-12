@@ -65,7 +65,7 @@ import {
 const chain = polygon;
 
 // USDT Token (USDT)
-//const tokenContractAddressUSDT = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F';
+//const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 const tokenContractAddressCEBIEN = "0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd"; // CEBIEN on Polygon
 

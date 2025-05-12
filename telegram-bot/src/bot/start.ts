@@ -1319,7 +1319,7 @@ feature.command('otc', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -1432,7 +1432,7 @@ feature.command('game', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -1559,7 +1559,7 @@ feature.command('wallet', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -2441,7 +2441,7 @@ feature.command('affiliation', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
