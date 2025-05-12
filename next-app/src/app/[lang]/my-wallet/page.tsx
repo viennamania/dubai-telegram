@@ -119,7 +119,7 @@ function ProfilePage() {
   
         if (!result) return;
     
-        setBalance( Number(result) / 10 ** 6 );
+        setBalance( Number(result) / 10 ** 18 );
   
       };
   
@@ -718,7 +718,7 @@ function ProfilePage() {
 
                 //console.log(result);
 
-                setBalance( Number(result) / 10 ** 6 );
+                setBalance( Number(result) / 10 ** 18 );
 
             } else {
 
@@ -1199,7 +1199,7 @@ function ProfilePage() {
                                                     fontFamily: 'monospace',
                                                 }}
                                             >
-                                                {Number(transfer.transferData.value / 10 ** 6).toFixed(6)}
+                                                {Number(transfer.transferData.value / 10 ** 18).toFixed(6)}
                                             </td>
                                             <td className="p-2 text-xs text-zinc-800 font-semibold text-right">
                                            

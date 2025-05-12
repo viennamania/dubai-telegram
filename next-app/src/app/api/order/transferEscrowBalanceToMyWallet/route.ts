@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
     });
 
 
-    const sendAmountToStore = Number(result) / 10 ** 6;
+    const sendAmountToStore = Number(result) / 10 ** 18;
 
     console.log("sendAmountToStore", sendAmountToStore);
 

@@ -216,7 +216,7 @@ function AgentPage() {
   
         if (!result) return;
     
-        setBalance( Number(result) / 10 ** 6 );
+        setBalance( Number(result) / 10 ** 18 );
   
       };
   
@@ -447,7 +447,7 @@ function AgentPage() {
 
             const price = 100;
 
-            if (allowanceAmount < price * 10 ** 6) {
+            if (allowanceAmount < price * 10 ** 18) {
                 
                 //throw new Error('USDT 토큰을 먼저 채굴 NFT 구매신청 계약에 승인해주세요');
 
@@ -456,7 +456,7 @@ function AgentPage() {
                 const transactionApprove = approve({
                     contract: contract,
                     spender: erc1155ContractAddress,
-                    amount: price * 10 ** 6,
+                    amount: price * 10 ** 18,
                 });
 
                 const transactionResultApprove = await sendAndConfirmTransaction({
@@ -1170,7 +1170,7 @@ function AgentPage() {
                                                 )}
                                                 <span className="w-28 text-sm text-zinc-100 text-right">
                                                     {
-                                                        transfer.transferData.value / 10 ** 6
+                                                        transfer.transferData.value / 10 ** 18
                                                     } USDT
                                                 </span>
                                             </div>

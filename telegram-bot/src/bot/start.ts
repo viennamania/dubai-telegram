@@ -1335,7 +1335,7 @@ feature.command('otc', async (ctx) => {
         address: walletAddress,
       });
 
-      const balance = Number(result) / 10 ** 6;
+      const balance = Number(result) / 10 ** 18;
 
 
 
@@ -1448,7 +1448,7 @@ feature.command('game', async (ctx) => {
         address: walletAddress,
       });
 
-      const balance = Number(result) / 10 ** 6;
+      const balance = Number(result) / 10 ** 18;
 
 
 
@@ -1575,7 +1575,7 @@ feature.command('wallet', async (ctx) => {
         address: walletAddress,
       });
 
-      const balance = Number(result) / 10 ** 6;
+      const balance = Number(result) / 10 ** 18;
 
 
 
@@ -2457,7 +2457,7 @@ feature.command('affiliation', async (ctx) => {
         address: walletAddress,
       });
 
-      const balance = Number(result) / 10 ** 6;
+      const balance = Number(result) / 10 ** 18;
 
 
 

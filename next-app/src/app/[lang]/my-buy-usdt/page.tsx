@@ -344,7 +344,7 @@ export default function Index({ params }: any) {
     
         //console.log(result);
     
-        setBalance( Number(result) / 10 ** 6 );
+        setBalance( Number(result) / 10 ** 18 );
   
       };
   
@@ -382,7 +382,7 @@ export default function Index({ params }: any) {
   
       //console.log(result);
   
-      setBalance( Number(result) / 10 ** 6 );
+      setBalance( Number(result) / 10 ** 18 );
 
 
       await fetch('/api/user/getBalanceByWalletAddress', {
@@ -490,7 +490,7 @@ export default function Index({ params }: any) {
       });
 
   
-      setEscrowBalance( Number(result) / 10 ** 6 );
+      setEscrowBalance( Number(result) / 10 ** 18 );
 
 
 
@@ -1134,7 +1134,7 @@ export default function Index({ params }: any) {
                               <td className="p-2 text-xl font-semibold text-green-500 text-right pr-5">
 
                                 {
-                                  Number(parseFloat(item.transferData.value) / 10 ** 6).toFixed(2)
+                                  Number(parseFloat(item.transferData.value) / 10 ** 18).toFixed(2)
                                 }
                               </td>
                               <td className="p-2 text-sm text-gray-400 text-center">

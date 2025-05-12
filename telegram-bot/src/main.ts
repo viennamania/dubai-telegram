@@ -1208,7 +1208,7 @@ async function sendMessages() {
               address: walletAddress,
             });
 
-            balanceUsdt = Number(resultUsdt) / 10 ** 6;
+            balanceUsdt = Number(resultUsdt) / 10 ** 18;
 
 
             // get noahs balance

@@ -121,7 +121,7 @@ function ProfilePage() {
   
         if (!result) return;
     
-        setBalance( Number(result) / 10 ** 6 );
+        setBalance( Number(result) / 10 ** 18 );
   
       };
   
@@ -729,7 +729,7 @@ function ProfilePage() {
 
                 //console.log(result);
 
-                setBalance( Number(result) / 10 ** 6 );
+                setBalance( Number(result) / 10 ** 18 );
 
             } else {
 
@@ -1277,7 +1277,7 @@ function ProfilePage() {
                                                         }}
                                                     >
                                                         {
-                                                            Number(transfer.transferData.value / 10 ** 6).toFixed(6).split('.')[0]
+                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(6).split('.')[0]
                                                         }
                                                     </span>
                                                     <span className="text-sm text-black text-right"
@@ -1291,7 +1291,7 @@ function ProfilePage() {
                                                         }}
                                                     >
                                                         {
-                                                            Number(transfer.transferData.value / 10 ** 6).toFixed(6).split('.')[1]
+                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(6).split('.')[1]
                                                         }
                                                     </span>
                                                 </div>

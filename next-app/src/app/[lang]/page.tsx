@@ -136,7 +136,7 @@ function HomeContent() {
 
       if (!result) return;
   
-      setBalance( Number(result) / 10 ** 6 );
+      setBalance( Number(result) / 10 ** 18 );
 
     };
 
