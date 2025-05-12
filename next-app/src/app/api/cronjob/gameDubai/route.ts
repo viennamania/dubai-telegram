@@ -46,7 +46,7 @@ import {
 import {
   getAllGamesSettlement,
   setGamesSettlementByWalletAddressAndSequence,
-} from '@lib/api/gameCebien';
+} from '@lib/api/gameDubai';
 
 
 import {

@@ -55,7 +55,7 @@ import { Network, Alchemy } from 'alchemy-sdk';
 
 import {
 	insertOne,
-} from '@lib/api/gameCebien';
+} from '@lib/api/gameDubai';
 
 import {
 	insertMessageRaceGame,

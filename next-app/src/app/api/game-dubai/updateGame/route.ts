@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
 	updateResultByWalletAddressAndSequence,
-} from '@lib/api/gameCebien';
+} from '@lib/api/gameDubai';
 
 
 

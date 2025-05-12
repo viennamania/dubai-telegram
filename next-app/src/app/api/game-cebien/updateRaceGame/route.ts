@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import {
 	updateRaceGameResultByWalletAddressAndSequence,
   getOneRaceGameByWalletAddressAndSequence,
-} from '@lib/api/gameCebien';
+} from '@lib/api/gameDubai';
 
 import {
   insertMessage
