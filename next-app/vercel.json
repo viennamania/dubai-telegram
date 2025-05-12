@@ -7,10 +7,6 @@
             "schedule": "* * * * *"
         },
         {
-            "path": "/api/cronjob/raceGame",
-            "schedule": "* * * * *"
-        },
-        {
             "path": "/api/cronjob/raceGameDubai",
             "schedule": "* * * * *"
         }
