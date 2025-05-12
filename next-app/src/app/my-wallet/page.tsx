@@ -65,7 +65,7 @@ import { updateUser } from "@/lib/api/user";
 import { send } from "@fal-ai/serverless-client/src/function";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {
@@ -702,7 +702,7 @@ function ProfilePage() {
         try {
 
 
-            // send USDT
+            // send DUBAI
             // Call the extension function to prepare the transaction
             const transaction = transfer({
                 contract: contract,
@@ -733,7 +733,7 @@ function ProfilePage() {
 
             } else {
 
-                alert('Failed to send USDT');
+                alert('Failed to send DUBAI');
 
             }  
 
@@ -742,7 +742,7 @@ function ProfilePage() {
             
             console.error("error", error);
 
-            alert('Failed to send USDT');
+            alert('Failed to send DUBAI');
         }
 
         setSending(false);
@@ -883,17 +883,17 @@ function ProfilePage() {
                                         <div className="flex flex-row items-end justify-start">
                                             <span className="text-6xl text-green-500 font-semibold">
                                                 {
-                                                    Number(balance).toFixed(6).split('.')[0]
+                                                    Number(balance).toFixed(2).split('.')[0]
                                                 }.
                                             </span>
                                             <span className="text-2xl text-green-500">
                                                 {
-                                                    Number(balance).toFixed(6).split('.')[1]
+                                                    Number(balance).toFixed(2).split('.')[1]
                                                 }
                                             </span>
                                         </div>
                                         <span className="text-green-500 text-2xl font-semibold">
-                                            USDT
+                                            DUBAI
                                         </span>
 
                                     </div>
@@ -903,7 +903,7 @@ function ProfilePage() {
 
 
 
-                                {/* send USDT */}
+                                {/* send DUBAI */}
 
                                 <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                                     
@@ -912,7 +912,7 @@ function ProfilePage() {
                                         <div className="bg-green-500 w-3 h-3 rounded-full"></div>
                                         <span className="text-lg font-semibold text-zinc-800">
                                             {/*USDT 보내기*/}
-                                            Send USDT
+                                            Send DUBAI
                                         </span>
                                     </div>
 
@@ -986,7 +986,7 @@ function ProfilePage() {
                                                 disabled={sending || !sendAmount || !toWalletAddress}
                                                 onClick={() => {
                                                     //confirm('USDT를 보내시겠습니까?') &&
-                                                    confirm('Are you sure you want to send USDT?') &&
+                                                    confirm('Are you sure you want to send DUBAI?') &&
                                                     sendUsdt();
                                                 }}
                                                 className={`p-2 bg-blue-500 text-zinc-100 rounded
@@ -1277,7 +1277,7 @@ function ProfilePage() {
                                                         }}
                                                     >
                                                         {
-                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(6).split('.')[0]
+                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(2).split('.')[0]
                                                         }
                                                     </span>
                                                     <span className="text-sm text-black text-right"
@@ -1291,7 +1291,7 @@ function ProfilePage() {
                                                         }}
                                                     >
                                                         {
-                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(6).split('.')[1]
+                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(2).split('.')[1]
                                                         }
                                                     </span>
                                                 </div>

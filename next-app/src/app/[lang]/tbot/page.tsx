@@ -95,8 +95,8 @@ import { AutoConnect } from "thirdweb/react";
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
-const contractAddressArbitrum = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"; // USDT on Arbitrum
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
+const contractAddressArbitrum = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"; // DUBAI on Arbitrum
 
 
 
@@ -638,7 +638,7 @@ function HomeContent() {
     const [myAgentNFT, setMyAgentNFT] = useState({} as any);
 
     // apply to mint NFT
-    // 닉네임, 핸드폰번호, 이메일주소, OKX UID, OKX USDT(TRON) 지갑주소, API Access Key, API Secret Key
+    // 닉네임, 핸드폰번호, 이메일주소, OKX UID, OKX DUBAI(TRON) 지갑주소, API Access Key, API Secret Key
 
     const [userName, setUserName] = useState("");
     useEffect(() => {
@@ -694,7 +694,7 @@ function HomeContent() {
 
         /*
         if (htxUsdtWalletAddress === "") {
-            toast.error("OKX USDT(TRON) 지갑주소를 입력해 주세요.");
+            toast.error("OKX DUBAI(TRON) 지갑주소를 입력해 주세요.");
             return;
         }
         */
@@ -1624,7 +1624,7 @@ function HomeContent() {
 
                             > 100 TBOT을 무료로 제공합니다. 
                             1. 100 TBOT을 무료 구매하고, 
-                            2. OKX를 가입하면  OKX 본인계죄로 100 USDT를 무상으로 지급 !
+                            2. OKX를 가입하면  OKX 본인계죄로 100 DUBAI를 무상으로 지급 !
                             3. 100 MASTER BOT 무료 민팅 !
                             */}
                             {/* impact text */}
@@ -1657,7 +1657,7 @@ function HomeContent() {
                                             font-semibold
                                             bg-yellow-200 p-2 rounded-lg
                                         '>
-                                            2. OKX를 가입하면  OKX 본인계죄로 100 USDT를 무상으로 지급 !
+                                            2. OKX를 가입하면  OKX 본인계죄로 100 DUBAI를 무상으로 지급 !
                                         </span>
                                         <span className='text-sm text-green-800
                                             font-semibold
@@ -1953,7 +1953,7 @@ function HomeContent() {
                                         />
                                     </div>
                                     {/* button for buy */}
-                                    {/* 121 USDT BUY */}
+                                    {/* 121 DUBAI BUY */}
                                     <button
                                         className={`${!address || amountNft100 > 0 || claimingNFT ? 'bg-gray-300 text-gray-500' : 'bg-blue-500 text-zinc-100'} p-2 rounded text-lg font-semibold`}
                                         disabled={
@@ -1973,7 +1973,7 @@ function HomeContent() {
                                                 height={20}
                                             />
                                             <span className='text-lg font-semibold'>
-                                                121 USDT BUY
+                                                121 DUBAI BUY
                                             </span>
                                         </div>
 
@@ -2395,7 +2395,7 @@ function HomeContent() {
                                                 {htxAssetValuation?.balance && (
                                                     <div className='flex flex-col gap-2'>
                                                         <span className='text-sm font-semibold text-gray-500'>
-                                                            OKX 자산 가치: {htxAssetValuation?.balance} USDT
+                                                            OKX 자산 가치: {htxAssetValuation?.balance} DUBAI
                                                         </span>
                                                         <span className='text-sm font-semibold text-gray-500'>
                                                             {new Date(htxAssetValuation?.timestamp).toLocaleString()}
@@ -2690,7 +2690,7 @@ function HomeContent() {
                                                                         </span>
                                                                         {/* Funds */}
                                                                         <span className='text-xs xl:text-sm'>
-                                                                            Funds: 0 USDT
+                                                                            Funds: 0 DUBAI
                                                                         </span>
                                                                     </div>
 
@@ -2715,7 +2715,7 @@ function HomeContent() {
 
 
                                         {/* input for apply */}
-                                        {/* 닉네임, 핸드폰번호, 이메일주소, OKX UID, OKX USDT(TRON) 지갑주소 */}
+                                        {/* 닉네임, 핸드폰번호, 이메일주소, OKX UID, OKX DUBAI(TRON) 지갑주소 */}
                                         {/* API Access Key, API Secret Key */}
 
 
@@ -2815,17 +2815,17 @@ function HomeContent() {
 
 
 
-                                        {/* OKX USDT(TRON) 지갑주소 */}
+                                        {/* OKX DUBAI(TRON) 지갑주소 */}
 
                                         <div className='mt-5 w-full flex-col gap-2 hidden'>
                                             <span className='text-sm font-semibold text-gray-500'>
-                                                OKX USDT(TRON) 입금용 지갑주소
+                                                OKX DUBAI(TRON) 입금용 지갑주소
                                             </span>
                                             <input
                                                 disabled={!address || applyingMintNFT}
                                                 onChange={(e) => setHtxUsdtWalletAddress(e.target.value)}
                                                 type="text"
-                                                placeholder="OKX USDT(TRON) 지갑주소"
+                                                placeholder="OKX DUBAI(TRON) 지갑주소"
                                                 className="w-full p-2 rounded-lg border border-gray-300"
                                             />
                                         </div>
@@ -2925,7 +2925,7 @@ function HomeContent() {
                                     • 본인 거래소 계정에서 직접 자금 관리
                                 </span>
                                 <span className='text-sm text-gray-500'>
-                                    • 최소 운영자금: 100 USDT
+                                    • 최소 운영자금: 100 DUBAI
                                 </span>
                                 <span className='text-sm text-gray-500'>
                                     • 자유로운 입출금 가능
@@ -3021,7 +3021,7 @@ function HomeContent() {
                                     2% UPGARADE
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
-                                    330 + 33 = 363 USDT
+                                    330 + 33 = 363 DUBAI
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
                                     {
@@ -3057,7 +3057,7 @@ function HomeContent() {
                                     4% UPGARADE
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
-                                    550 + 55 = 605 USDT
+                                    550 + 55 = 605 DUBAI
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
                                     {
@@ -3094,7 +3094,7 @@ function HomeContent() {
                                     6% UPGARADE
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
-                                    1100 + 110 = 1210 USDT
+                                    1100 + 110 = 1210 DUBAI
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
                                     {
@@ -3132,7 +3132,7 @@ function HomeContent() {
                                     8% UPGARADE
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
-                                    5500 + 550 = 6050 USDT
+                                    5500 + 550 = 6050 DUBAI
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
                                     {
@@ -3170,7 +3170,7 @@ function HomeContent() {
                                     10% UPGARADE
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
-                                    11000 + 1100 = 12100 USDT
+                                    11000 + 1100 = 12100 DUBAI
                                 </span>
                                 <span className='text-sm font-semibold text-gray-500'>
                                     {
@@ -3294,7 +3294,7 @@ function HomeContent() {
                                         2% UPGARADE
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
-                                        330 + 33 = 363 USDT
+                                        330 + 33 = 363 DUBAI
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
                                         {
@@ -3324,7 +3324,7 @@ function HomeContent() {
                                         4% UPGARADE
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
-                                        550 + 55 = 605 USDT
+                                        550 + 55 = 605 DUBAI
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
                                         {
@@ -3354,7 +3354,7 @@ function HomeContent() {
                                         6% UPGARADE
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
-                                        1100 + 110 = 1210 USDT
+                                        1100 + 110 = 1210 DUBAI
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
                                         {
@@ -3375,7 +3375,7 @@ function HomeContent() {
                                         8% UPGARADE
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
-                                        5500 + 550 = 6050 USDT
+                                        5500 + 550 = 6050 DUBAI
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
                                         {
@@ -3396,7 +3396,7 @@ function HomeContent() {
                                         10% UPGARADE
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
-                                        11000 + 1100 = 12100 USDT
+                                        11000 + 1100 = 12100 DUBAI
                                     </span>
                                     <span className='text-sm font-semibold text-gray-500'>
                                         {

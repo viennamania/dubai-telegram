@@ -96,7 +96,7 @@ interface SellOrder {
 
 
 
-//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // NOAH-K on Polygon
 
@@ -1446,8 +1446,8 @@ export default function Index({ params }: any) {
                               After you place order, the buyer has 24 hours to accept the order.
                               If the buyer does not accept the order within 24 hours, the order will be expired.
                               After the buyer accepts the order, you can not cancel the order.
-                              After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                              If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                              After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                              If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                               If you want to cancel the order, you must contact the buyer and request to cancel the order.
                               If the buyer agrees to cancel the order, the order will be cancelled.
                             "
@@ -1472,8 +1472,8 @@ export default function Index({ params }: any) {
                           <div className="mt-4 text-sm text-zinc-400">
 
                             <div className="h-2 w-2 bg-zinc-400 rounded-full inline-block mr-2"></div>
-                            <span>After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                              If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                            <span>After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                              If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                             </span>
                           </div>
                           <div className="mt-4 text-sm text-zinc-400">
@@ -1519,7 +1519,7 @@ export default function Index({ params }: any) {
                                     disabled={sellAmount === 0 || agreementPlaceOrder === false}
                                     className={`text-lg text-white px-4 py-2 rounded-md ${sellAmount === 0 || agreementPlaceOrder === false ? 'bg-gray-500' : 'bg-green-500'}`}
                                     onClick={() => {
-                                        console.log('Sell USDT');
+                                        console.log('Sell DUBAI');
                                         // open trade detail
                                         // open modal of trade detail
                                         ///openModal();

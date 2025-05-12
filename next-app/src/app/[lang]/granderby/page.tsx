@@ -65,7 +65,7 @@ import { updateUser } from "@/lib/api/user";
 import { send } from "@fal-ai/serverless-client/src/function";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {
@@ -693,7 +693,7 @@ function ProfilePage() {
         try {
 
 
-            // send USDT
+            // send DUBAI
             // Call the extension function to prepare the transaction
             const transaction = transfer({
                 contract: contract,
@@ -724,7 +724,7 @@ function ProfilePage() {
 
             } else {
 
-                alert('Failed to send USDT');
+                alert('Failed to send DUBAI');
 
             }  
 
@@ -733,7 +733,7 @@ function ProfilePage() {
             
             console.error("error", error);
 
-            alert('Failed to send USDT');
+            alert('Failed to send DUBAI');
         }
 
         setSending(false);
@@ -886,7 +886,7 @@ function ProfilePage() {
 
                                         <span className="p-2 text-green-500 text-4xl font-semibold"> 
                                             {
-                                                Number(balance).toFixed(6)
+                                                Number(balance).toFixed(2)
                                             }
                                         </span>
                                         <span className="p-2 text-gray-500 text-lg font-semibold">USDT</span>
@@ -1009,7 +1009,7 @@ function ProfilePage() {
                                                     fontFamily: 'monospace',
                                                 }}
                                             >
-                                                {Number(transfer.transferData.value / 10 ** 18).toFixed(6)}
+                                                {Number(transfer.transferData.value / 10 ** 18).toFixed(2)}
                                             </td>
                                             <td className="p-2 text-xs text-zinc-800 font-semibold text-right">
                                            

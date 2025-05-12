@@ -1,4 +1,4 @@
-// send USDT
+// send DUBAI
 'use client';
 
 
@@ -68,10 +68,10 @@ import Image from 'next/image';
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
-const contractAddressArbitrum = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"; // USDT on Arbitrum
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
+const contractAddressArbitrum = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"; // DUBAI on Arbitrum
 
-const contractAddressTron = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"; // USDT on Tron
+const contractAddressTron = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"; // DUBAI on Tron
 
 
 
@@ -221,7 +221,7 @@ export default function AgentPage({ params }: any) {
     Coming_Soon: "",
     Please_connect_your_wallet_first: "",
 
-    USDT_sent_successfully: "",
+    DUBAI_sent_successfully: "",
     Failed_to_send_USDT: "",
 
     Go_Buy_USDT: "",
@@ -271,7 +271,7 @@ export default function AgentPage({ params }: any) {
     Coming_Soon,
     Please_connect_your_wallet_first,
 
-    USDT_sent_successfully,
+    DUBAI_sent_successfully,
     Failed_to_send_USDT,
 
     Go_Buy_USDT,
@@ -1345,7 +1345,7 @@ export default function AgentPage({ params }: any) {
                                             }}
                                         >
                                             {
-                                            Number(settlement.settlementClaim.agentInsentive).toFixed(6)
+                                            Number(settlement.settlementClaim.agentInsentive).toFixed(2)
                                             }
                                         </td>
 
@@ -1945,7 +1945,7 @@ export default function AgentPage({ params }: any) {
 
                           <div className='w-full flex-row items-center justify-between gap-2'>
                               <span className='text-xs text-gray-800'>
-                                  매직월렛 USDT 지갑주소: {application.walletAddress.slice(0, 5) + '****' + application.walletAddress.slice(-5)}
+                                  매직월렛 DUBAI 지갑주소: {application.walletAddress.slice(0, 5) + '****' + application.walletAddress.slice(-5)}
                               </span>
                           </div>
 
@@ -1953,7 +1953,7 @@ export default function AgentPage({ params }: any) {
                           {/*
                           <div className='w-full hidden flex-row items-center justify-between gap-2'>
                               <span className='text-xs text-gray-800'>
-                                  HTX USDT(TRON) 지갑주소: {application.htxUsdtWalletAddress}
+                                  HTX DUBAI(TRON) 지갑주소: {application.htxUsdtWalletAddress}
                               </span>
                           </div>
 

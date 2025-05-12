@@ -69,7 +69,7 @@ import Uploader from '../components/uploader';
 import { updateUser } from "@/lib/api/user";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {
@@ -918,7 +918,7 @@ function ProfilePage() {
                             <div className='w-full flex flex-col gap-4 items-start justify-center'>
 
 
-                                {/* send USDT */}
+                                {/* send DUBAI */}
                                 {/*
                                 <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                                     <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">

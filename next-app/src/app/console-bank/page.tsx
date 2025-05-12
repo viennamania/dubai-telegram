@@ -32,7 +32,7 @@ import { add } from "thirdweb/extensions/thirdweb";
 
 
 
-//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 const contractAddress = "0x542197103Ca1398db86026Be0a85bc8DcE83e440"; // NOAH-K on Polygon
 
@@ -517,7 +517,7 @@ function HomeContent() {
                       <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
                           {
                               Number(balance).toFixed(2)
-                          } USDT
+                          } DUBAI
                       </div>
                   </div>
 
@@ -769,7 +769,7 @@ function HomeContent() {
 
 
 
-              {/* 에어드롭 USDT */}
+              {/* 에어드롭 DUBAI */}
               {/* input amountAirDrop */}
               {/*
               {address && !loadingUsers && users.length > 0 && (
@@ -787,7 +787,7 @@ function HomeContent() {
                       setAmountAirDrop(Number(e.target.value));
                     }}
                     type="number"
-                    placeholder="에어드롭 USDT"
+                    placeholder="에어드롭 DUBAI"
                     className=" w-36  p-2 rounded border border-gray-300"
                   />
 

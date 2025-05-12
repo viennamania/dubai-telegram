@@ -73,10 +73,10 @@ export const config = {
 //const chain = polygon;
 
 
-// USDT Token (USDT)
+// DUBAI Token (USDT)
 const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
-const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // USDT on Arbitrum
+const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // DUBAI on Arbitrum
 
 
 
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
     } = order as UserProps;
 
 
-    // send escrowed USDT to seller
+    // send escrowed DUBAI to seller
 
     const sellerWalletAddress = walletAddress;
 
@@ -383,7 +383,7 @@ export async function POST(request: NextRequest) {
     try {
 
 
-      const msgBody = `[GTETHER] TID[${tradeId}] You received ${amount} USDT from ${nickname}! https://gold.goodtether.com/${lang}/${chain}/sell-usdt/${orderId}`;
+      const msgBody = `[GTETHER] TID[${tradeId}] You received ${amount} DUBAI from ${nickname}! https://gold.goodtether.com/${lang}/${chain}/sell-usdt/${orderId}`;
   
       message = await client.messages.create({
         ///body: "This is the ship that made the Kessel Run in fourteen parsecs?",

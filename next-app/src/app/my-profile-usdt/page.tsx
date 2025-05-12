@@ -64,7 +64,7 @@ import Uploader from '../components/uploader';
 import { updateUser } from "@/lib/api/user";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {
@@ -1109,7 +1109,7 @@ function ProfilePage() {
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className='text-sm font-semibold text-gray-200'>
-                                        USDT를 판매할 때 결제용으로 사용할 은행계좌 정보입니다.
+                                        DUBAI를 판매할 때 결제용으로 사용할 은행계좌 정보입니다.
                                     </span>
                                 </div>
 

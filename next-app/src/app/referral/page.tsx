@@ -66,7 +66,7 @@ import {
 } from "next//navigation";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function AgentPage() {
@@ -1661,7 +1661,7 @@ function AgentPage() {
                                                         {/* dot */}
                                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                                         <span className="text-sm xl:text-lg font-semibold">
-                                                            레퍼럴로 회원가입을 유치하면 가입보상으로 1 USDT를 받습니다.
+                                                            레퍼럴로 회원가입을 유치하면 가입보상으로 1 DUBAI를 받습니다.
                                                         </span>
                                                     </div>
                                                     <div className="flex flex-row items-center justify-start gap-5">

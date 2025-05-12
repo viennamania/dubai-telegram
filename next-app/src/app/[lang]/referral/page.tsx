@@ -66,7 +66,7 @@ import {
 } from "next//navigation";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function AgentPage() {
@@ -1720,9 +1720,9 @@ function AgentPage() {
                                                         {/* dot */}
                                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                                         <span className="text-xs xl:text-lg font-semibold">
-                                                            {/*레퍼럴로 회원가입을 유치하면 가입보상으로 10 USDT를 받습니다.*/}
+                                                            {/*레퍼럴로 회원가입을 유치하면 가입보상으로 10 DUBAI를 받습니다.*/}
                                                             {/* english */}
-                                                            If you attract a member through referral, you will receive 10 USDT as a reward.
+                                                            If you attract a member through referral, you will receive 10 DUBAI as a reward.
                                                         </span>
                                                     </div>
                                                     <div className="flex flex-row items-center justify-start gap-5">

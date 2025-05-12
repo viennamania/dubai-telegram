@@ -64,7 +64,7 @@ import Uploader from '../components/uploader';
 import { updateUser } from "@/lib/api/user";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {

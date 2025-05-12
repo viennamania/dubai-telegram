@@ -11,7 +11,7 @@ import { ObjectId } from 'mongodb';
   },
   "category": "wallet",
   "telegramId": "441516803",
-  "message": "You have received 0.221000 USDT"
+  "message": "You have received 0.221000 DUBAI"
 }
   
 */
@@ -141,7 +141,7 @@ export async function deleteMessage(_id: string) {
 
             const amount = parseFloat(data.value) / 1000000.0;
 
-            const message = "You have received " + Number(amount).toFixed(6) + " USDT";
+            const message = "You have received " + Number(amount).toFixed(2) + " DUBAI";
 
             const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 

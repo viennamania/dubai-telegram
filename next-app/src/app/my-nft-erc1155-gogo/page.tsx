@@ -81,7 +81,7 @@ import { token } from "thirdweb/extensions/vote";
 import { N } from "ethers";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function AgentPage() {
@@ -1022,17 +1022,17 @@ function AgentPage() {
                                     <div className="flex flex-row items-end justify-start">
                                         <span className="text-4xl text-green-500 font-semibold">
                                             {
-                                                Number(balance).toFixed(6).split('.')[0]
+                                                Number(balance).toFixed(2).split('.')[0]
                                             }.
                                         </span>
                                         <span className="text-2xl text-green-500 font-semibold">
                                             {
-                                                Number(balance).toFixed(6).split('.')[1]
+                                                Number(balance).toFixed(2).split('.')[1]
                                             }
                                         </span>
                                     </div>
                                     <span className="text-green-500 text-2xl font-semibold">
-                                        USDT
+                                        DUBAI
                                     </span>
 
                                 </div>
@@ -1129,8 +1129,8 @@ function AgentPage() {
                                                     }}
                                                 >
                                                     {
-                                                        Number(transfer.transferData.value / 10 ** 18).toFixed(6)
-                                                    } USDT
+                                                        Number(transfer.transferData.value / 10 ** 18).toFixed(2)
+                                                    } DUBAI
                                                 </span>
                                             </div>
 
@@ -1185,21 +1185,21 @@ function AgentPage() {
                                 border border-gray-200
                                 p-4 rounded-lg">
 
-                                {/* 보유하고 있는 USDT로 채굴 NFT를 직접 발행받을 수 있습니다. */}
+                                {/* 보유하고 있는 DUBAI로 채굴 NFT를 직접 발행받을 수 있습니다. */}
                                 <div className="w-full flex flex-row gap-2 items-center justify-start">
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                                     <span className="text-lg text-yellow-500 font-semibold">
-                                        보유하고 있는 USDT로 채굴 NFT를 직접 발행받을 수 있습니다.
+                                        보유하고 있는 DUBAI로 채굴 NFT를 직접 발행받을 수 있습니다.
                                     </span>
                                 </div>
 
-                                {/* 지갑에 USDT가 있어야 발행 가능합니다. */}
+                                {/* 지갑에 DUBAI가 있어야 발행 가능합니다. */}
                                 <div className="w-full flex flex-row gap-2 items-center justify-start">
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                                     <span className="text-lg text-yellow-500 font-semibold">
-                                        지갑에 USDT가 있어야 발행 가능합니다.
+                                        지갑에 DUBAI가 있어야 발행 가능합니다.
                                     </span>
                                 </div>
 
@@ -1212,18 +1212,18 @@ function AgentPage() {
 
                                     {/* 발행금액 */}
                                     <span className="text-2xl text-green-500 font-semibold">
-                                        발행금액: {price} USDT
+                                        발행금액: {price} DUBAI
                                     </span>
                                     <span className="text-lg text-zinc-400 font-semibold">
-                                        USDT 잔액: {balance} USDT
+                                        DUBAI 잔액: {balance} DUBAI
                                     </span>
                                     {price > balance ? (
                                         <span className="text-lg text-red-500 font-semibold">
-                                            USDT 잔액이 부족합니다.
+                                            DUBAI 잔액이 부족합니다.
                                         </span>
                                     ) : (
                                         <span className="text-lg text-green-500 font-semibold">
-                                            발행후 USDT 잔액: {(balance - price).toFixed(6)} USDT
+                                            발행후 DUBAI 잔액: {(balance - price).toFixed(2)} DUBAI
                                         </span>
                                     )}
 

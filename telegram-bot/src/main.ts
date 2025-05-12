@@ -467,7 +467,7 @@ async function fetchAccountData() {
               payload: {
                 chat_id: '7719309234',
                 photo: 'https://shinemywinter.vercel.app/logo-magic-wallet.webp',
-                caption: '\n\n🚀 0.001150 USDT 를 받았습니다\n\n👇 아래 버튼을 눌러 나의 지갑으로 이동하세요.',
+                caption: '\n\n🚀 0.001150 DUBAI 를 받았습니다\n\n👇 아래 버튼을 눌러 나의 지갑으로 이동하세요.',
                 reply_markup: InlineKeyboard {
                   inline_keyboard: [ [ { text: '나의 지갑 보러가기', web_app: [Object] } ] ]
                 }
@@ -818,7 +818,7 @@ async function pushGame() {
   }
 
   const text = sequenceEmoji + '회차 홀짝 게임을 시작합니다.'
-    + '\n\n💲 당첨금: ' + winPrize + ' USDT'
+    + '\n\n💲 당첨금: ' + winPrize + ' DUBAI'
     + '\n\n👇 아래 버튼에서 🚹 홀 또는 🚺 짝을 선택하세요.';
 
   const queryDataOdd = 'roulette-odd' + '-' + sequence;
@@ -1132,7 +1132,7 @@ async function sendMessages() {
           }
         
           const text = sequenceEmoji + '회차 홀짝 게임을 시작합니다.'
-            + '\n\n💲 당첨금: ' + winPrize + ' USDT'
+            + '\n\n💲 당첨금: ' + winPrize + ' DUBAI'
             + '\n\n👇 아래 버튼에서 🚹 홀 또는 🚺 짝을 선택하세요.';
         
           const queryDataOdd = 'roulette-odd' + '-' + sequence;
@@ -1166,7 +1166,7 @@ async function sendMessages() {
 
 
 
-        const contractAddressUsdt = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+        const contractAddressUsdt = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
         const contractAddressNoahs = "0xdd200c6EF8e5fe9b1332224a86b5980D202d4d9d";
 
 
@@ -1283,13 +1283,13 @@ async function sendMessages() {
         .row()
         .text('🎲 홀짝 게임', 'roulette')
         .text('🐎 경마 게임', 'race')
-        .webApp('💱 USDT 판매', urlSellUsdt)
+        .webApp('💱 DUBAI 판매', urlSellUsdt)
 
 
 
 
         const caption = '\n\n🚀 ' + messageText
-        + '\n\n' + '💲 지갑잔고: ' + balanceUsdt + ' USDT'
+        + '\n\n' + '💲 지갑잔고: ' + balanceUsdt + ' DUBAI'
         
         //+ '\n\n' + '💲 지갑잔고: ' + balanceNoahs + ' NOAHS'
 

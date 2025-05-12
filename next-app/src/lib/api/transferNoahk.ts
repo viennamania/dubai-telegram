@@ -163,7 +163,7 @@ export async function insertOne(data: any) {
                 // divide by 1e18
                 const amount = parseFloat(data.value) / 1e18;
 
-                ///const message = "You have received " + Number(amount).toFixed(6) + " USDT";
+                ///const message = "You have received " + Number(amount).toFixed(2) + " DUBAI";
                 const message = Number(amount).toFixed(0) + " NOAH-K 포인트를 받았습니다";
 
                 const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
@@ -249,7 +249,7 @@ export async function insertOne(data: any) {
             // divide by 1e18
             ////const amount = parseFloat(data.value) / 1e18;
 
-            ///const message = "You have received " + Number(amount).toFixed(6) + " USDT";
+            ///const message = "You have received " + Number(amount).toFixed(2) + " DUBAI";
             const message = "판매가 완료되었습니다.";
 
             const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');

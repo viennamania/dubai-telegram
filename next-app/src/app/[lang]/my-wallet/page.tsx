@@ -65,7 +65,7 @@ import { updateUser } from "@/lib/api/user";
 import { send } from "@fal-ai/serverless-client/src/function";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function ProfilePage() {
@@ -691,7 +691,7 @@ function ProfilePage() {
         try {
 
 
-            // send USDT
+            // send DUBAI
             // Call the extension function to prepare the transaction
             const transaction = transfer({
                 contract: contract,
@@ -722,7 +722,7 @@ function ProfilePage() {
 
             } else {
 
-                alert('Failed to send USDT');
+                alert('Failed to send DUBAI');
 
             }  
 
@@ -731,7 +731,7 @@ function ProfilePage() {
             
             console.error("error", error);
 
-            alert('Failed to send USDT');
+            alert('Failed to send DUBAI');
         }
 
         setSending(false);
@@ -896,7 +896,7 @@ function ProfilePage() {
 
                                         <span className="p-2 text-green-500 text-4xl font-semibold"> 
                                             {
-                                                Number(balance).toFixed(6)
+                                                Number(balance).toFixed(2)
                                             }
                                         </span>
                                         <span className="p-2 text-gray-500 text-lg font-semibold">USDT</span>
@@ -904,12 +904,12 @@ function ProfilePage() {
                                     </div>
                                 </div>
 
-                                {/* send USDT */}
+                                {/* send DUBAI */}
 
                                 <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                                     <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                        {/* USDT 보내기 */}
-                                        Send USDT
+                                        {/* DUBAI 보내기 */}
+                                        Send DUBAI
 
                                     </div>
                                     <div className='w-full flex flex-col xl:flex-row gap-2 items-start justify-between'>
@@ -1199,7 +1199,7 @@ function ProfilePage() {
                                                     fontFamily: 'monospace',
                                                 }}
                                             >
-                                                {Number(transfer.transferData.value / 10 ** 18).toFixed(6)}
+                                                {Number(transfer.transferData.value / 10 ** 18).toFixed(2)}
                                             </td>
                                             <td className="p-2 text-xs text-zinc-800 font-semibold text-right">
                                            

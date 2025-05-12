@@ -93,8 +93,8 @@ interface SellOrder {
 
 
 
-//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
-const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // USDT on Arbitrum
+//const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
+const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // DUBAI on Arbitrum
 
 const contractAddress = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d'; // CEBIEN on Polygon
 
@@ -1673,7 +1673,7 @@ export default function Index({ params }: any) {
                                   <button
                                     className="bg-green-500 text-white px-4 py-2 rounded-lg"
                                     onClick={() => {
-                                        //console.log('Buy USDT');
+                                        //console.log('Buy DUBAI');
                                         // go to chat
                                         // close modal
                                         //closeModal();

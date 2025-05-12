@@ -91,7 +91,7 @@ interface SellOrder {
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 // get a contract
@@ -757,7 +757,7 @@ export default function Index({ params }: any) {
 
                           <span className="p-2 text-green-500 text-4xl font-semibold"> 
                               {
-                                  Number(balance).toFixed(6)
+                                  Number(balance).toFixed(2)
                               }
                           </span>
                           <span className="p-2 text-gray-500 text-lg font-semibold">USDT</span>
@@ -853,7 +853,7 @@ export default function Index({ params }: any) {
 
 
                           <p className="mt-4 text-xl font-bold text-zinc-400">
-                            환율: 1 USDT = {
+                            환율: 1 DUBAI = {
                             // currency format
                             Number(rate).toLocaleString('ko-KR', {
                               style: 'currency',
@@ -1101,8 +1101,8 @@ export default function Index({ params }: any) {
                             After you place order, the buyer has 24 hours to accept the order.
                             If the buyer does not accept the order within 24 hours, the order will be expired.
                             After the buyer accepts the order, you can not cancel the order.
-                            After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                            If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                            After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                            If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                             If you want to cancel the order, you must contact the buyer and request to cancel the order.
                             If the buyer agrees to cancel the order, the order will be cancelled.
                           "
@@ -1127,8 +1127,8 @@ export default function Index({ params }: any) {
                         <div className="mt-4 text-sm text-zinc-400">
 
                           <div className="h-2 w-2 bg-zinc-400 rounded-full inline-block mr-2"></div>
-                          <span>After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                            If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                          <span>After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                            If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                           </span>
                         </div>
                         <div className="mt-4 text-sm text-zinc-400">
@@ -1174,7 +1174,7 @@ export default function Index({ params }: any) {
                                   disabled={usdtAmount === 0 || agreementPlaceOrder === false}
                                   className={`text-lg text-white px-4 py-2 rounded-md ${usdtAmount === 0 || agreementPlaceOrder === false ? 'bg-gray-500' : 'bg-green-500'}`}
                                   onClick={() => {
-                                      console.log('Sell USDT');
+                                      console.log('Sell DUBAI');
                                       // open trade detail
                                       // open modal of trade detail
                                       ///openModal();
@@ -1544,7 +1544,7 @@ export default function Index({ params }: any) {
                               <div className="flex flex-row items-start gap-2">
 
                                 <p className="text-2xl font-semibold text-white">
-                                  {item.usdtAmount} USDT
+                                  {item.usdtAmount} DUBAI
                                 </p>
 
                                 <p className="text-lg font-semibold text-white">{Rate}: {
@@ -1761,7 +1761,7 @@ export default function Index({ params }: any) {
                                   <div className="flex flex-col gap-2 items-start">
                                     <span>
                                       {Waiting_for_seller_to_deposit}
-                                      {item.usdtAmount} USDT
+                                      {item.usdtAmount} DUBAI
                                       {to_escrow}....
                                     </span>
 
@@ -1798,7 +1798,7 @@ export default function Index({ params }: any) {
                                       width={32}
                                       height={32}
                                     />
-                                    <div>Escrow: {item.usdtAmount} USDT</div>
+                                    <div>Escrow: {item.usdtAmount} DUBAI</div>
                                     <button
                                       className="bg-white text-black px-2 py-2 rounded-md"
                                       onClick={() => {

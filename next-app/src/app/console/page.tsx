@@ -32,7 +32,7 @@ import { add } from "thirdweb/extensions/thirdweb";
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function HomeContent() {
@@ -819,7 +819,7 @@ function HomeContent() {
                       <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
                           {
                               Number(balance).toFixed(2)
-                          } USDT
+                          } DUBAI
                       </div>
                   </div>
 
@@ -1053,7 +1053,7 @@ function HomeContent() {
                       setSendRouletteAmount(Number(e.target.value));
                     }}
                     type="number"
-                    placeholder="전송 USDT"
+                    placeholder="전송 DUBAI"
                     className="w-36 p-2 rounded border border-gray-300"
                   />
                   <input
@@ -1087,7 +1087,7 @@ function HomeContent() {
                 {/* dot */}
                 <div className="w-2 h-2 bg-green-500 rounded"></div>
                 <span className="text-sm text-gray-800 font-semibold">
-                    USDT 전송
+                    DUBAI 전송
                 </span>
               </div>
 
@@ -1098,7 +1098,7 @@ function HomeContent() {
                       setAmountSend(Number(e.target.value));
                     }}
                     type="number"
-                    placeholder="전송 USDT"
+                    placeholder="전송 DUBAI"
                     className="w-36 p-2 rounded border border-gray-300"
                   />
                   <input
@@ -1152,7 +1152,7 @@ function HomeContent() {
                 </span>
               </div>
 
-              {/* 에어드롭 USDT */}
+              {/* 에어드롭 DUBAI */}
               {/* input amountAirDrop */}
               {address && !loadingUsers && users?.length > 0 && (
 
@@ -1250,7 +1250,7 @@ function HomeContent() {
                 }}
                 className={`${sendingRouletteAll ? "bg-gray-400" : "bg-green-500"} text-zinc-100 p-2 rounded`}
               >
-                {sendingRouletteAll ? "전송중..." : "전체회원에게 USDT 홀짝게임 보내기"}
+                {sendingRouletteAll ? "전송중..." : "전체회원에게 DUBAI 홀짝게임 보내기"}
               </Button>
             </div>
 
@@ -1293,7 +1293,7 @@ function HomeContent() {
                       setAmountAirDrop(Number(e.target.value));
                     }}
                     type="number"
-                    placeholder="에어드롭 USDT"
+                    placeholder="에어드롭 DUBAI"
                     className=" w-36  p-2 rounded border border-gray-300"
                   />
                   {/* button airDrop */}

@@ -77,7 +77,7 @@ import { parse } from "path";
 const chain = polygon;
 
 
-// USDT Token (USDT)
+// DUBAI Token (USDT)
 const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 
@@ -325,7 +325,7 @@ export async function GET(request: NextRequest) {
         /*
         const airdropAmount = 10;
 
-        const share = ((Number(balance) / Number(totalSupplyResult.toString())) * airdropAmount).toFixed(6);
+        const share = ((Number(balance) / Number(totalSupplyResult.toString())) * airdropAmount).toFixed(2);
       
 
         console.log("owner: ", owner, "balance: ", balance, "share: ", share);

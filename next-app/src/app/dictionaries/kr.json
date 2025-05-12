@@ -18,8 +18,8 @@
     "My_Balance": "내 잔고",
     "My_Nickname": "내 닉네임",
 
-    "My_Buy_Trades": "내 USDT 구매내역",
-    "My_Sell_Trades": "내 USDT 판매내역",
+    "My_Buy_Trades": "내 DUBAI 구매내역",
+    "My_Sell_Trades": "내 DUBAI 판매내역",
 
     "Order": "주문",
     "Buy": "구매",
@@ -31,7 +31,7 @@
 
     "Contact_Us": "문의하기",
 
-    "Buy_Description": "좋아하는 실제 통화로 USDT를 구입하세요.",
+    "Buy_Description": "좋아하는 실제 통화로 DUBAI를 구입하세요.",
 
     "Sell_Description": "USDT를 판매하고 좋아하는 실제 통화를 받으세요.",
 
@@ -111,7 +111,7 @@
 
     "to_escrow": "에스크로 보관소로 전송중",
 
-    "If_the_seller_does_not_deposit_the_USDT_to_escrow": "판매자가 USDT를 에스크로 보관소에 보내지 않으면",
+    "If_the_seller_does_not_deposit_the_USDT_to_escrow": "판매자가 DUBAI를 에스크로 보관소에 보내지 않으면",
     "this_trade_will_be_cancelled_in": "이 거래는 다음 시간이 지나면 취소됩니다:",
 
     "Cancel_My_Trade": "거래 취소",
@@ -137,8 +137,8 @@
     "Nickname_should_be_5_10_characters": "닉네임은 5-10자로 영문 소문자와 숫자만 포함해야 합니다.",
 
 
-    "My_Buy_USDT_Trades": "내 USDT 구매내역",
-    "My_Sell_USDT_Trades": "내 USDT 판매내역",
+    "My_Buy_USDT_Trades": "내 DUBAI 구매내역",
+    "My_Sell_USDT_Trades": "내 DUBAI 판매내역",
 
     "Sale": "판매",
     "Private_Sale": "비공개 판매",
@@ -168,7 +168,7 @@
     "My_Order": "내 주문",
 
 
-    "If_you_request_payment": "결제를 요청하기 위해서는 판매자가 USDT를 에스크로 보관소에 보내야 합니다. 판매자가 1시간내로 USDT를 에스크로 보관소로 보내지 않으면 거래가 취소됩니다.",
+    "If_you_request_payment": "결제를 요청하기 위해서는 판매자가 DUBAI를 에스크로 보관소에 보내야 합니다. 판매자가 1시간내로 DUBAI를 에스크로 보관소로 보내지 않으면 거래가 취소됩니다.",
 
     "I_agree_to_escrow_USDT": "USDT를 에스크로 보관소에 보내는 것에 동의합니다.",
 
@@ -199,10 +199,10 @@
 
     "Checking_the_bank_transfer_from_the_buyer": "구매자의 은행 송금 확인 중",
 
-    "I_agree_to_check_the_bank_transfer_of": "구매자의 KRW 은행 송금을 확인하고 USDT를 구매자의 지갑주소로 전송하는 것에 동의합니다.",
+    "I_agree_to_check_the_bank_transfer_of": "구매자의 KRW 은행 송금을 확인하고 DUBAI를 구매자의 지갑주소로 전송하는 것에 동의합니다.",
 
 
-    "Transfering_USDT_to_the_buyer_wallet_address": "구매자 지갑주소로 USDT 전송 중",
+    "Transfering_USDT_to_the_buyer_wallet_address": "구매자 지갑주소로 DUBAI 전송 중",
 
 
     "SMS_will_be_sent_to_your_mobile_number": "구매자가 주문을 수락하면 SMS가 귀하의 휴대폰 번호로 전송됩니다.",
@@ -211,7 +211,7 @@
 
     "Waiting_for_trading_partner_to_proceed": "거래 상대방이 진행 중입니다. 잠시만 기다려주세요.",
 
-    "Waiting_for_seller_to_deposit_USDT_to_escrow": "판매자가 USDT를 에스크로 보관소에 보내는 중입니다. 잠시만 기다려주세요.",
+    "Waiting_for_seller_to_deposit_USDT_to_escrow": "판매자가 DUBAI를 에스크로 보관소에 보내는 중입니다. 잠시만 기다려주세요.",
 
 
 
@@ -230,7 +230,7 @@
     "My_Phone_Number": "내 전화번호",
 
     "Wallet_Address_Description1": "이 지갑의 주소는",
-    "Wallet_Address_Description2": "블록체인에서 USDT 테더와 호환됩니다. 이 주소로 다른 토큰(예: 이더리움)을 절대 입금하지 마십시오.",
+    "Wallet_Address_Description2": "블록체인에서 DUBAI 테더와 호환됩니다. 이 주소로 다른 토큰(예: 이더리움)을 절대 입금하지 마십시오.",
 
     "I_understand_that_I_should_never_deposit_any_other_tokens": "다른 토큰(예: 이더리움)을 이 주소로 입금해서는 안 된다는 것을 이해합니다.",
 
@@ -261,7 +261,7 @@
 
 
 
-    "When_the_deposit_is_completed": "입금이 완료되면 에스크로한 USDT가 구매자 지갑으로 이체됩니다. 입금자명을 정확하게 입력하고 입금을 완료해주세요.",
+    "When_the_deposit_is_completed": "입금이 완료되면 에스크로한 DUBAI가 구매자 지갑으로 이체됩니다. 입금자명을 정확하게 입력하고 입금을 완료해주세요.",
 
     "Please_enter_deposit_name": "입금자명을 입력하세요",
 

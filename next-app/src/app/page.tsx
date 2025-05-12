@@ -32,7 +32,7 @@ import { add } from "thirdweb/extensions/thirdweb";
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function HomeContent() {
@@ -380,7 +380,7 @@ function HomeContent() {
                       <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
                           {
                               Number(balance).toFixed(2)
-                          } USDT
+                          } DUBAI
                       </div>
                   </div>
 
@@ -424,7 +424,7 @@ function HomeContent() {
 
 
 
-                  {/* send USDT */}
+                  {/* send DUBAI */}
                   {/*
                   <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                       <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">

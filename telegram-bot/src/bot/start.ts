@@ -278,7 +278,7 @@ feature.on("callback_query:data", async (ctx) => {
     }
 
     const text = sequenceEmoji + '회차 경마 게임을 시작합니다.'
-      + '\n\n💲 당첨금: ' + winPrize + ' USDT'
+      + '\n\n💲 당첨금: ' + winPrize + ' DUBAI'
       + '\n\n👇 아래에서 우승을 예상하는 말의 출전번호을 선택하면 경기가 시작됩니다.'
 
     //const queryDataOdd = 'roulette-odd' + '-' + sequence;
@@ -748,7 +748,7 @@ feature.on("callback_query:data", async (ctx) => {
       text = sequenceEmoji + '회차 ' + selectedNumber + '️⃣' + ' 번 말을 선택하셨습니다.'
       + '\n\n💥 결과: ' + firstHorseNumber + '️⃣' + ' 번 말이 1등으로 도착하였습니다.'
       + '\n\n🎉 축하합니다! 당첨되셨습니다.'
-      + '\n\n💲 ' + '당첨금: ' + winPrize + ' USDT가 1분내로 회원님 지갑으로 입금됩니다.'
+      + '\n\n💲 ' + '당첨금: ' + winPrize + ' DUBAI가 1분내로 회원님 지갑으로 입금됩니다.'
       + '\n\n👇 아래 버튼을 눌러 경마 게임을 시작하세요';
 
     } else {
@@ -939,7 +939,7 @@ feature.on("callback_query:data", async (ctx) => {
     }
 
     const text = sequenceEmoji + '회차 홀짝 게임을 시작합니다.'
-      + '\n\n💲 당첨금: ' + winPrize + ' USDT'
+      + '\n\n💲 당첨금: ' + winPrize + ' DUBAI'
       + '\n\n👇 아래 버튼에서 🚹 홀 또는 🚺 짝을 선택하세요.';
 
     const queryDataOdd = 'roulette-odd' + '-' + sequence;
@@ -1192,13 +1192,13 @@ feature.on("callback_query:data", async (ctx) => {
       if (selectedOddOrEven === "odd") {
         text = sequenceEmoji + '회차 🚹 홀을 선택하셨습니다.'
           + '\n\n💥 결과: ' + resultOddOrEvenText + ' 😊 당첨!!!'
-          + '\n\n💲 ' + '당첨금: ' + winPrize + ' USDT가 1분내로 회원님 지갑으로 입금됩니다.'
+          + '\n\n💲 ' + '당첨금: ' + winPrize + ' DUBAI가 1분내로 회원님 지갑으로 입금됩니다.'
           + '\n\n👇 아래 버튼을 눌러 홀짝 게임을 시작하세요';
       }
       if (selectedOddOrEven === "even") {
         text = sequenceEmoji + '회차 🚺 짝을 선택하셨습니다.'
           + '\n\n💥 결과: ' + resultOddOrEvenText + ' 😊 당첨!!!'
-          + '\n\n💲 ' + '당첨금: ' + winPrize + ' USDT'
+          + '\n\n💲 ' + '당첨금: ' + winPrize + ' DUBAI'
           + '\n\n👇 아래 버튼을 눌러 홀짝 게임을 시작하세요';
       }
 
@@ -1319,7 +1319,7 @@ feature.command('otc', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -1359,19 +1359,19 @@ feature.command('otc', async (ctx) => {
       console.log('urlOtc', urlOtc);
 
       const text = '\n\n✅ 지갑주소: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      + '\n\n' + '💲 지갑잔고: ' + balance + ' USDT\n\n' + '👇 아래 버튼을 눌러 USDT 판매/구매 하세요.';
+      + '\n\n' + '💲 지갑잔고: ' + balance + ' DUBAI\n\n' + '👇 아래 버튼을 눌러 DUBAI 판매/구매 하세요.';
 
       // english
       //+ '\n\n' + '✅ Wallet Address: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' USDT\n\n' + '👇 Press the button below to sell/buy USDT.';
+      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' DUBAI\n\n' + '👇 Press the button below to sell/buy DUBAI.';
 
       const urlSellUsdt = `${process.env.FRONTEND_APP_ORIGIN}/login/telegram?signature=${authCode}&message=${encodeURI(message)}&center=${center}&path=/kr/sell-usdt-songpa`;
       const urlBuyUsdt = `${process.env.FRONTEND_APP_ORIGIN}/login/telegram?signature=${authCode}&message=${encodeURI(message)}&center=${center}&path=/kr/buy-usdt`;
 
 
       const keyboard = new InlineKeyboard()
-        .webApp('💰 USDT 판매', urlSellUsdt)
-        .webApp('💰 USDT 구매', urlBuyUsdt)
+        .webApp('💰 DUBAI 판매', urlSellUsdt)
+        .webApp('💰 DUBAI 구매', urlBuyUsdt)
 
 
 
@@ -1432,7 +1432,7 @@ feature.command('game', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -1475,10 +1475,10 @@ feature.command('game', async (ctx) => {
 
 
       const text = '\n\n✅ 지갑주소: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      + '\n\n' + '💲 지갑잔고: ' + balance + ' USDT\n\n' + '👇 아래 버튼을 눌러 게임으로 이동하세요.';
+      + '\n\n' + '💲 지갑잔고: ' + balance + ' DUBAI\n\n' + '👇 아래 버튼을 눌러 게임으로 이동하세요.';
       // english
       //+ '\n\n' + '✅ Wallet Address: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' USDT\n\n' + '👇 Press the button below to go to the game.';
+      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' DUBAI\n\n' + '👇 Press the button below to go to the game.';
 
       const keyboard = new InlineKeyboard()
         //.webApp('💰 게임하러가기', urlGame)
@@ -1559,7 +1559,7 @@ feature.command('wallet', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -1601,10 +1601,10 @@ feature.command('wallet', async (ctx) => {
 
 
       const text = '\n\n✅ 지갑주소: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      + '\n\n' + '💲 지갑잔고: ' + balance + ' USDT\n\n' + '👇 아래 버튼을 눌러 나의 지갑으로 이동하세요.';
+      + '\n\n' + '💲 지갑잔고: ' + balance + ' DUBAI\n\n' + '👇 아래 버튼을 눌러 나의 지갑으로 이동하세요.';
       // english
       //+ '\n\n' + '✅ Wallet Address: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' USDT\n\n' + '👇 Press the button below to go to my wallet.'
+      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' DUBAI\n\n' + '👇 Press the button below to go to my wallet.'
   
       const keyboard = new InlineKeyboard()
         .webApp('💰 나의 코인 자산', urlMyWallet)
@@ -1638,7 +1638,7 @@ feature.command('wallet', async (ctx) => {
       /*
       return ctx.reply(
         "지갑주소: " + walletAddress
-        + "\n" + "잔고: " + balance + " USDT"
+        + "\n" + "잔고: " + balance + " DUBAI"
       );
       */
 
@@ -2255,11 +2255,11 @@ feature.command('start', async (ctx) => {
 
 
   //const text = '\n\n✅ 지갑주소: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-  //+ '\n\n' + '💲 지갑잔고: ' + balance + ' USDT\n\n' + '👇 아래 버튼을 눌러 USDT 판매/구매 하세요.';
+  //+ '\n\n' + '💲 지갑잔고: ' + balance + ' DUBAI\n\n' + '👇 아래 버튼을 눌러 DUBAI 판매/구매 하세요.';
 
   // english
   //+ '\n\n' + '✅ Wallet Address: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-  //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' USDT\n\n' + '👇 Press the button below to sell/buy USDT.';
+  //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' DUBAI\n\n' + '👇 Press the button below to sell/buy DUBAI.';
 
   const urlSellUsdt = `${process.env.FRONTEND_APP_ORIGIN}/login/telegram?signature=${authCode}&message=${encodeURI(message)}&center=${center}&path=/kr/sell-usdt-songpa`;
   const urlBuyUsdt = `${process.env.FRONTEND_APP_ORIGIN}/login/telegram?signature=${authCode}&message=${encodeURI(message)}&center=${center}&path=/kr/buy-usdt`;
@@ -2267,8 +2267,8 @@ feature.command('start', async (ctx) => {
 
   /*
   const keyboard = new InlineKeyboard()
-    .webApp('💰 USDT 판매', urlSellUsdt)
-    .webApp('💰 USDT 구매', urlBuyUsdt)
+    .webApp('💰 DUBAI 판매', urlSellUsdt)
+    .webApp('💰 DUBAI 구매', urlBuyUsdt)
   */
 
 
@@ -2283,8 +2283,8 @@ feature.command('start', async (ctx) => {
     .webApp('🚻 나의 프로필 보러가기', urlMyProfile)
     .row()
 
-    .webApp('💰 USDT 판매', urlSellUsdt)
-    .webApp('💰 USDT 구매', urlBuyUsdt)
+    .webApp('💰 DUBAI 판매', urlSellUsdt)
+    .webApp('💰 DUBAI 구매', urlBuyUsdt)
 
     /*
     .webApp('💰 나의 NOAH 채굴 NFT 보러가기', urlNft)
@@ -2441,7 +2441,7 @@ feature.command('affiliation', async (ctx) => {
 
 
       // get balance
-      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+      const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
       const clientId = process.env.THIRDWEB_CLIENT_ID;
       const client = createThirdwebClient({
         clientId: clientId as string,
@@ -2483,10 +2483,10 @@ feature.command('affiliation', async (ctx) => {
 
 
       const text = '\n\n✅ 지갑주소: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      + '\n\n' + '💲 지갑잔고: ' + balance + ' USDT\n\n' + '👇 아래 버튼을 눌러 추천코드 관리로 이동하세요.';
+      + '\n\n' + '💲 지갑잔고: ' + balance + ' DUBAI\n\n' + '👇 아래 버튼을 눌러 추천코드 관리로 이동하세요.';
       // english
       //+ '\n\n' + '✅ Wallet Address: ' + walletAddress.slice(0, 6) + '...' + walletAddress.slice(-6)
-      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' USDT\n\n' + '👇 Press the button below to go to the game.';
+      //+ '\n\n' + '✅ Wallet Balance: ' + balance + ' DUBAI\n\n' + '👇 Press the button below to go to the game.';
 
       const keyboard = new InlineKeyboard()
         //.webApp('💰 게임하러가기', urlGame)

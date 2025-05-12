@@ -98,11 +98,11 @@ interface SellOrder {
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
-//const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // USDT on Arbitrum
+//const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // DUBAI on Arbitrum
 
-//const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // USDT on Polygon
+//const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // DUBAI on Polygon
 
 
 
@@ -1004,7 +1004,7 @@ export default function Index({ params }: any) {
                   />
 
                   <div className="text-2xl font-semibold">
-                    USDT 구매내역
+                    DUBAI 구매내역
 
                   </div>
 
@@ -1399,7 +1399,7 @@ export default function Index({ params }: any) {
 
                             <td className="p-2">
                               <div className="text-sm font-semibold text-white">
-                                {item.sellAmount} USDT
+                                {item.sellAmount} DUBAI
                               </div>
                             </td>
 
@@ -2096,7 +2096,7 @@ export default function Index({ params }: any) {
                                   <button
                                     className="bg-green-500 text-white px-4 py-2 rounded-lg"
                                     onClick={() => {
-                                        //console.log('Buy USDT');
+                                        //console.log('Buy DUBAI');
                                         // go to chat
                                         // close modal
                                         //closeModal();
@@ -2212,7 +2212,7 @@ export default function Index({ params }: any) {
                                     <div className="flex flex-col gap-2 items-start">
                                       {/*
                                       <span>
-                                        {Waiting_for_seller_to_deposit} {item.sellAmount} USDT {to_escrow}...
+                                        {Waiting_for_seller_to_deposit} {item.sellAmount} DUBAI {to_escrow}...
                                       </span>
                                       */}
 
@@ -2220,7 +2220,7 @@ export default function Index({ params }: any) {
                                         {/* dot */}
                                         <div className="w-4 h-4 bg-green-500 rounded-full"></div>
                                         <span className="text-sm text-zinc-400">
-                                        판매자가 에스크로에 {item.sellAmount} USDT를 입금하기를 기다리는 중입니다.
+                                        판매자가 에스크로에 {item.sellAmount} DUBAI를 입금하기를 기다리는 중입니다.
                                         </span>
                                       </div>
 
@@ -2356,7 +2356,7 @@ export default function Index({ params }: any) {
                                         height={32}
                                       />
                                       <span className="text-sm text-zinc-400">
-                                        {Escrow}: {item.sellAmount} USDT
+                                        {Escrow}: {item.sellAmount} DUBAI
                                       </span>
                                       <button
                                         className="bg-white text-black px-2 py-2 rounded-md"
@@ -2537,7 +2537,7 @@ export default function Index({ params }: any) {
 
                                                 }}
                                               >
-                                                {item.sellAmount} USDT 구매하기
+                                                {item.sellAmount} DUBAI 구매하기
                                               </button>
                                             </div>
 

@@ -105,9 +105,9 @@ interface SellOrder {
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
-//const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // USDT on Polygon
+//const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // DUBAI on Polygon
 
 
 // get a contract
@@ -592,7 +592,7 @@ export default function Index({ params }: any) {
 
       if (sellAmount > balance) {
         //toast.error('Insufficient balance');
-        alert('판매할수 있는 USDT가 부족합니다.');
+        alert('판매할수 있는 DUBAI가 부족합니다.');
         return;
       }
 
@@ -832,16 +832,16 @@ export default function Index({ params }: any) {
 
 
             //toast.success('Payment requested');
-            alert('판매자 지갑에서 에스크로 지갑으로 USDT가 전송되었고 구매자에게 결제 요청을 하였습니다.');
+            alert('판매자 지갑에서 에스크로 지갑으로 DUBAI가 전송되었고 구매자에게 결제 요청을 하였습니다.');
             
           } else {
             //toast.error('Payment request failed');
-            alert('에스크로 지갑으로 USDT 전송이 실패했습니다.');
+            alert('에스크로 지갑으로 DUBAI 전송이 실패했습니다.');
           }
 
         } else {
 
-          alert('에스크로 지갑으로 USDT 전송이 실패했습니다.');
+          alert('에스크로 지갑으로 DUBAI 전송이 실패했습니다.');
 
         }
 
@@ -849,7 +849,7 @@ export default function Index({ params }: any) {
         
         //console.log('error', error);
 
-        alert('에스크로 지갑으로 USDT 전송이 실패했습니다.' + '-' + error);
+        alert('에스크로 지갑으로 DUBAI 전송이 실패했습니다.' + '-' + error);
 
       }
 
@@ -979,7 +979,7 @@ export default function Index({ params }: any) {
                   />
                   <div className="text-2xl font-semibold">
                     {/*Sell_USDT*/}
-                    USDT 판매하기
+                    DUBAI 판매하기
                   </div>
 
 
@@ -1340,7 +1340,7 @@ export default function Index({ params }: any) {
 
 
                             <p className="mt-4 text-xl font-bold text-zinc-400">
-                              환율: 1 USDT = {
+                              환율: 1 DUBAI = {
                               // currency format
                               Number(rate).toLocaleString('ko-KR', {
                                 style: 'currency',
@@ -1591,8 +1591,8 @@ export default function Index({ params }: any) {
                               After you place order, the buyer has 24 hours to accept the order.
                               If the buyer does not accept the order within 24 hours, the order will be expired.
                               After the buyer accepts the order, you can not cancel the order.
-                              After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                              If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                              After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                              If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                               If you want to cancel the order, you must contact the buyer and request to cancel the order.
                               If the buyer agrees to cancel the order, the order will be cancelled.
                             "
@@ -1617,8 +1617,8 @@ export default function Index({ params }: any) {
                           <div className="mt-4 text-sm text-zinc-400">
 
                             <div className="h-2 w-2 bg-zinc-400 rounded-full inline-block mr-2"></div>
-                            <span>After the buyer accepts the order, you must deposit the USDT to escrow within 1 hour.
-                              If you do not deposit the USDT to escrow within 1 hour, the order will be expired.
+                            <span>After the buyer accepts the order, you must deposit the DUBAI to escrow within 1 hour.
+                              If you do not deposit the DUBAI to escrow within 1 hour, the order will be expired.
                             </span>
                           </div>
                           <div className="mt-4 text-sm text-zinc-400">
@@ -1664,7 +1664,7 @@ export default function Index({ params }: any) {
                                     disabled={sellAmount === 0 || agreementPlaceOrder === false}
                                     className={`text-lg text-white px-4 py-2 rounded-md ${sellAmount === 0 || agreementPlaceOrder === false ? 'bg-gray-500' : 'bg-green-500'}`}
                                     onClick={() => {
-                                        console.log('Sell USDT');
+                                        console.log('Sell DUBAI');
                                         // open trade detail
                                         // open modal of trade detail
                                         ///openModal();
@@ -2093,7 +2093,7 @@ export default function Index({ params }: any) {
                                 <div className="flex flex-row items-center gap-2">
 
                                   <p className="text-2xl font-semibold text-green-500">
-                                    {item.sellAmount} USDT
+                                    {item.sellAmount} DUBAI
                                   </p>
 
                                   <p className="text-lg font-semibold text-white">{Rate}: {
@@ -2503,13 +2503,13 @@ export default function Index({ params }: any) {
                                       <span className="text-lg text-green-500 font-semibold">
                                         {Waiting_for_seller_to_deposit}
 
-                                        {item.sellAmount} USDT
+                                        {item.sellAmount} DUBAI
 
                                         {to_escrow}....
                                       </span>
                                       */}
                                       <span className="text-lg text-blue-500 font-semibold">
-                                      {item.sellAmount} USDT 를 에스크로에 예치해야 합니다.
+                                      {item.sellAmount} DUBAI 를 에스크로에 예치해야 합니다.
                                       </span>
 
                                       <span className="text-sm text-zinc-400">
@@ -2612,7 +2612,7 @@ export default function Index({ params }: any) {
                                       />
                                       <div className="flex flex-col gap-2 items-start">
                                         <span className="text-lg text-blue-500 font-semibold">
-                                          에스크로: {item.sellAmount} USDT
+                                          에스크로: {item.sellAmount} DUBAI
                                         </span>
                                       </div>
                                       
@@ -2689,7 +2689,7 @@ export default function Index({ params }: any) {
                                             }
                                             onClick={() => {
                                               // confirm payment
-                                              confirm('거래를 완료하면 에스크로에서 USDT가 구매자에게 전송됩니다. 거래를 완료하시겠습니까?') &&
+                                              confirm('거래를 완료하면 에스크로에서 DUBAI가 구매자에게 전송됩니다. 거래를 완료하시겠습니까?') &&
                                               confirmPayment(index);
                                             }}
                                           >

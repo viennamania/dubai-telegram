@@ -55,7 +55,7 @@ import { Network, Alchemy } from 'alchemy-sdk';
 const chain = polygon;
 
 
-// USDT Token (USDT)
+// DUBAI Token (USDT)
 const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 

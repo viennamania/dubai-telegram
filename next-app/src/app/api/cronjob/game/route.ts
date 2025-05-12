@@ -77,7 +77,7 @@ const alchemy = new Alchemy(settings);
 const chain = polygon;
 
 
-// USDT Token (USDT)
+// DUBAI Token (USDT)
 const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 
@@ -228,7 +228,7 @@ export async function GET(request: NextRequest) {
         ///const amount = game.krwAmount;
 
               // send amount is 0.00001 to 0.001
-        //const sendAmount = Number(Math.random() * (0.001 - 0.00001) + 0.00001).toFixed(6);
+        //const sendAmount = Number(Math.random() * (0.001 - 0.00001) + 0.00001).toFixed(2);
 
         //const sendAmount = game.settlement;
 
@@ -305,7 +305,7 @@ export async function GET(request: NextRequest) {
             console.log("ownerWalletAddress: ", ownerWalletAddress );
 
 
-            ownerAmount = Number(parseFloat(sendAmount) * 0.1).toFixed(6);
+            ownerAmount = Number(parseFloat(sendAmount) * 0.1).toFixed(2);
 
             console.log("ownerAmount: ", ownerAmount );
 
@@ -369,7 +369,7 @@ export async function GET(request: NextRequest) {
             console.log("ownerOwnerWalletAddress: ", ownerOwnerWalletAddress );
 
 
-            const ownerOwnerAmount = Number(parseFloat(sendAmount) * 0.05).toFixed(6);
+            const ownerOwnerAmount = Number(parseFloat(sendAmount) * 0.05).toFixed(2);
 
             console.log("ownerOwnerAmount: ", ownerOwnerAmount );
 

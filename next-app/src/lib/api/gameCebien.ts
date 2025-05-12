@@ -63,7 +63,7 @@ export async function insertOne(data: any) {
 
       const sequence = latestData.sequence + 1;
 
-      //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(6);
+      //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
 
       // winPrice is 1 to 3
 
@@ -118,7 +118,7 @@ export async function insertOne(data: any) {
     sequence = findSequence[0].sequence + 1;
   }
 
-  //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(6);
+  //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
   //const winPrize = Math.floor(Math.random() * 10) + 1;
   // winPrice is 1 to 3
   const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
@@ -254,7 +254,7 @@ export async function updateResultByWalletAddressAndSequence(
   }
 
 
-  //const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(6);
+  //const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
 
   let settlement = 0;
 
@@ -437,7 +437,7 @@ export async function insertOneDiceGame(data: any) {
     } else {
       // sequence is last sequence + 1
       const sequence = latestData.sequence + 1;
-      //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(6);
+      //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(2);
       // winPrice is 1 to 5
       const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
       const result = await collection.insertOne(
@@ -477,7 +477,7 @@ export async function insertOneDiceGame(data: any) {
   if (findSequence.length > 0) {
     sequence = findSequence[0].sequence + 1;
   }
-  //const winPrize = Number(Math.random() * (1.0 - 0.00001) + 0.00001).toFixed(6);
+  //const winPrize = Number(Math.random() * (1.0 - 0.00001) + 0.00001).toFixed(2);
   // winPrice is 1 to 5
   const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
   const result = await collection.insertOne(
@@ -570,7 +570,7 @@ export async function updateDiceGameResultByWalletAddressAndSequence(
       data: findResult,
     }
   }
-  //const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(6);
+  //const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
   let settlement = 0;
   let result = null;
   if (win) {
@@ -712,7 +712,7 @@ export async function insertOneRaceGame(data: any) {
       const sequence = latestData.sequence + 1;
 
       
-      //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(6);
+      //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(2);
 
       // winPrice is 1 to 5
       const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
@@ -780,7 +780,7 @@ export async function insertOneRaceGame(data: any) {
     sequence = findSequence[0].sequence + 1;
   }
 
-  //const winPrize = Number(Math.random() * (1.0 - 0.00001) + 0.00001).toFixed(6);
+  //const winPrize = Number(Math.random() * (1.0 - 0.00001) + 0.00001).toFixed(2);
 
   // winPrice is 1 to 5
   const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
@@ -898,7 +898,7 @@ export async function updateRaceGameResultByWalletAddressAndSequence(
   }
 
 
-  const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(6);
+  const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
 
   let result = null;
   

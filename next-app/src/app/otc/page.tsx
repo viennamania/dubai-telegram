@@ -66,7 +66,7 @@ import {
 } from "next//navigation";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 
@@ -577,7 +577,7 @@ function AgentPage() {
 
                                     <span className="p-2 text-green-500 text-4xl font-semibold"> 
                                         {
-                                            Number(balance).toFixed(6)
+                                            Number(balance).toFixed(2)
                                         }
                                     </span>
                                     <span className="p-2 text-gray-500 text-lg font-semibold">USDT</span>

@@ -53,9 +53,9 @@
 
     "Contact_Us": "Contact Us",
 
-    "Buy_Description": "Buy USDT with your favorite real-world currency.",
+    "Buy_Description": "Buy DUBAI with your favorite real-world currency.",
 
-    "Sell_Description": "Sell USDT and receive your favorite real-world currency.",
+    "Sell_Description": "Sell DUBAI and receive your favorite real-world currency.",
 
     "Total": "Total",
     "Orders": "Sell Orders",
@@ -71,13 +71,13 @@
     "Buyer": "Buyer",
     "Me": "Me",
 
-    "Buy_USDT": "Buy USDT",
+    "Buy_USDT": "Buy DUBAI",
     "Buy_CEBIEN": "Buy CEBIEN",
-    "Sell_USDT": "Sell USDT",
+    "Sell_USDT": "Sell DUBAI",
     "Sell_CEBIEN": "Sell CEBIEN",
 
-    "Send_USDT": "Send USDT",
-    "Pay_USDT": "Pay USDT",
+    "Send_USDT": "Send DUBAI",
+    "Pay_USDT": "Pay DUBAI",
 
     "Coming_Soon": "Coming Soon",
 
@@ -89,12 +89,12 @@
 
     "USDT_sent_successfully": "USDT sent successfully",
 
-    "Failed_to_send_USDT": "Failed to send USDT",
+    "Failed_to_send_USDT": "Failed to send DUBAI",
 
 
 
-    "Go_Buy_USDT": "Go Buy USDT",
-    "Go_Sell_USDT": "Go Sell USDT",
+    "Go_Buy_USDT": "Go Buy DUBAI",
+    "Go_Sell_USDT": "Go Sell DUBAI",
 
     "Enter_Wallet_Address": "Enter Wallet Address",
 
@@ -137,7 +137,7 @@
     "to_escrow": "to escrow",
 
 
-    "If_the_seller_does_not_deposit_the_USDT_to_escrow": "if the seller does not deposit the USDT to escrow.",
+    "If_the_seller_does_not_deposit_the_USDT_to_escrow": "if the seller does not deposit the DUBAI to escrow.",
     "this_trade_will_be_cancelled_in": "This trade will be cancelled in",
 
     "Cancel_My_Trade": "Cancel My Trade",
@@ -164,8 +164,8 @@
     "Nickname_should_be_5_10_characters": "Nickname should be 5-10 characters long and contain only alphanumeric lowercase characters.",
 
 
-    "My_Buy_USDT_Trades": "My Buy USDT Trades",
-    "My_Sell_USDT_Trades": "My Sell USDT Trades",
+    "My_Buy_USDT_Trades": "My Buy DUBAI Trades",
+    "My_Sell_USDT_Trades": "My Sell DUBAI Trades",
 
     "Sale": "Sale",
     "Private_Sale": "Private Sale",
@@ -197,10 +197,10 @@
     "My_Order": "My Order",
 
 
-    "If_you_request_payment": "If you request payment, the USDT will be escrowed to the smart contract and then the buyer will be requested to pay.",
+    "If_you_request_payment": "If you request payment, the DUBAI will be escrowed to the smart contract and then the buyer will be requested to pay.",
 
 
-    "I_agree_to_escrow_USDT": "I agree to escrow USDT to the smart contract and request payment to the buyer.",
+    "I_agree_to_escrow_USDT": "I agree to escrow DUBAI to the smart contract and request payment to the buyer.",
 
 
     "Order_Opened": "Opened",
@@ -223,7 +223,7 @@
     "Confirm_Payment": "Confirm Payment",
 
 
-    "Connect_Wallet_Description_For_Buyers": "If you want to buy USDT, you need to connect your wallet. Please click the Connect Wallet button. This wallet is decentralized and secure.",
+    "Connect_Wallet_Description_For_Buyers": "If you want to buy DUBAI, you need to connect your wallet. Please click the Connect Wallet button. This wallet is decentralized and secure.",
 
 
 
@@ -234,10 +234,10 @@
     "Request_Payment": "Request Payment",
 
 
-    "I_agree_to_check_the_bank_transfer_of": "I agree to check the bank transfer of KRW from buyer and transfer USDT to the buyer wallet address.",
+    "I_agree_to_check_the_bank_transfer_of": "I agree to check the bank transfer of KRW from buyer and transfer DUBAI to the buyer wallet address.",
 
 
-    "Transfering_USDT_to_the_buyer_wallet_address": "Transfering USDT to the buyer wallet address",
+    "Transfering_USDT_to_the_buyer_wallet_address": "Transfering DUBAI to the buyer wallet address",
 
   
     "SMS_will_be_sent_to_your_mobile_number": "SMS will be sent to your mobile number to notify you when the buyer accepts the order.",
@@ -248,7 +248,7 @@
     "Waiting_for_trading_partner_to_proceed": "Waiting for trading partner to proceed",
 
 
-    "Waiting_for_seller_to_deposit_USDT_to_escrow": "Waiting for seller to deposit USDT to escrow",
+    "Waiting_for_seller_to_deposit_USDT_to_escrow": "Waiting for seller to deposit DUBAI to escrow",
 
 
 
@@ -262,14 +262,14 @@
     "Table_View": "Table View",
 
   
-    "I_gree_to_escrow_USDT_to_the_smart_contract_and_request_payment_to_the_buyer": "I agree to escrow USDT to the smart contract and request payment to the buyer.",
+    "I_gree_to_escrow_USDT_to_the_smart_contract_and_request_payment_to_the_buyer": "I agree to escrow DUBAI to the smart contract and request payment to the buyer.",
 
 
     "My_Wallet_Address": "My Wallet Address",
     "My_Phone_Number": "My Phone Number",
 
     "Wallet_Address_Description1": "The address of this wallet is",
-    "Wallet_Address_Description2": "compatible with USDT Tether on the blockchain. Do not deposit any other tokens (e.g., Ethereum) to this address.",
+    "Wallet_Address_Description2": "compatible with DUBAI Tether on the blockchain. Do not deposit any other tokens (e.g., Ethereum) to this address.",
 
     "I_understand_that_I_should_never_deposit_any_other_tokens": "I understand that I should never deposit any other tokens (e.g., Ethereum) to this address.",
 
@@ -278,7 +278,7 @@
     "Chat_with_Buyer": "Chat with Buyer",
 
  
-    "You_must_have_a_wallet_address_to_buy_USDT": "You must have a wallet address to buy USDT",
+    "You_must_have_a_wallet_address_to_buy_USDT": "You must have a wallet address to buy DUBAI",
 
 
     "Make_Wallet_Address": "Make Wallet Address",
@@ -299,12 +299,12 @@
     "Please_keep_Your_Wallet_address_safe": "Please keep Your Wallet address safe, as it will be required in case of a dispute with the Seller.",
 
   
-    "Waiting_for_the_USDT_to_be_sent_to_the_store_address": "Waiting for the USDT to be sent to the store address...",
+    "Waiting_for_the_USDT_to_be_sent_to_the_store_address": "Waiting for the DUBAI to be sent to the store address...",
     
-    "Successfully_sent_USDT_to_the_store_address": "Successfully sent USDT to the store address! You can check the store deposit status within 5 minutes.",
+    "Successfully_sent_USDT_to_the_store_address": "Successfully sent DUBAI to the store address! You can check the store deposit status within 5 minutes.",
 
 
-    "When_the_deposit_is_completed": "When the deposit is completed, the escrowed USDT will be transferred to the buyer's wallet.",
+    "When_the_deposit_is_completed": "When the deposit is completed, the escrowed DUBAI will be transferred to the buyer's wallet.",
 
 
     "Please_enter_deposit_name": "Please enter deposit name",
@@ -342,7 +342,7 @@
     "Private_Buy_Order": "Private Buy Order",
     "Public_Buy_Orer": "Public Buy Order",
   
-    "Buy_Order_USDT": "Buy Order USDT",
+    "Buy_Order_USDT": "Buy Order DUBAI",
 
     "Buy_Order_SMS_will_be_sent_to_your_mobile_number": "When the seller accepts the order, an SMS will be sent to your mobile number.",
 

@@ -62,7 +62,7 @@ import {
 } from "next//navigation";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function AgentPage() {
@@ -1066,11 +1066,11 @@ function AgentPage() {
                                     <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
                                         {
                                             Number(balance).toFixed(2)
-                                        } USDT
+                                        } DUBAI
                                     </div>
                                 </div>
 
-                                {/* send USDT */}
+                                {/* send DUBAI */}
                                 {/*
                                 <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                                     <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
@@ -1519,7 +1519,7 @@ function AgentPage() {
                                                             Total Dividend
                                                         </span>
                                                         <span className='text-xl xl:text-2xl font-semibold text-green-500'>
-                                                            0.00 USDT
+                                                            0.00 DUBAI
                                                         </span>
       
                                                     </div>
@@ -1560,7 +1560,7 @@ function AgentPage() {
 
                                                
                                                         <span className='text-xs xl:text-sm font-semibold'>
-                                                            Funds: 0 USDT
+                                                            Funds: 0 DUBAI
                                                         </span>
 
                                             

@@ -31,7 +31,7 @@ import { balanceOf, transfer } from "thirdweb/extensions/erc20";
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function HomeContent() {
@@ -280,7 +280,7 @@ function HomeContent() {
                       <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
                           {
                               Number(balance).toFixed(2)
-                          } USDT
+                          } DUBAI
                       </div>
                   </div>
 

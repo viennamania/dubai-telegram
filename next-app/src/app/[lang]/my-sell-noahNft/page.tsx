@@ -98,9 +98,9 @@ interface SellOrder {
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
-//const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // USDT on Arbitrum
+//const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // DUBAI on Arbitrum
 
 //const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // NOAH-K on Polygon
 
@@ -1069,7 +1069,7 @@ export default function Index({ params }: any) {
                           <div className="flex flex-row items-center gap-2">
                             <span className="text-green-500 text-4xl font-semibold"> 
                                 {
-                                    Number(balance).toFixed(6)
+                                    Number(balance).toFixed(2)
                                 }
                             </span>
                             <span className="text-gray-500 text-lg font-semibold">USDT</span>

@@ -51,7 +51,7 @@ import {
 
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 
@@ -1604,7 +1604,7 @@ function ApplicationsPage({ params }: any) {
                                             <div className='w-full flex flex-row items-center justify-between gap-2'>
                                                 <div className='flex flex-col gap-2'>
                                                     <span className='text-xs text-yellow-800'>
-                                                        OKX USDT(TRON) 지갑주소
+                                                        OKX DUBAI(TRON) 지갑주소
                                                     </span>
                                                     <span className='text-xs text-gray-800'>
                                                         {application.htxUsdtWalletAddress.slice(0, 10)}...{application.htxUsdtWalletAddress.slice(-10)}
@@ -1628,7 +1628,7 @@ function ApplicationsPage({ params }: any) {
                                             <div className='w-full flex flex-row items-center justify-between gap-2'>
                                                 <div className='flex flex-col gap-2'>
                                                     <span className='text-xs text-yellow-800'>
-                                                        매직월렛 USDT 지갑주소
+                                                        매직월렛 DUBAI 지갑주소
                                                     </span>
                                                     <span className='text-xs text-gray-800'>
                                                         {application.walletAddress.slice(0, 10)}...{application.walletAddress.slice(-10)}

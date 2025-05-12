@@ -81,7 +81,7 @@ import { token } from "thirdweb/extensions/vote";
 import { N } from "ethers";
 
 
-const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
 function AgentPage() {
@@ -1072,17 +1072,17 @@ function AgentPage() {
                                     <div className="flex flex-row items-end justify-start">
                                         <span className="text-4xl text-green-500 font-semibold">
                                             {
-                                                Number(balance).toFixed(6).split('.')[0]
+                                                Number(balance).toFixed(2).split('.')[0]
                                             }.
                                         </span>
                                         <span className="text-2xl text-green-500 font-semibold">
                                             {
-                                                Number(balance).toFixed(6).split('.')[1]
+                                                Number(balance).toFixed(2).split('.')[1]
                                             }
                                         </span>
                                     </div>
                                     <span className="text-green-500 text-2xl font-semibold">
-                                        USDT
+                                        DUBAI
                                     </span>
 
                                 </div>
@@ -1171,7 +1171,7 @@ function AgentPage() {
                                                 <span className="w-28 text-sm text-zinc-100 text-right">
                                                     {
                                                         transfer.transferData.value / 10 ** 18
-                                                    } USDT
+                                                    } DUBAI
                                                 </span>
                                             </div>
 
@@ -1340,7 +1340,7 @@ function AgentPage() {
 
                                 <span className="text-lg text-yellow-500 font-semibold">
                                     
-                                    {/*채굴 NFT 구매신청은 100 USDT 당 1개씩 발행 가능합니다.*/}
+                                    {/*채굴 NFT 구매신청은 100 DUBAI 당 1개씩 발행 가능합니다.*/}
 
                                     {seletedTokenId === "0" && '100 NOAH 채굴 NFT'
                                     || seletedTokenId === "1" && '300 NOAH 채굴 NFT'
@@ -1355,7 +1355,7 @@ function AgentPage() {
                             <div className="w-full flex flex-row gap-2 items-center justify-between
                                 border border-zinc-400 text-yellow-500
                                 p-4 rounded-lg">
-                                {usdtPrice * (1 + fee)} USDT<br />
+                                {usdtPrice * (1 + fee)} DUBAI<br />
                                 ₩{
                                     Number(krwPrice).toLocaleString(
 
