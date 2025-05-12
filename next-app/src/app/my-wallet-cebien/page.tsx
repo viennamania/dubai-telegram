@@ -66,7 +66,7 @@ import { send } from "@fal-ai/serverless-client/src/function";
 
 
 
-const contractAddress = "0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd"; // CEBIEN on Polygon
+const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // CEBIEN on Polygon
 
 
 function ProfilePage() {

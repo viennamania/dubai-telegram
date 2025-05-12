@@ -100,7 +100,7 @@ interface SellOrder {
 
 //const contractAddress = "0x9948328fa1813037a37F3d35C0b1e009d6d9a563"; // USDT on Polygon
 
-const contractAddress = '0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd'; // CEBIEN on Polygon
+const contractAddress = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d'; // CEBIEN on Polygon
 
 
 

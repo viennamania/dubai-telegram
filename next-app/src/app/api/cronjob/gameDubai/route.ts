@@ -43,20 +43,10 @@ import {
   
 } from "thirdweb/extensions/erc20";
 
-
-// owner of erc721
 import {
-    getNFT,
-    ///getTotalClaimedSupply,
-    ownerOf,
-} from "thirdweb/extensions/erc721";
-
-
-import {
-  getAllRaceGamesSettlement,
-  setRaceGamesSettlementByWalletAddressAndSequence,
+  getAllGamesSettlement,
+  setGamesSettlementByWalletAddressAndSequence,
 } from '@lib/api/gameCebien';
-
 
 
 import {
@@ -82,19 +72,15 @@ const alchemy = new Alchemy(settings);
 
 
 
+ 
 
 const chain = polygon;
 
 
 // USDT Token (USDT)
-//const tokenContractAddressCEBIEN = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
+//const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
-// CEBIEN Token (CEBIEN)
-const tokenContractAddressCEBIEN = '0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd';
-
-
-// smw contract address
-const contractAddressSMW = "0xb3f4f5396075c4141148B02D43bF54C5Da6525dD";
+const tokenContractAddressCEBIEN = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 
 
@@ -157,16 +143,7 @@ export async function GET(request: NextRequest) {
 
 
 
-      const games = await getAllRaceGamesSettlement();
 
-      //console.log("games: ", games);
-
-
-      if (!games) {
-        return NextResponse.json({
-          result: "no data found",
-        });
-      }
 
 
     
@@ -178,7 +155,7 @@ export async function GET(request: NextRequest) {
       const contractOptions: ContractOptions = {
         client: client,
         chain: chain,
-        address: tokenContractAddressCEBIEN,
+        address: tokenContractAddressUSDT,
       };
       */
       
@@ -187,6 +164,7 @@ export async function GET(request: NextRequest) {
         {
           client: client,
           chain: chain,
+          ///address: tokenContractAddressUSDT,
           address: tokenContractAddressCEBIEN,
         }
       );
@@ -219,6 +197,18 @@ export async function GET(request: NextRequest) {
       //console.log("members: ", members);
 
 
+      const games = await getAllGamesSettlement();
+
+      //console.log("games: ", games);
+
+
+      if (!games) {
+        return NextResponse.json({
+          result: "no data found",
+        });
+      }
+
+
     
       let transactions = [] as any;
 
@@ -231,144 +221,46 @@ export async function GET(request: NextRequest) {
         */
 
 
-      //games.forEach(async (game : any) => {
 
+      //games.forEach(async (game : any) => {
+      // sync
       for (let i = 0; i < games.length; i++) {
 
         const game = games[i];
 
+        const toWalletAddress = game.walletAddress;
 
-        // if win is true, then send amount to wallet address
-        if (game.win) {
-        
-          const toWalletAddress = game.walletAddress;
+        ///const amount = game.krwAmount;
 
-          ///const amount = game.krwAmount;
+              // send amount is 0.00001 to 0.001
+        //const sendAmount = Number(Math.random() * (0.001 - 0.00001) + 0.00001).toFixed(2);
 
-                // send amount is 0.00001 to 0.001
-          //const sendAmount = Number(Math.random() * (0.001 - 0.00001) + 0.00001).toFixed(6);
+        //const sendAmount = game.settlement;
 
-          //const sendAmount = game.settlement;
+        const sendAmount = game.winPrize;
 
-          const sendAmount = game.winPrize;
-
-          const transaction = transfer({
-            contract: contractCEBIEN,
-            to: toWalletAddress,
-            amount: sendAmount,
-          });
-      
-          transactions.push(transaction);
-
-        }
-
-
-
-        // send 0.01 CEBEIN to all owners of horses
-        // find all horses of game
-        for (let j = 0; j < game.horses.length; j++) {
-          const horse = game.horses[j];
-
-          //console.log("horse: ", horse);
-
-          const tokenId = horse.tokenId;
-
-          console.log("tokenId: ", tokenId);
-
-          const contractErc721 = getContract(
-            {
-              client: client,
-              chain: polygon,
-              address: contractAddressSMW,
-            }
-          );
-
-          const owner = await ownerOf({
-            contract: contractErc721,
-            tokenId: BigInt(tokenId),
-          });
-
-          const ownerAddress = owner.toString();
-          console.log("ownerAddress=======>", ownerAddress);
-
-          const sendAmount = Number(0.01).toFixed(2);
-
-          const transaction1 = transfer({
-            contract: contractCEBIEN,
-            to: ownerAddress,
-            amount: sendAmount,
-          });
-          transactions.push(transaction1);
-        }
-
-        
-
-
-
-        // find owner wallet address of horse of ranking 1, 
-        // then send 10% of winPrice CEBEIN to the owner wallet address
-
-        // find ranking 1 horse
-        const reaultNumber = game.resultNumber;
-        const ranking1Horse = game.horses[reaultNumber - 1];
-        const tokenId = ranking1Horse.tokenId;
-        console.log("tokenId: ", tokenId);
-
-        const contractErc721 = getContract(
-          {
-            client: client,
-            chain: polygon,
-            address: contractAddressSMW,
-          }
-        );
-
-        const owner = await ownerOf({
-          contract: contractErc721,
-          tokenId: BigInt(tokenId),
-        });
-
-        const ownerAddress = owner.toString();
-        console.log("ownerAddress=======>", ownerAddress);
-
-
-        const ownerSendAmount = Number(parseFloat(game.winPrize) * 0.1).toFixed(2);
-
-        const transaction2 = transfer({
+        const transaction = transfer({
           contract: contractCEBIEN,
-          to: ownerAddress,
-          amount: ownerSendAmount,
+          to: toWalletAddress,
+          amount: sendAmount,
         });
-        transactions.push(transaction2);
+    
+        transactions.push(transaction);
 
 
 
 
 
 
+        // 10% of gaem.winPrize to referral
 
-
-
-        // update game settlement
-        const sequence = game.sequence;
-        const gameWalletAddress = game.walletAddress;
-
-        ///const settlement = sendAmount.toString();
-
-        const result = await setRaceGamesSettlementByWalletAddressAndSequence({
-          walletAddress: gameWalletAddress,
-          sequence: sequence,
-        });
-
-
-
-
-
-
+        // get telegram id from users by wallet address
+        // find referral from members by wallet address
 
         let ownerWalletAddress = "";
         let ownerAmount = "";
    
-        const user = await getOneByWalletAddress(gameWalletAddress);
+        const user = await getOneByWalletAddress(toWalletAddress);
 
         //console.log("user: ", user);
 
@@ -377,6 +269,18 @@ export async function GET(request: NextRequest) {
           const center = user.center;
 
           const response = await getOneByTelegramId(telegramId, center);
+
+          //console.log("response: ", response);
+
+          /*
+          {
+            "_id": {
+              "$oid": "67860af11cbd056942632b2d"
+            },
+            "telegramId": "441516803",
+            "referralCode": "0x4BC23C679e3E2aac58D43Bb5257281562FB01e04_0"
+          }
+          */
 
           if (response && response.referralCode) {
 
@@ -406,7 +310,7 @@ export async function GET(request: NextRequest) {
             console.log("ownerWalletAddress: ", ownerWalletAddress );
 
 
-            ownerAmount = Number(parseFloat(game.winPrize) * 0.1).toFixed(6);
+            ownerAmount = Number(parseFloat(sendAmount) * 0.1).toFixed(2);
 
             console.log("ownerAmount: ", ownerAmount );
 
@@ -470,7 +374,7 @@ export async function GET(request: NextRequest) {
             console.log("ownerOwnerWalletAddress: ", ownerOwnerWalletAddress );
 
 
-            const ownerOwnerAmount = Number(parseFloat(game.winPrize) * 0.05).toFixed(6);
+            const ownerOwnerAmount = Number(parseFloat(sendAmount) * 0.05).toFixed(2);
 
             console.log("ownerOwnerAmount: ", ownerOwnerAmount );
 
@@ -494,17 +398,42 @@ export async function GET(request: NextRequest) {
 
 
 
+
+
+            
+
+
+
+
+
+
+
+
+        // update game settlement
+        const sequence = game.sequence;
+
+        ///const settlement = sendAmount.toString();
+
+        const result = await setGamesSettlementByWalletAddressAndSequence({
+          walletAddress: toWalletAddress,
+          sequence: sequence,
+        });
+
     
       }
 
 
+    
     
 
       if (transactions.length === 0) {
         return NextResponse.json({
-          result: "no transactions found",
+          result: "no data found",
         });
       }
+
+
+      //console.log("transactions: ", transactions);
 
     
       const batchOptions: SendBatchTransactionOptions = {

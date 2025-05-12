@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
   //const tokenContractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
 
 
-  const tokenContractAddress = "0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd"; // CEBIEN on Polygon
+  const tokenContractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // CEBIEN on Polygon
 
   try {
 

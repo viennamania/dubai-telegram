@@ -96,7 +96,7 @@ interface SellOrder {
 //const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // USDT on Polygon
 const contractAddressArbitrum = "0x2f2a2543B76A4166549F7aab2e75Bef0aefC5B0f"; // USDT on Arbitrum
 
-const contractAddress = '0x04a4B27d8221A57b4051AbAc170d4ac5Abdc6aBd'; // CEBIEN on Polygon
+const contractAddress = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d'; // CEBIEN on Polygon
 
 
 export default function Index({ params }: any) {
