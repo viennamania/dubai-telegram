@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import {
-	insertOne,
+	insertOneDiceGame
 } from '@lib/api/gameDubai';
 
 
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   //console.log("walletAddress", walletAddress);
   
 
-  const result = await insertOne({
+  const result = await insertOneDiceGame({
     walletAddress: walletAddress,
     usdtAmount: 0,
     krwAmount: 0,
