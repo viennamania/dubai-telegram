@@ -47,11 +47,11 @@ import { balanceOf, transfer } from "thirdweb/extensions/erc20";
  
 
 import {
-	accountAbstraction,
-	client,
+    accountAbstraction,
+    client,
     wallet,
-	editionDropContract,
-	editionDropTokenId,
+    editionDropContract,
+    editionDropTokenId,
 } from "../constants";
 
 import {
@@ -63,6 +63,7 @@ import {
 import Uploader from '../components/uploader';
 import { updateUser } from "@/lib/api/user";
 import { send } from "@fal-ai/serverless-client/src/function";
+
 
 
 const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
@@ -593,13 +594,15 @@ function ProfilePage() {
 
     const [loadingTransfers, setLoadingTransfers] = useState(false);
     const [transfers, setTransfers] = useState([] as any[]);
+
+    
     useEffect(() => {
         
         const getTransfers = async () => {
 
             setLoadingTransfers(true);
-
-            const response = await fetch("/api/wallet/getTransfersByWalletAddress", {
+            
+            const response = await fetch("/api/wallet/getTransfersDubaiByWalletAddress", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -618,7 +621,7 @@ function ProfilePage() {
 
             const data = await response.json();
 
-            //console.log("getTransfers data", data);
+            console.log("getTransfers data", data);
 
 
             if (data.result) {
@@ -635,16 +638,8 @@ function ProfilePage() {
             getTransfers();
         }
 
-        // interval
-        const interval = setInterval(() => {
-            if (address) {
-                getTransfers();
-            }
-        } , 5000);
-
-        return () => clearInterval(interval);
-
     } , [address]);
+    
 
 
 
@@ -718,7 +713,7 @@ function ProfilePage() {
             
             if (transactionHash) {
 
-                alert('USDT sent successfully');
+                alert('DUBAI를 성공적으로 보냈습니다');
 
                 setSendAmount('');
 
@@ -730,6 +725,35 @@ function ProfilePage() {
                 //console.log(result);
 
                 setBalance( Number(result) / 10 ** 18 );
+
+                // reload the transfers
+                const response = await fetch("/api/wallet/getTransfersDubaiByWalletAddress", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        limit: 10,
+                        page: 0,
+                        walletAddress: address,
+                    }),
+                });
+
+                if (!response.ok) {
+                    return;
+                }
+
+                const data = await response.json();
+
+                //console.log("getTransfers data", data);
+
+                if (data.result) {
+                    setTransfers(data.result.transfers);
+                } else {
+                    setTransfers([]);
+                }
+
+
 
             } else {
 
@@ -756,6 +780,12 @@ function ProfilePage() {
 
         <main
             className="p-4 pb-10 min-h-[100vh] flex items-start justify-center container max-w-screen-lg mx-auto"
+            style={{
+                backgroundImage: "url('/mobile-background-profile2.avif')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
         >
 
             <AutoConnect
@@ -776,21 +806,16 @@ function ProfilePage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        {/*나의 지갑*/}
-                        {/* english */}
-                        My Wallet
-
+                        보상내역
                     </div>
                 </div>
 
-        
- 
 
-                <div className="w-full flex flex-col items-start justify-center space-y-4">
+                <div className="flex flex-col items-start justify-center space-y-4">
 
-                    <div className="w-full flex justify-center mt-5">
+                    <div className="flex justify-center mt-5">
                         {address ? (
-                            <div className="w-full flex flex-row gap-2 items-center justify-between">
+                            <div className="flex flex-row gap-2 items-center justify-between">
 
                                 <div className=" flex flex-col xl:flex-row items-center justify-start gap-5">
                                     <Image
@@ -807,24 +832,23 @@ function ProfilePage() {
                                     onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}`)}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    My wallet: {shortenAddress(address)}
+                                    내 지갑주소: {shortenAddress(address)}
                                 </Button>
                                 <Button
                                     onClick={() => {
                                         navigator.clipboard.writeText(address);
-                                        //alert('지갑주소가 복사되었습니다.');
-                                        alert('Wallet address copied to clipboard');
+                                        alert('지갑주소가 복사되었습니다.');
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    Copy
+                                    복사
                                 </Button>
-                                
+ 
                             </div>
                         ) : (
-                            <p className="text-sm text-zinc-400">
-                                {/*연결된 지갑이 없습니다. 지갑을 연결해 주세요.*/}
-                                No connected wallet. Please connect your wallet.
+                            <p className="text-sm text-zinc-800">
+                                로그인 후 지갑주소가 표시됩니다.<br />
+                                창을 닫고 메뉴에서 지갑을 다시 시작해주세요.
                             </p>
                         )}      
                     </div>
@@ -833,8 +857,7 @@ function ProfilePage() {
                     {loadingUser && (
                         <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                             <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                {/*로딩중...*/}
-                                Loading...
+                                로딩중...
                             </div>
                         </div>
                     )}
@@ -850,8 +873,7 @@ function ProfilePage() {
                             >
                                 <div className="flex flex-row gap-2 items-center justify-between">
                                     <span className="text-lg font-semibold">
-                                        {/*새로고침*/}
-                                        Refresh
+                                        새로고침
                                     </span>
                                 </div>
                             </button>
@@ -865,114 +887,137 @@ function ProfilePage() {
 
                             <div className='w-full flex flex-col gap-4 items-start justify-center'>
 
-                                
-                                
-                                <div className='w-full flex flex-row gap-2 items-center justify-between'>
+                                <div className='w-full flex flex-row gap-2 items-center justify-between
+                                    border border-gray-800
+                                    p-4 rounded-lg'>
 
                                     <Image
-                                        src="/logo-tether.png"
-                                        alt="USDT"
+                                        src="/logo-token-dubai.png"
+                                        alt="DUBAI"
                                         width={30}
                                         height={30}
                                         className="rounded"
                                     />                                
 
 
-                                    <div className="flex flex-row gap-2 items-end justify-between">
+                                    <div className="flex flex-row gap-2 items-center justify-between">
 
-                                        <div className="flex flex-row items-end justify-start">
-                                            <span className="text-6xl text-green-500 font-semibold">
-                                                {
-                                                    Number(balance).toFixed(2).split('.')[0]
-                                                }.
-                                            </span>
-                                            <span className="text-2xl text-green-500">
-                                                {
-                                                    Number(balance).toFixed(2).split('.')[1]
-                                                }
-                                            </span>
-                                        </div>
-                                        <span className="text-green-500 text-2xl font-semibold">
-                                            DUBAI
+                                        <span className="p-2 text-green-500 text-4xl font-semibold"> 
+                                            {// 3 ditit , comma separated, not currency
+
+                                                //Number(balance).toFixed(0)
+
+                                                Number(balance).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+
+
+
+
+                                            }
                                         </span>
+                                        <span className="p-2 text-gray-500 text-lg font-semibold">DUBAI</span>
 
                                     </div>
                                 </div>
 
-
-
-
-
                                 {/* send DUBAI */}
 
-                                <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
+                                <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg
+                                    bg-yellow-500 bg-opacity-50'>
                                     
+                                    {/*
+                                    <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
+                                        DUBAI 보내기
+                                    </div>
+                                    */}
                                     <div className="flex flex-row gap-2 items-center justify-between">
+
                                         {/* dot */}
-                                        <div className="bg-green-500 w-3 h-3 rounded-full"></div>
-                                        <span className="text-lg font-semibold text-zinc-800">
-                                            {/*USDT 보내기*/}
-                                            Send DUBAI
+                                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        {/* text */}                             
+                                        <span className="text-lg font-semibold">
+                                            DUBAI 보내기
                                         </span>
+
                                     </div>
 
+                                    <div className='flex flex-col xl:flex-row gap-2 items-start justify-between'>
+                                        
+                                        <div className="w-full flex flex-col gap-2 items-end justify-between">
 
-                                    <div className='w-full flex flex-col xl:flex-row gap-2 items-start justify-between'>
-                                        <input
-                                            disabled={sending}
-                                            className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-6xl font-semibold"
-                                            placeholder="0.00"
-                                            type='number'
-
-                                            value={
-
-                                                sendAmount
+                                            <input
+                                                disabled={sending}
                                                 
-                                            }
+                                                //className="flex p-2 text-zinc-100 bg-zinc-800 rounded text-2xl font-semibold"
 
-                                            onChange={(e) => {
+                                                className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-2xl font-semibold"
 
+                                                placeholder="0"
+                                                type='number'
 
-                                                if (isNaN(Number(e.target.value))) {
-                                                    //alert('숫자만 입력해주세요');
-                                                    alert('Please enter a number');
-                                                    return;
+                                                value={
+
+                                                    sendAmount
+                                                    
                                                 }
 
-                                                if (Number(e.target.value) < 0) {
-                                                    //alert('0보다 작은 숫자는 입력할 수 없습니다');
-                                                    alert('Please enter a number greater than 0');
-                                                    return;
-                                                }
+                                                onChange={(e) => {
+
+
+                                                    if (isNaN(Number(e.target.value))) {
+                                                        alert('숫자만 입력해주세요');
+                                                        return;
+                                                    }
+
+                                                    if (Number(e.target.value) < 0) {
+                                                        alert('0보다 작은 숫자는 입력할 수 없습니다');
+                                                        return;
+                                                    }
 
 
 
-                                                //setSendAmount(Number(e.target.value));
+                                                    //setSendAmount(Number(e.target.value));
 
-                                                // check floating point is less than 6
+                                                    // check floating point is less than 6
 
-                                                // check input number less than balance
+                                                    // check input number less than balance
 
-                                                if (Number(e.target.value) > balance) {
-                                                    //alert('잔액보다 많은 금액을 보낼 수 없습니다');
-                                                    alert('You cannot send more than your balance');
-                                                    return;
-                                                }
+                                                    if (Number(e.target.value) > balance) {
+                                                        alert('잔액보다 많은 금액을 보낼 수 없습니다');
+                                                        return;
+                                                    }
 
 
-                                                setSendAmount(
-                                                    //parseFloat(e.target.value)
-                                                    //Number(e.target.value)
-                                                    e.target.value
-                                                );
+                                                    setSendAmount(
+                                                        //parseFloat(e.target.value)
+                                                        //Number(e.target.value)
+                                                        e.target.value
+                                                    );
 
-                                            }}
-                                        />
+                                                }}
+                                            />
+
+                                            {/* balance max button */}
+                                            <button
+                                                disabled={sending}
+                                                onClick={() => {
+                                                    setSendAmount(balance.toString());
+                                                }}
+                                                className="flex p-2 bg-blue-500 text-zinc-100 rounded">
+                                            
+                                                <span className="text-lg font-semibold">
+                                                    최대
+                                                </span>
+                                            </button>
+
+
+                                        </div>
+
+
                                         <input
                                             disabled={sending}
                                             className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-sm font-semibold"
-                                            ///placeholder="받는 사람 지갑주소(0x로 시작)"
-                                            placeholder="Recipient wallet (start with 0x)"
+                                            placeholder="받는 사람 지갑주소(0x로 시작)"
                                             type='text'
                                             onChange={(e) => {
                                                 // cheack prefix is "0x"
@@ -985,8 +1030,7 @@ function ProfilePage() {
                                             <button
                                                 disabled={sending || !sendAmount || !toWalletAddress}
                                                 onClick={() => {
-                                                    //confirm('USDT를 보내시겠습니까?') &&
-                                                    confirm('Are you sure you want to send DUBAI?') &&
+                                                    confirm('DUBAI를 보내시겠습니까?') &&
                                                     sendUsdt();
                                                 }}
                                                 className={`p-2 bg-blue-500 text-zinc-100 rounded
@@ -1005,8 +1049,7 @@ function ProfilePage() {
                                                         />
                                                     )}
                                                     <span className='text-lg font-semibold'>
-                                                        {/*보내기*/}
-                                                        Send
+                                                        보내기
                                                     </span>
                                                 </div>
                                             </button>
@@ -1014,10 +1057,16 @@ function ProfilePage() {
                                     </div>
                                 </div>
 
+
+
+
+
+
+
                                 {/*
                                 <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                                     <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                        {Send_USDT}
+                                        {Send_DUBAI}
                                     </div>
                                     <div className='flex flex-col xl:flex-row gap-2 items-start justify-between'>
                                         <input
@@ -1099,6 +1148,7 @@ function ProfilePage() {
 
                     {/* 거래 내역 보기 */}
                     {/* polygon scan */}
+                    {/*}
                     <div className="w-full flex flex-row gap-2 items-center justify-end">
                         <Button
                             onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}/tokentxns#tokentxns`)}
@@ -1114,14 +1164,14 @@ function ProfilePage() {
                                     height={20}
                                     className="rounded"
                                 />
-                                <span className="text-sm font-semibold">
-                                    {/*폴리스캔에서 거래내역 보기*/}
-                                    View transaction history on Polygonscan
+                                <span className="text-lg font-semibold">
+                                    폴리스캔에서 거래내역 보기
                                 </span>
                             </div>
 
                         </Button>
                     </div>
+                    */}
 
 
 
@@ -1129,237 +1179,220 @@ function ProfilePage() {
                     {/* table view */}
                     {/* if transfers.sendReceive === send, then display "보내기" */}
                     {/* if transfers.sendReceive === receive, then display "받기" */}
-                    
-                    <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
 
-
-                        <div className="w-full flex flex-row gap-2 items-center justify-between">
-
-                            <div className="w-full flex flex-row gap-2 items-center justify-start">
-                                {/* dot */}
-                                <div className="bg-green-500 w-3 h-3 rounded-full"></div>
-                                <span className="text-lg font-semibold text-zinc-800">
-                                    {/*최근 10개 거래내역*/}
-                                    Recent 10 transactions
-                                </span>
+                    {loadingTransfers && (
+                        <div className="w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg
+                            bg-yellow-500 bg-opacity-50">
+                            <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
+                                거래내역 로딩중...
                             </div>
-
-                            {loadingTransfers && (
-                                <div className="flex flex-row gap-2 items-center justify-end">
-                                    <Image
-                                        src="/loading.png"
-                                        alt="Loading"
-                                        width={25}
-                                        height={25}
-                                        className="animate-spin"
-                                    />
-                                </div>
-                            )}
-
                         </div>
+                    )}
 
 
-                        {!loadingTransfers && transfers?.length === 0 && (
-                            <span className="text-sm text-zinc-800">
-                                {/*거래내역이 없습니다.*/}
-                                No transaction history.
-                            </span>
-                        )}
+                    {transfers?.length > 0 && (
+                        <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg
+                            bg-zinc-100 bg-opacity-90'>
+                            
+                            <div className="w-full flex flex-row gap-2 items-center justify-between">
+                                <div className="flex flex-row gap-2 items-center justify-between">
+                                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    <span className="text-lg font-semibold">
+                                        거래내역
+                                    </span>
+                                </div>
+                                {/* reload transfers button */}
+                                <button
+                                    onClick={() => {
+                                        const getTransfers = async () => {
 
-                        {/*!loadingTransfers && transfers?.length > 0 && (*/}
+                                            setLoadingTransfers(true);
+                                            
+                                            const response = await fetch("/api/wallet/getTransfersDubaiByWalletAddress", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({
+                                                    limit: 10,
+                                                    page: 0,
+                                                    walletAddress: address,
+                                                }),
+                                            });
+
+                                            if (!response.ok) {
+                                                setLoadingTransfers(false);
+                                                return;
+                                            }
+
+                                            const data = await response.json();
+
+                                            console.log("getTransfers data", data);
 
 
+                                            if (data.result) {
+                                                setTransfers(data.result.transfers);
+                                            } else {
+                                                setTransfers([]);
+                                            }
+
+                                            setLoadingTransfers(false);
+
+                                        }
+
+                                        getTransfers();
+
+                                    } }
+
+                                    disabled={loadingTransfers}
+                                    className={
+
+                                        `p-2 bg-blue-500 text-zinc-100 rounded
+                                        ${loadingTransfers ? 'opacity-50' : ''}`
+                                    }
+                                >
+                                    <div className="flex flex-row gap-2 items-center justify-between">
+                                        {loadingTransfers && (
+                                            <Image
+                                                src="/loading.png"
+                                                alt="Send"
+                                                width={25}
+                                                height={25}
+                                                className="animate-spin"
+                                            />
+                                        )}
+                                        <span className="text-lg font-semibold">
+                                            새로고침
+                                        </span>
+                                    </div>
+                                </button>
+
+                                    
+                            </div>
+                            
 
                             <table className="w-full">
                                 <thead>
                                     <tr>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
-                                            <span className="text-green-500 text-sm font-semibold">
-                                            +
-                                            </span>
-                                            <span className="text-zinc-100 text-sm font-semibold">
-                                            /
-                                            </span>
-                                            <span className="text-red-500 text-sm font-semibold">
-                                            -
-                                            </span>
+                                    <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*+/-*/}
+                                            {/* + is color green, - is color red */}
+                                            <span className="text-green-500">+</span> / <span className="text-red-500">-</span>
                                         </th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
-                                            {/*상대방*/}
-                                            {/* english */}
-                                            Other User
-                                        </th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
-                                            {/*수량(USDT)*/}
-                                            {/* english */}
-                                            Amount (USDT)
-                                        </th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
-                                            {/*시간*/}
-                                            {/* english */}
-                                            Time
-                                        </th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">지갑주소</th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">수량</th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">시간</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {transfers.map((transfer, index) => (
-                                        <tr key={index}>
-                                            <td className="p-2 text-lg text-zinc-800 font-semibold">
-                                                {
-                                                    transfer.sendOrReceive === "send" ? (
-                                                        <span className="text-red-500">-</span>
-                                                    ) : (
-                                                        <span className="text-green-500">+</span>
-                                                    )
-                                                }
+                                        <tr
+                                            key={index}
+                                            className="
+                                                border-b border-gray-800
+                                                hover:bg-zinc-800 hover:bg-opacity-50
+                                                transition-colors duration-100
+                                            "
+                                        >
+                                            <td
+                                                className="p-2 text-2xl text-zinc-800 font-semibold">
+
+
+                                                {/*transfer.sendOrReceive === "send" ? "-" : "+"*/}
+                                                {/* + is color green, - is color red */}
+
+                                                {transfer.sendOrReceive === "send" ? (
+                                                    <span className="text-red-500">-</span>
+                                                ) : (
+                                                    <span className="text-green-500">+</span>
+                                                )}
+
                                             </td>
+
                                             {transfer.sendOrReceive === "send" ? (
-                                                <td className="p-2 text-sm text-zinc-800">
-                                                    {
-                                                        transfer?.otherUser?.nickname
-                                                        ? (
-                                                            <div className="flex flex-col gap-1 items-center justify-center">
-                                                           
-
-                                                                <Image
-                                                                    src={transfer?.otherUser?.avatar || "/profile-default.png"}
-                                                                    alt="Avatar"
-                                                                    width={50}
-                                                                    height={50}
-                                                                    className="rounded-full"
-                                                                    style={{
-                                                                        objectFit: 'cover',
-                                                                    }}
-                                                                />
-                                                            
-
-                                                                {transfer?.otherUser?.nickname}
-                                                            </div>
-                                                        )
-                                                        :
-                                                        transfer.transferData.toAddress.slice(0, 6) + '...'
-                                                    }
+                                                <td className="p-2">
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-xs text-red-500">       
+                                                            {shortenAddress(transfer.transferData.toAddress)}
+                                                        </span>
+                                                    </div>
+                                                    {/* nickname */}
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-lg text-red-500">       
+                                                            {transfer?.otherUser?.nickname}
+                                                        </span>
+                                                    </div>
                                                 </td>
                                             ) : (
-                                                <td className="p-2 text-sm text-zinc-800">
-                                                    {
-                                                        transfer?.otherUser?.nickname
-                                                        ? (
-                                                            <div className="flex flex-col gap-1 items-center justify-center">
-                                                                <Image
-                                                                    src={transfer?.otherUser?.avatar || '/profile-default.png'}
-                                                                    alt="Avatar"
-                                                                    width={50}
-                                                                    height={50}
-                                                                    className="rounded-full"
-
-                                                                    style={{
-                                                                        objectFit: 'cover',
-                                                                    }}
-                                                                
-
-                                                                />
-                                                                {transfer?.otherUser?.nickname}
-                                                            </div>
-                                                        )
-                                                        :
-                                                        transfer.transferData.fromAddress.slice(0, 6) + '...'
-                                                    }
+                                                <td className="p-2">
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-xs text-green-500">       
+                                                            {shortenAddress(transfer.transferData.fromAddress)}
+                                                        </span>
+                                                    </div>
+                                                    {/* nickname */}
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-lg text-green-500">       
+                                                            {transfer?.otherUser?.nickname}
+                                                        </span>
+                                                    </div>
                                                 </td>
                                             )}
+
                                             {/* monospace font */}
-                                            <td className="p-2">
-
-                                                <div className="flex flex-row items-end justify-end">
-                                                    <span className="text-2xl text-green-500 font-semibold text-right"
-                                                        style={{
-                                                            fontFamily: 'monospace',
-                                                        }}
-                                                    >
-                                                        {
-                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(2).split('.')[0]
-                                                        }
-                                                    </span>
-                                                    <span className="text-sm text-black text-right"
-                                                    >
-                                                        .
-                                                    </span>
-                                                    <span className="text-sm text-green-500 text-right"
-
-                                                        style={{
-                                                            fontFamily: 'monospace',
-                                                        }}
-                                                    >
-                                                        {
-                                                            Number(transfer.transferData.value / 10 ** 18).toFixed(2).split('.')[1]
-                                                        }
-                                                    </span>
-                                                </div>
-
+                                            <td className="p-2 text-xl text-blue-500 text-right"
+                                                style={{
+                                                    fontFamily: 'monospace',
+                                                }}
+                                            >
+                                                {
+                                                    //Number(transfer.transferData.value / 10 ** 18).toFixed(0)
+                                                    Number(transfer.transferData.value / 10 ** 18).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                                }
 
                                             </td>
                                             <td className="p-2 text-xs text-zinc-800 font-semibold text-right">
-                                        
+                                           
 
                                                 {
 
 
                                                     (
                                                         new Date().getTime() - transfer.transferData.timestamp
-                                                    ) < 60000 ?
-                                                        //"방금 전"
-                                                        "Just now"
-                                                        : (
+                                                    ) < 60000 ? "방금 전" : (
                                                         (
                                                             new Date().getTime() - transfer.transferData.timestamp
                                                         ) < 3600000 ? 
                                                         Math.floor(
                                                             (new Date().getTime() - transfer.transferData.timestamp) / 60000
-                                                        ) +
-                                                        //"분 전"
-                                                        "minutes ago"
-                                                        : (
+                                                        ) + "분 전" : (
                                                             (
                                                                 new Date().getTime() - transfer.transferData.timestamp
                                                             ) < 86400000 ? 
                                                             Math.floor(
                                                                 (new Date().getTime() - transfer.transferData.timestamp) / 3600000
-                                                            ) +
-                                                            //"시간 전"
-                                                            "hours ago"
-                                                            : (
+                                                            ) + "시간 전" : (
                                                                 (
                                                                     new Date().getTime() - transfer.transferData.timestamp
                                                                 ) < 604800000 ? 
                                                                 Math.floor(
                                                                     (new Date().getTime() - transfer.transferData.timestamp) / 86400000
-                                                                ) +
-                                                                //"일 전"
-                                                                "days ago"
-                                                                : (
+                                                                ) + "일 전" : (
                                                                     (
                                                                         new Date().getTime() - transfer.transferData.timestamp
                                                                     ) < 2592000000 ? 
                                                                     Math.floor(
                                                                         (new Date().getTime() - transfer.transferData.timestamp) / 604800000
-                                                                    ) +
-                                                                    //"주 전"
-                                                                    "weeks ago"
-                                                                    : (
+                                                                    ) + "주 전" : (
                                                                         (
                                                                             new Date().getTime() - transfer.transferData.timestamp
                                                                         ) < 31536000000 ? 
                                                                         Math.floor(
                                                                             (new Date().getTime() - transfer.transferData.timestamp) / 2592000000
-                                                                        ) +
-                                                                        //"달 전"
-                                                                        "months ago"
-                                                                        : (
+                                                                        ) + "달 전" : (
                                                                             Math.floor(
                                                                                 (new Date().getTime() - transfer.transferData.timestamp) / 31536000000
-                                                                            ) +
-                                                                            //"년 전"
-                                                                            "years ago"
+                                                                            ) + "년 전"
                                                                         )
                                                                     )
                                                                 )
@@ -1376,16 +1409,10 @@ function ProfilePage() {
                                 </tbody>
                             </table>
 
-                        {/*}) */}
+                        </div>
+                    ) }
 
                     
-
-
-
-                    </div>
-                    
-                   
-
                     
 
 
