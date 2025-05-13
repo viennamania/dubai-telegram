@@ -78,9 +78,8 @@ const chain = polygon;
 
 
 // DUBAI Token (USDT)
-//const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
+const tokenContractAddressUSDT = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
-const tokenContractAddressCEBIEN = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 
 
@@ -143,7 +142,16 @@ export async function GET(request: NextRequest) {
 
 
 
+      const games = await getAllGamesSettlement();
 
+      //console.log("games: ", games);
+
+
+      if (!games) {
+        return NextResponse.json({
+          result: "no data found",
+        });
+      }
 
 
     
@@ -159,17 +167,16 @@ export async function GET(request: NextRequest) {
       };
       */
       
-      const contractCEBIEN = getContract(
+      const contractUSDT = getContract(
         //contractOptions
         {
           client: client,
           chain: chain,
-          ///address: tokenContractAddressUSDT,
-          address: tokenContractAddressCEBIEN,
+          address: tokenContractAddressUSDT,
         }
       );
     
-      const claimWalletPrivateKey = process.env.GAME_CEBIEN_WALLET_PRIVATE_KEY || "";
+      const claimWalletPrivateKey = process.env.GAME_WALLET_PRIVATE_KEY || "";
     
       const personalAccount = privateKeyToAccount({
         client,
@@ -195,18 +202,6 @@ export async function GET(request: NextRequest) {
     
 
       //console.log("members: ", members);
-
-
-      const games = await getAllGamesSettlement();
-
-      console.log("games: ", games);
-
-
-      if (!games) {
-        return NextResponse.json({
-          result: "no data found",
-        });
-      }
 
 
     
@@ -240,7 +235,7 @@ export async function GET(request: NextRequest) {
         const sendAmount = game.winPrize;
 
         const transaction = transfer({
-          contract: contractCEBIEN,
+          contract: contractUSDT,
           to: toWalletAddress,
           amount: sendAmount,
         });
@@ -318,7 +313,7 @@ export async function GET(request: NextRequest) {
             if (ownerWalletAddress) {
 
               const ownerTransaction = transfer({
-                contract: contractCEBIEN,
+                contract: contractUSDT,
                 to: ownerWalletAddress,
                 amount: ownerAmount,
               });
@@ -382,7 +377,7 @@ export async function GET(request: NextRequest) {
             if (ownerOwnerWalletAddress) {
 
               const ownerOwnerTransaction = transfer({
-                contract: contractCEBIEN,
+                contract: contractUSDT,
                 to: ownerOwnerWalletAddress,
                 amount: ownerOwnerAmount,
               });
