@@ -2,10 +2,7 @@
     "crons": [
 
 
-        {
-            "path": "/api/cronjob/gameDubai",
-            "schedule": "* * * * *"
-        },
+
         {
             "path": "/api/cronjob/raceGameDubai",
             "schedule": "* * * * *"

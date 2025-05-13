@@ -199,7 +199,7 @@ export async function GET(request: NextRequest) {
 
       const games = await getAllGamesSettlement();
 
-      //console.log("games: ", games);
+      console.log("games: ", games);
 
 
       if (!games) {
