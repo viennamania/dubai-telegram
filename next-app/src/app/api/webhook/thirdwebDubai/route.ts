@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
   } = data;
 
 
-  //console.log("to", decodedLog.to, "from", decodedLog.from, "value", decodedLog.value);
+  console.log("to", decodedLog.to, "from", decodedLog.from, "value", decodedLog.value);
 
 
 

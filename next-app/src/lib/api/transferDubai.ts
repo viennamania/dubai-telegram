@@ -19,6 +19,8 @@ export interface TransferProps {
     timestamp: string;
 }
 
+
+
 export async function insertOne(data: any) {
 
     if (!data.transactionHash || !data.transactionIndex || !data.fromAddress || !data.toAddress || !data.value || !data.timestamp) {
