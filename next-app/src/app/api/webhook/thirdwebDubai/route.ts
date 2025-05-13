@@ -124,6 +124,17 @@ export async function POST(request: NextRequest) {
   console.log("to", decodedLog.to, "from", decodedLog.from, "value", decodedLog.value);
 
 
+  /*
+  to {
+  type: 'address',
+  value: '0x820401adfF23A01E2CaCF913A2642B781d470a95'
+} from {
+  type: 'address',
+  value: '0xe38A3D8786924E2c1C427a4CA5269e6C9D37BC9C'
+} value { type: 'uint256', value: '32000000000000000000' }
+  */
+
+
 
   const toAddress = decodedLog.to.value;
   const fromAddress = decodedLog.from.value;

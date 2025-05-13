@@ -160,6 +160,14 @@ export async function insertOne(data: any) {
             const telegramId = userToAddress.telegramId;
             const center = userToAddress.center;
 
+            console.log("walletAddress", walletAddress);
+            console.log("telegramId", telegramId);
+            console.log("center", center);
+
+
+
+            
+
             if (telegramId) {
 
                 // divide by 1e18
