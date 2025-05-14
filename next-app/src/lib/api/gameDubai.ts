@@ -45,7 +45,13 @@ export async function insertOne(data: any) {
     // within 120 seconds
     if (
       //isWithinOneMinute(latestData.createdAt)
-      new Date().getTime() - new Date(latestData.createdAt).getTime() < 60000
+      
+      
+      ///new Date().getTime() - new Date(latestData.createdAt).getTime() < 60000
+
+      new Date().getTime() - new Date(latestData.createdAt).getTime() < 1000
+
+
     ) {
   
       return {
@@ -54,6 +60,8 @@ export async function insertOne(data: any) {
         data: latestData
 
       };
+
+
 
     } else {
 
