@@ -89,6 +89,9 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
 
+
+  console.log("start gameDubai==================>");
+
     //const center = "owin_anawin_bot";
 
     // get parameters from request
@@ -144,10 +147,14 @@ export async function GET(request: NextRequest) {
 
       const games = await getAllGamesSettlement();
 
-      //console.log("games: ", games);
+      console.log("games: ", games);
 
 
       if (!games) {
+
+        console.log("nod data found");
+
+
         return NextResponse.json({
           result: "no data found",
         });
@@ -262,7 +269,9 @@ export async function GET(request: NextRequest) {
    
         const user = await getOneByWalletAddress(toWalletAddress);
 
-        //console.log("user: ", user);
+        console.log("user: ", user);
+
+
 
         if (user) {
           const telegramId = user.telegramId;
@@ -347,7 +356,7 @@ export async function GET(request: NextRequest) {
         const secondOwnerOwner = await getOneByWalletAddress(firstOwnerWalletAddress);
 
 
-        //console.log("user: ", user);
+        console.log("secondOwnerOwner: ", secondOwnerOwner);
 
         if (secondOwnerOwner) {
           const telegramId = secondOwnerOwner.telegramId;
@@ -412,7 +421,10 @@ export async function GET(request: NextRequest) {
         let thirdOwnerWalletAddress = "";
         let thirdOwnerAmount = "";
         const thirdOwnerOwner = await getOneByWalletAddress(secondOwnerWalletAddress);
-        //console.log("user: ", user);
+
+        
+
+
         if (thirdOwnerOwner) {
           const telegramId = thirdOwnerOwner.telegramId;
           const center = thirdOwnerOwner.center;
@@ -512,6 +524,11 @@ export async function GET(request: NextRequest) {
     
 
       if (transactions.length === 0) {
+        
+        
+        console.log("transaction is empty");
+
+
         return NextResponse.json({
           result: "no data found",
         });

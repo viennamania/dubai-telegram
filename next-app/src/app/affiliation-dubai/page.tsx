@@ -106,7 +106,7 @@ function AgentPage() {
     const address = account?.address;
   
     // test address
-    //const address = "0x542197103Ca1398db86026Be0a85bc8DcE83e440";
+    ///const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
   
 
 
@@ -208,7 +208,7 @@ function AgentPage() {
 
             const data = await response.json();
 
-            ///console.log("data", data);
+            //console.log("getUser data", data);
 
             if (data.result) {
                 setNickname(data.result.nickname);
@@ -701,6 +701,10 @@ function AgentPage() {
             return;
         }
         */
+
+        // 
+
+
 
         if (
             //confirm("추천코드 NFT를 발행하시겠습니까?") === false
@@ -1388,6 +1392,8 @@ function AgentPage() {
                             <div className='w-full flex flex-col gap-2 items-start justify-between
                                 bg-yellow-100 border border-gray-300
                                 p-4 rounded-lg'>
+
+
                                 
 
                                 <div className="flex flex-row gap-2 items-center justify-start">
@@ -1399,6 +1405,13 @@ function AgentPage() {
                                         Mint Referral Code NFT
                                     </span>
                                 </div>
+
+                                {/* Price 15 DUBAI */}
+                                {/* Your Balance is  DUBAI */}
+
+                              
+
+
 
                                 {/*
                                 <div className='flex flex-col xl:flex-row gap-2 items-start justify-between'>
