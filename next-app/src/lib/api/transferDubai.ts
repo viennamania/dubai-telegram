@@ -300,6 +300,7 @@ export async function insertOne(data: any) {
 export async function getTransferByWalletAddress(data: any) {
 
     if (!data.walletAddress) {
+        console.log("walletAddress is required");
         return null;
     }
 
@@ -316,6 +317,7 @@ export async function getTransferByWalletAddress(data: any) {
 
 
     if (!user) {
+        console.log("user not found");
         return null;
     }
 

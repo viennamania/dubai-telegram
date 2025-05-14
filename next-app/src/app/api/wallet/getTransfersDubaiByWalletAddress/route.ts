@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
 	getTransferByWalletAddress
-} from '@lib/api/transferCebien';
+} from '@lib/api/transferDubai'
 
 
 export async function POST(request: NextRequest) {
@@ -20,6 +20,8 @@ export async function POST(request: NextRequest) {
     page,
     walletAddress,
   });
+
+  //console.log("getTransferByWalletAddress result", result);
 
  
   return NextResponse.json({
