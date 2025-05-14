@@ -340,6 +340,8 @@ export async function GET(request: NextRequest) {
             
           }
 
+        } else {
+          continue;
         }
 
 
@@ -410,6 +412,10 @@ export async function GET(request: NextRequest) {
             
           }
 
+        } else {
+
+          continue;
+
         }
 
 
@@ -455,7 +461,11 @@ export async function GET(request: NextRequest) {
               transactions.push(ownerOwnerTransaction);
             }
           }
+        } else {
+          continue;
         }
+
+
 
         // 4th level
         // rate 2%
@@ -494,6 +504,8 @@ export async function GET(request: NextRequest) {
               transactions.push(ownerOwnerTransaction);
             }
           }
+        } else {
+          continue;
         }
 
 
