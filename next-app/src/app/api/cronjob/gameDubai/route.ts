@@ -252,8 +252,13 @@ export async function GET(request: NextRequest) {
         // get telegram id from users by wallet address
         // find referral from members by wallet address
 
-        let ownerWalletAddress = "";
-        let ownerAmount = "";
+        // 1st level
+        // rate 10%
+        const firstLevelRate = 0.1;
+
+        let firstOwnerWalletAddress = "";
+        let firstOwnerownerAmount = "";
+
    
         const user = await getOneByWalletAddress(toWalletAddress);
 
@@ -300,22 +305,23 @@ export async function GET(request: NextRequest) {
 
 
 
-            ownerWalletAddress = owner?.owners?.[0];
+            firstOwnerWalletAddress = owner?.owners?.[0];
 
-            console.log("ownerWalletAddress: ", ownerWalletAddress );
-
-
-            ownerAmount = Number(parseFloat(sendAmount) * 0.1).toFixed(2);
-
-            console.log("ownerAmount: ", ownerAmount );
+            console.log("firstOwnerWalletAddress: ", firstOwnerWalletAddress );
 
 
-            if (ownerWalletAddress) {
+            firstOwnerownerAmount = Number(parseFloat(sendAmount) * firstLevelRate).toFixed(2);
+
+
+            console.log("ownerAmount: ", firstOwnerownerAmount );
+
+
+            if (firstOwnerWalletAddress) {
 
               const ownerTransaction = transfer({
                 contract: contractUSDT,
-                to: ownerWalletAddress,
-                amount: ownerAmount,
+                to: firstOwnerWalletAddress,
+                amount: firstOwnerownerAmount,
               });
 
               transactions.push(ownerTransaction);
@@ -331,15 +337,21 @@ export async function GET(request: NextRequest) {
 
 
 
+        // 2nd level
+        // rate 5%
 
+        const secondLevelRate = 0.05;
+        let secondOwnerWalletAddress = "";
+        let secondOwnerAmount = "";
 
-        const userOwnerOwner = await getOneByWalletAddress(ownerWalletAddress);
+        const secondOwnerOwner = await getOneByWalletAddress(firstOwnerWalletAddress);
+
 
         //console.log("user: ", user);
 
-        if (userOwnerOwner) {
-          const telegramId = userOwnerOwner.telegramId;
-          const center = userOwnerOwner.center;
+        if (secondOwnerOwner) {
+          const telegramId = secondOwnerOwner.telegramId;
+          const center = secondOwnerOwner.center;
 
           const response = await getOneByTelegramId(telegramId, center);
 
@@ -364,22 +376,22 @@ export async function GET(request: NextRequest) {
 
 
 
-            const ownerOwnerWalletAddress = ownerOwner?.owners?.[0];
+            secondOwnerWalletAddress = ownerOwner?.owners?.[0];
 
-            console.log("ownerOwnerWalletAddress: ", ownerOwnerWalletAddress );
-
-
-            const ownerOwnerAmount = Number(parseFloat(sendAmount) * 0.05).toFixed(2);
-
-            console.log("ownerOwnerAmount: ", ownerOwnerAmount );
+            console.log("secondOwnerWalletAddress: ", secondOwnerWalletAddress );
 
 
-            if (ownerOwnerWalletAddress) {
+            secondOwnerAmount = Number(parseFloat(sendAmount) * secondLevelRate).toFixed(2);
+
+            console.log("secondOwnerAmount: ", secondOwnerAmount );
+
+
+            if (secondOwnerWalletAddress) {
 
               const ownerOwnerTransaction = transfer({
                 contract: contractUSDT,
-                to: ownerOwnerWalletAddress,
-                amount: ownerOwnerAmount,
+                to: secondOwnerWalletAddress,
+                amount: secondOwnerAmount,
               });
 
               transactions.push(ownerOwnerTransaction);
@@ -393,6 +405,84 @@ export async function GET(request: NextRequest) {
 
 
 
+
+        // 3rd level
+        // rate 3%
+        const thirdLevelRate = 0.03;
+        let thirdOwnerWalletAddress = "";
+        let thirdOwnerAmount = "";
+        const thirdOwnerOwner = await getOneByWalletAddress(secondOwnerWalletAddress);
+        //console.log("user: ", user);
+        if (thirdOwnerOwner) {
+          const telegramId = thirdOwnerOwner.telegramId;
+          const center = thirdOwnerOwner.center;
+          const response = await getOneByTelegramId(telegramId, center);
+          if (response && response.referralCode) {
+            const referralCode = response.referralCode;
+            // get contract address and tokenId from referralCode
+            const referralCodeArray = referralCode.split("_");
+            const contractAddress = referralCodeArray[0];
+            const tokenId = referralCodeArray[1];
+            console.log("contractAddress: ", contractAddress);
+            console.log("tokenId: ", tokenId);
+            // Get owner of NFT
+            const ownerOwner = await alchemy.nft.getOwnersForNft(
+              contractAddress,
+              tokenId
+            );
+            thirdOwnerWalletAddress = ownerOwner?.owners?.[0];
+            console.log("thirdOwnerWalletAddress: ", thirdOwnerWalletAddress );
+            thirdOwnerAmount = Number(parseFloat(sendAmount) * thirdLevelRate).toFixed(2);
+            console.log("thirdOwnerAmount: ", thirdOwnerAmount );
+            if (thirdOwnerWalletAddress) {
+              const ownerOwnerTransaction = transfer({
+                contract: contractUSDT,
+                to: thirdOwnerWalletAddress,
+                amount: thirdOwnerAmount,
+              });
+              transactions.push(ownerOwnerTransaction);
+            }
+          }
+        }
+
+        // 4th level
+        // rate 2%
+        const fourthLevelRate = 0.02;
+        let fourthOwnerWalletAddress = "";
+        let fourthOwnerAmount = "";
+        const fourthOwnerOwner = await getOneByWalletAddress(thirdOwnerWalletAddress);
+        //console.log("user: ", user);
+        if (fourthOwnerOwner) {
+          const telegramId = fourthOwnerOwner.telegramId;
+          const center = fourthOwnerOwner.center;
+          const response = await getOneByTelegramId(telegramId, center);
+          if (response && response.referralCode) {
+            const referralCode = response.referralCode;
+            // get contract address and tokenId from referralCode
+            const referralCodeArray = referralCode.split("_");
+            const contractAddress = referralCodeArray[0];
+            const tokenId = referralCodeArray[1];
+            console.log("contractAddress: ", contractAddress);
+            console.log("tokenId: ", tokenId);
+            // Get owner of NFT
+            const ownerOwner = await alchemy.nft.getOwnersForNft(
+              contractAddress,
+              tokenId
+            );
+            fourthOwnerWalletAddress = ownerOwner?.owners?.[0];
+            console.log("fourthOwnerWalletAddress: ", fourthOwnerWalletAddress );
+            fourthOwnerAmount = Number(parseFloat(sendAmount) * fourthLevelRate).toFixed(2);
+            console.log("fourthOwnerAmount: ", fourthOwnerAmount );
+            if (fourthOwnerWalletAddress) {
+              const ownerOwnerTransaction = transfer({
+                contract: contractUSDT,
+                to: fourthOwnerWalletAddress,
+                amount: fourthOwnerAmount,
+              });
+              transactions.push(ownerOwnerTransaction);
+            }
+          }
+        }
 
 
             
