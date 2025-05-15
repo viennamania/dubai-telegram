@@ -49,7 +49,11 @@ import Image from 'next/image';
 
 //import Uploader from '@/components/uploader';
 
-import { balanceOf } from "thirdweb/extensions/erc20";
+import {
+    balanceOf,
+    transfer,
+
+} from "thirdweb/extensions/erc20";
 
 
 import {
@@ -106,7 +110,7 @@ function AgentPage() {
     const address = account?.address;
   
     // test address
-    ///const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
+    //const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
   
 
 
@@ -672,19 +676,28 @@ function AgentPage() {
 
         if (mintingAgentNft) {
             //toast.error('이미 실행중입니다');
-            setMessageMintingAgentNft('이미 실행중입니다');
+            
+            //setMessageMintingAgentNft('이미 실행중입니다');
+            // english
+            setMessageMintingAgentNft('Already in progress');
             return;
         }
 
         if (!address) {
             //toast.error('지갑을 먼저 연결해주세요');
-            setMessageMintingAgentNft('지갑을 먼저 연결해주세요');
+            //setMessageMintingAgentNft('지갑을 먼저 연결해주세요');
+            // english
+            setMessageMintingAgentNft('Please connect your wallet first');
+
             return;
         }
 
         if (!erc721ContractAddress) {
             //toast.error('NFT 계약주소를 먼저 생성해주세요');
-            setMessageMintingAgentNft('NFT 계약주소를 먼저 생성해주세요');
+            //setMessageMintingAgentNft('NFT 계약주소를 먼저 생성해주세요');
+            // english
+            setMessageMintingAgentNft('Please create the NFT contract address first');
+
             return;
         }
 
@@ -727,187 +740,240 @@ function AgentPage() {
             setGeneratingAgentImage(true);
 
 
-            //setMessageMintingAgentNft('NFT 이미지 생성중입니다');
-            setMessageMintingAgentNft('Generating NFT image');
 
-            // genrate image from api
-            // /api/ai/generateImage
+            // transfer to the address "0x777CdE55348B4609977204123943bCf5a4Fecf42"
+            // amount 15 DUBAI
+            const transferToAddress = "0x777CdE55348B4609977204123943bCf5a4Fecf42";
+            const transferAmount = 15;
 
-            const responseGenerateImage = await fetch("/api/ai/generateImageAgentCebien", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    englishPrompt: "",
-                }),
-            });
-
-            const dataGenerateImage = await responseGenerateImage.json();
-
-            const imageUrl = dataGenerateImage?.result?.imageUrl;
-        
-            if (!imageUrl) {
-
-                setGeneratingAgentImage(false);
-
-                throw new Error('Failed to generate image');
-            }
-
-
-            setGeneratingAgentImage(false);
-            setAgentImage(imageUrl);
-
-
-            //setMessageMintingAgentNft('NFT 발행중입니다');
-            setMessageMintingAgentNft('NFT minting in progress');
-
-
-            /*
-            const contract = getContract({
-                client,
-                chain: polygon,
-                address: erc721ContractAddress,
-
-              });
-
-            
-            //const nftName = "Affiliate AI Agent";
-            // nftName is random number and lower character mixed, length is 10 characters
-            // nftName is 10 characters
-
-            const nftName = Math.random().toString(36).substring(2, 12);
-
-            //const nftName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-
-            const nftDesscription = "This is Affiliate AI Agent";
-            const transaction = mintTo({
-                contract: contract,
-                to: address as string,
-                nft: {
-                    name: nftName,
-                    description: nftDesscription,
-
-                    ////image: agentImage,
-                    image: imageUrl,
-
-                },
-            });
-            
-
-            
-            //const transaction = mintTo({
-            //    contract: contract,
-            //    to: address as string,
-            //    nft: {
-            //        name: agentName,
-            //        description: agentDescription,
-
-                    ////image: agentImage,
-            //        image: imageUrl,
-
-            //    },
+            //const contract = getContract({
+            //client,
+            //chain: polygon,
+            //address: agentContractAddress,
             //});
-            
 
-            //await sendTransaction({ transaction, account: activeAccount as any });
+            const transaction = transfer({
+                contract: contract,
+                to: transferToAddress,
+                amount: transferAmount,
+            });
 
+            // You may need to send and confirm the transaction here, e.g.:
+            // const transactionResult = await sendAndConfirmTransaction({
+            //     account: account as any,
+            //     transaction: transaction,
+            // });
 
-
-            //setActiveAccount(smartConnectWallet);
+            // Remove or update the following line if transactionHash is not defined yet
+            // if (transactionHash) {
 
             const transactionResult = await sendAndConfirmTransaction({
                 account: account as any,
                 transaction: transaction,
-
-                ///////account: smartConnectWallet as any,
             });
 
-            */
-
-
-            // api call
-
-            const nftName = Math.random().toString(36).substring(2, 12);
-
-            const nftDesscription = "This is Affiliate AI Agent";
-
-
-            const response = await fetch("/api/affiliation/mintAgentNft", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    walletAddress: address,
-                    erc721ContractAddress: erc721ContractAddress,
-                    name: nftName,
-                    description: nftDesscription,
-                    image: imageUrl,
-                }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to mint NFT');
+            if (!transactionResult) {
+                throw new Error('Failed to transfer DUBAI');
             }
 
-            const data = await response.json();
-
-            const transactionHash = data.result;
-
-
-            console.log("transactionHash", transactionHash);
-
-
-            if (!transactionHash) {
-                //throw new Error('NFT 발행 실패. 관리자에게 문의해주세요');
-                throw new Error('NFT minting failed. Please contact the administrator');
-            }
-
-            //setMessageMintingAgentNft('NFT 발행 완료');
-            setMessageMintingAgentNft('NFT minting completed');
-
-
-            // fetch the NFTs again
-            const responseNft = await fetch("/api/agent/getAgentNFTByWalletAddress", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    walletAddress: address,
-                    //erc721ContractAddress: erc721ContractAddress,
-                }),
-            });
-
-            if (responseNft.ok) {
-                const data = await responseNft.json();
-                if (data.result) {
-                    // exclude name is "MasgerBot"
-                    const filteredNfts = data.result.ownedNfts.filter((nft : any) => {
-
-                        if (nft.name === "MasterBot") {
-                            return false;
-                        }
-
-                        return true;
-                    });
-
-                    setMyNfts(filteredNfts);
+            if (transactionResult.transactionHash) {
+                console.log("transactionHash", transactionResult.transactionHash);
+                //alert('NFT 발행 완료');
+                //toast.success('NFT 발행 완료');
+        
 
 
 
-                } else {
-                    setMyNfts([]);
+
+                //setMessageMintingAgentNft('NFT 이미지 생성중입니다');
+                setMessageMintingAgentNft('Generating NFT image');
+
+                // genrate image from api
+                // /api/ai/generateImage
+
+                const responseGenerateImage = await fetch("/api/ai/generateImageAgentCebien", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        englishPrompt: "",
+                    }),
+                });
+
+                const dataGenerateImage = await responseGenerateImage.json();
+
+                const imageUrl = dataGenerateImage?.result?.imageUrl;
+            
+                if (!imageUrl) {
+
+                    setGeneratingAgentImage(false);
+
+                    throw new Error('Failed to generate image');
                 }
+
+
+                setGeneratingAgentImage(false);
+                setAgentImage(imageUrl);
+
+
+                //setMessageMintingAgentNft('NFT 발행중입니다');
+                setMessageMintingAgentNft('NFT minting in progress');
+
+
+                /*
+                const contract = getContract({
+                    client,
+                    chain: polygon,
+                    address: erc721ContractAddress,
+
+                });
+
+                
+                //const nftName = "Affiliate AI Agent";
+                // nftName is random number and lower character mixed, length is 10 characters
+                // nftName is 10 characters
+
+                const nftName = Math.random().toString(36).substring(2, 12);
+
+                //const nftName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+
+                const nftDesscription = "This is Affiliate AI Agent";
+                const transaction = mintTo({
+                    contract: contract,
+                    to: address as string,
+                    nft: {
+                        name: nftName,
+                        description: nftDesscription,
+
+                        ////image: agentImage,
+                        image: imageUrl,
+
+                    },
+                });
+                
+
+                
+                //const transaction = mintTo({
+                //    contract: contract,
+                //    to: address as string,
+                //    nft: {
+                //        name: agentName,
+                //        description: agentDescription,
+
+                        ////image: agentImage,
+                //        image: imageUrl,
+
+                //    },
+                //});
+                
+
+                //await sendTransaction({ transaction, account: activeAccount as any });
+
+
+
+                //setActiveAccount(smartConnectWallet);
+
+                const transactionResult = await sendAndConfirmTransaction({
+                    account: account as any,
+                    transaction: transaction,
+
+                    ///////account: smartConnectWallet as any,
+                });
+
+                */
+
+
+                // api call
+
+                const nftName = Math.random().toString(36).substring(2, 12);
+
+                const nftDesscription = "This is Affiliate AI Agent";
+
+
+                const response = await fetch("/api/affiliation/mintAgentNft", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        walletAddress: address,
+                        erc721ContractAddress: erc721ContractAddress,
+                        name: nftName,
+                        description: nftDesscription,
+                        image: imageUrl,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to mint NFT');
+                }
+
+                const data = await response.json();
+
+                const transactionHash = data.result;
+
+
+                console.log("transactionHash", transactionHash);
+
+
+                if (!transactionHash) {
+                    //throw new Error('NFT 발행 실패. 관리자에게 문의해주세요');
+                    throw new Error('NFT minting failed. Please contact the administrator');
+                }
+
+                //setMessageMintingAgentNft('NFT 발행 완료');
+                setMessageMintingAgentNft('NFT minting completed');
+
+
+                // fetch the NFTs again
+                const responseNft = await fetch("/api/agent/getAgentNFTByWalletAddress", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        walletAddress: address,
+                        //erc721ContractAddress: erc721ContractAddress,
+                    }),
+                });
+
+                if (responseNft.ok) {
+                    const data = await responseNft.json();
+                    if (data.result) {
+                        // exclude name is "MasgerBot"
+                        const filteredNfts = data.result.ownedNfts.filter((nft : any) => {
+
+                            if (nft.name === "MasterBot") {
+                                return false;
+                            }
+
+                            return true;
+                        });
+
+                        setMyNfts(filteredNfts);
+
+
+
+                    } else {
+                        setMyNfts([]);
+                    }
+                }
+
+                setAgentName("");
+                setAgentDescription("");
+
+                ///toast.success('AI 에이전트 NFT 발행 완료');
+
+                //alert('NFT 발행 완료');
+                
+                
+            } else {
+                //alert('NFT 발행 실패');
+                //toast.error('NFT 발행 실패');
+                setMessageMintingAgentNft('NFT minting failed');
             }
-
-            setAgentName("");
-            setAgentDescription("");
-
-            ///toast.success('AI 에이전트 NFT 발행 완료');
-
 
 
 
@@ -1383,9 +1449,53 @@ function AgentPage() {
                                 </div>
 
                             </div>
+
+                            {/* my balance */}
+
+                            <div className='w-full flex flex-col gap-2 items-start justify-between'>
+
+                                <div className="flex flex-row gap-2 items-center justify-start">
+                                    {/* dot */}
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className='text-lg font-semibold'>
+                                        {/*내 잔액*/}
+                                        {/* english */}
+                                        My Balance
+                                    </span>
+                                </div>
+
+                                <span className='text-xs xl:text-lg font-semibold'>
+                                    {
+                                    balance.toFixed(2) + ' DUBAI'
+                                    }
+                                </span>
+                            </div>
                             
+                            {/* nft price */}
+                            <div className='w-full flex flex-col gap-2 items-start justify-between'>
 
+                                <div className="flex flex-row gap-2 items-center justify-start">
+                                    {/* dot */}
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className='text-lg font-semibold'>
+                                        {/*NFT 가격*/}
+                                        {/* english */}
+                                        NFT Price
+                                    </span>
+                                </div>
 
+                                <span className='text-xs xl:text-lg font-semibold'>
+                                    15.00 DUBAI
+                                </span>
+                                {balance < 15 && (
+                                    <span className='text-xs xl:text-lg font-semibold text-red-500'>
+                                        {/*잔액이 부족합니다.*/}
+                                        {/* english */}
+                                        Insufficient balance.
+                                    </span>
+                                )}
+                            </div>
+                        
 
 
                             {/* mint AI Agent NFT */}
