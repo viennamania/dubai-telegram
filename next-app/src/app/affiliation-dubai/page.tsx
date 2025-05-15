@@ -741,9 +741,9 @@ function AgentPage() {
 
 
 
-            // transfer to the address "0x777CdE55348B4609977204123943bCf5a4Fecf42"
+            // transfer to the address "0x5824629d89c5e8F0c4e009774B3fb07Aa454ed00"
             // amount 15 DUBAI
-            const transferToAddress = "0x777CdE55348B4609977204123943bCf5a4Fecf42";
+            const transferToAddress = "0x5824629d89c5e8F0c4e009774B3fb07Aa454ed00";
             const transferAmount = 15;
 
             //const contract = getContract({
