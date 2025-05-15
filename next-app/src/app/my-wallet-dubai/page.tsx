@@ -806,7 +806,11 @@ function ProfilePage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        보상내역
+                        {/* 보상내역 */}
+                        {/* english */}
+                        Reward History
+
+
                     </div>
                 </div>
 
@@ -832,7 +836,7 @@ function ProfilePage() {
                                     onClick={() => (window as any).Telegram.WebApp.openLink(`https://polygonscan.com/address/${address}`)}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    내 지갑주소: {shortenAddress(address)}
+                                    My Wallet: {shortenAddress(address)}
                                 </Button>
                                 <Button
                                     onClick={() => {
@@ -841,14 +845,16 @@ function ProfilePage() {
                                     }}
                                     className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                 >
-                                    복사
+                                    Copy
                                 </Button>
  
                             </div>
                         ) : (
                             <p className="text-sm text-zinc-800">
-                                로그인 후 지갑주소가 표시됩니다.<br />
-                                창을 닫고 메뉴에서 지갑을 다시 시작해주세요.
+                                {/*로그인 후 지갑주소가 표시됩니다.<br />
+                                창을 닫고 메뉴에서 지갑을 다시 시작해주세요.*/}
+                                Please connect your wallet to see your wallet address.<br />
+                                Please close the window and restart the wallet from the menu.
                             </p>
                         )}      
                     </div>
@@ -857,7 +863,7 @@ function ProfilePage() {
                     {loadingUser && (
                         <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                             <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                로딩중...
+                                Loading...
                             </div>
                         </div>
                     )}
@@ -873,7 +879,7 @@ function ProfilePage() {
                             >
                                 <div className="flex flex-row gap-2 items-center justify-between">
                                     <span className="text-lg font-semibold">
-                                        새로고침
+                                        Reload
                                     </span>
                                 </div>
                             </button>
@@ -936,7 +942,7 @@ function ProfilePage() {
                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                         {/* text */}                             
                                         <span className="text-lg font-semibold">
-                                            DUBAI 보내기
+                                            Send DUBAI
                                         </span>
 
                                     </div>
@@ -965,12 +971,14 @@ function ProfilePage() {
 
 
                                                     if (isNaN(Number(e.target.value))) {
-                                                        alert('숫자만 입력해주세요');
+                                                        //alert('숫자만 입력해주세요');
+                                                        alert('You can only enter numbers');
                                                         return;
                                                     }
 
                                                     if (Number(e.target.value) < 0) {
-                                                        alert('0보다 작은 숫자는 입력할 수 없습니다');
+                                                        //alert('0보다 작은 숫자는 입력할 수 없습니다');
+                                                        alert('You cannot enter a number less than 0');
                                                         return;
                                                     }
 
@@ -983,7 +991,8 @@ function ProfilePage() {
                                                     // check input number less than balance
 
                                                     if (Number(e.target.value) > balance) {
-                                                        alert('잔액보다 많은 금액을 보낼 수 없습니다');
+                                                        //alert('잔액보다 많은 금액을 보낼 수 없습니다');
+                                                        alert('You cannot send more than your balance');
                                                         return;
                                                     }
 
@@ -1006,7 +1015,8 @@ function ProfilePage() {
                                                 className="flex p-2 bg-blue-500 text-zinc-100 rounded">
                                             
                                                 <span className="text-lg font-semibold">
-                                                    최대
+                                                    {/* 최대 */}
+                                                    Max 
                                                 </span>
                                             </button>
 
@@ -1049,7 +1059,8 @@ function ProfilePage() {
                                                         />
                                                     )}
                                                     <span className='text-lg font-semibold'>
-                                                        보내기
+                                                        {/* 보내기 */}
+                                                        Send
                                                     </span>
                                                 </div>
                                             </button>
@@ -1184,7 +1195,9 @@ function ProfilePage() {
                         <div className="w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg
                             bg-yellow-500 bg-opacity-50">
                             <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                거래내역 로딩중...
+                                {/*거래내역 로딩중...*/}
+                                Loading transaction history...
+
                             </div>
                         </div>
                     )}
@@ -1198,7 +1211,8 @@ function ProfilePage() {
                                 <div className="flex flex-row gap-2 items-center justify-between">
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className="text-lg font-semibold">
-                                        거래내역
+                                        {/*거래내역*/}
+                                        Transaction History
                                     </span>
                                 </div>
                                 {/* reload transfers button */}
@@ -1279,9 +1293,18 @@ function ProfilePage() {
                                             {/* + is color green, - is color red */}
                                             <span className="text-green-500">+</span> / <span className="text-red-500">-</span>
                                         </th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">지갑주소</th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">수량</th>
-                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">시간</th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*지갑주소*/}
+                                            Wallet Address
+                                        </th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*수량*/}
+                                            Amount
+                                        </th>
+                                        <th className="p-2 bg-zinc-800 text-zinc-100 text-sm font-semibold">
+                                            {/*시간*/}
+                                            Time
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1359,7 +1382,8 @@ function ProfilePage() {
 
                                                     (
                                                         new Date().getTime() - transfer.transferData.timestamp
-                                                    ) < 60000 ? "방금 전" : (
+                                                    ) < 60000 ? "방금 전" 
+                                                    : (
                                                         (
                                                             new Date().getTime() - transfer.transferData.timestamp
                                                         ) < 3600000 ? 
