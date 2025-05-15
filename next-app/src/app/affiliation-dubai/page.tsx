@@ -740,7 +740,6 @@ function AgentPage() {
             setGeneratingAgentImage(true);
 
 
-
             // transfer to the address "0x5824629d89c5e8F0c4e009774B3fb07Aa454ed00"
             // amount 15 DUBAI
             const transferToAddress = "0x5824629d89c5e8F0c4e009774B3fb07Aa454ed00";
@@ -775,6 +774,7 @@ function AgentPage() {
             if (!transactionResult) {
                 throw new Error('Failed to transfer DUBAI');
             }
+
 
             if (transactionResult.transactionHash) {
                 console.log("transactionHash", transactionResult.transactionHash);
@@ -1464,7 +1464,7 @@ function AgentPage() {
                                     </span>
                                 </div>
 
-                                <span className='text-xs xl:text-lg font-semibold'>
+                                <span className='text-2xl xl:text-lg text-green-500 font-semibold'>
                                     {
                                     balance.toFixed(2) + ' DUBAI'
                                     }
@@ -1484,7 +1484,7 @@ function AgentPage() {
                                     </span>
                                 </div>
 
-                                <span className='text-xs xl:text-lg font-semibold'>
+                                <span className='text-2xl xl:text-lg text-green-500 font-semibold'>
                                     15.00 DUBAI
                                 </span>
                                 {balance < 15 && (
