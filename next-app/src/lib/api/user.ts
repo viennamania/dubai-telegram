@@ -52,7 +52,7 @@ export interface UserProps {
   centerOwner: boolean,
   telegramId: string,
 
-  
+  gameMoneyBalance: number,
 
 }
 
@@ -1707,4 +1707,52 @@ export async function updateCenterByTelegramId({
     }
   );
   
+}
+
+
+
+
+
+// updateOneGameMoney
+
+
+export async function updateOneGameMoney(data: any) {
+
+
+
+
+
+  if (!data.walletAddress || !data.addGameMoney) {
+    return null;
+  }
+
+
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('users');
+
+
+
+  // if gameMoneyBalance is not exist, then gameMoneyBalance is addGameMoney
+  // if gameMoneyBalance is exit. then gameMoneyBalance is plus addGameMoney
+
+  const result = await collection.updateOne(
+    { walletAddress: data.walletAddress },
+    { $set: {gameMoneyBalance: data.addGameMoney} }
+  )
+
+
+
+
+  if (result) {
+    const updated = await collection.findOne<UserProps>(
+      { walletAddress: data.walletAddress },
+    );
+
+    return {
+      gameMoneyBalance: updated?.gameMoneyBalance
+    }
+  } else {
+    return null;
+  }
+
 }

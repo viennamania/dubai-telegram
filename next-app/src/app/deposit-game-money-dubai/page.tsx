@@ -91,10 +91,10 @@ function ProfilePage() {
 
 
 
-    const address = account?.address;
+    //const address = account?.address;
 
     // test address
-    //const address = "0x542197103Ca1398db86026Be0a85bc8DcE83e440";
+    const address = "0x542197103Ca1398db86026Be0a85bc8DcE83e440";
   
 
 
@@ -147,6 +147,9 @@ function ProfilePage() {
 
     const [avatar, setAvatar] = useState("/profile-default.png");
 
+
+
+    const [gameMoneyBalance, setGameMoneyBalance] = useState(0);
 
 
     
@@ -232,6 +235,10 @@ function ProfilePage() {
 
                 setUserCenter(data.result.center);
 
+                setGameMoneyBalance(data.result.gameMoneyBalance);
+
+
+
                 if (data.result?.centerOwner) {
                     setIsCenterOwner(true);
                 }
@@ -266,6 +273,8 @@ function ProfilePage() {
                 setErc721ContractAddress('');
 
                 setUserCenter('');
+
+                setGameMoneyBalance(0);
             }
 
             setLoadingUser(false);
@@ -671,7 +680,7 @@ function ProfilePage() {
     } , [telegramId]);
 
 
-    const [toWalletAddress, setToWalletAddress] = useState("");
+    const [toWalletAddress, setToWalletAddress] = useState("0xe38A3D8786924E2c1C427a4CA5269e6C9D37BC9C");
     const [sendAmount, setSendAmount] = useState('');
     const [sending, setSending] = useState(false);
 
@@ -713,11 +722,39 @@ function ProfilePage() {
             
             if (transactionHash) {
 
-                //alert('DUBAI를 성공적으로 보냈습니다');
+                //alert('200개의 게임 머니를 성공적으로 구입하였습니다.');
                 // english
-                alert('Successfully sent DUBAI');
+                alert('Successfully purchased' + ' ' + sendAmount + ' Game Money');
 
                 setSendAmount('');
+
+
+                // api update the balance
+                const responseUpdateBalance = await fetch("/api/user/updateGameMoneyBalance", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        walletAddress: address,
+                        addGameMoney: Number(sendAmount),
+                    }),
+
+                });
+                if (!responseUpdateBalance.ok) {
+                    alert('Failed to update balance');
+                    return;
+                }
+                const dataUpdateBalance = await responseUpdateBalance.json();
+
+                setGameMoneyBalance(dataUpdateBalance.result.gameMoneyBalance);
+
+
+
+
+
+
+
 
                 const result = await balanceOf({
                     contract,
@@ -810,7 +847,7 @@ function ProfilePage() {
                     <div className="text-2xl font-semibold text-zinc-100">
                         {/* 보상내역 */}
                         {/* english */}
-                        Reward History
+                        Deposit Game Money
 
 
                     </div>
@@ -895,6 +932,42 @@ function ProfilePage() {
 
                             <div className='w-full flex flex-col gap-4 items-start justify-center'>
 
+
+                                {/* gameMoneyBalance */}
+                                <div className='w-full flex flex-row gap-2 items-center justify-between
+                                    border border-gray-800
+                                    p-4 rounded-lg'>
+
+                                    <Image
+                                        src="/icon-game-money.png"
+                                        alt="Game Money"
+                                        width={30}
+                                        height={30}
+                                        className="rounded"
+                                    />
+
+                                    <div className="flex flex-row gap-2 items-center justify-between">
+
+                                        <span className="p-2 text-red-500 text-4xl font-semibold"> 
+                                            {// 3 ditit , comma separated, not currency
+
+                                                //Number(balance).toFixed(0)
+
+                                                Number(gameMoneyBalance).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+                                            }
+                                        </span>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
                                 <div className='w-full flex flex-row gap-2 items-center justify-between
                                     border border-gray-800
                                     p-4 rounded-lg'>
@@ -944,7 +1017,7 @@ function ProfilePage() {
                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                         {/* text */}                             
                                         <span className="text-lg font-semibold">
-                                            Send DUBAI
+                                            Buy Game Money
                                         </span>
 
                                     </div>
@@ -1028,7 +1101,9 @@ function ProfilePage() {
 
                                         <input
                                             disabled={sending}
-                                            className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-sm font-semibold"
+                                            className="
+                                                hidden
+                                                p-2 w-full text-zinc-100 bg-zinc-800 rounded text-sm font-semibold"
                                             placeholder="받는 사람 지갑주소(0x로 시작)"
                                             type='text'
                                             onChange={(e) => {
