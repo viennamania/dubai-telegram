@@ -235,7 +235,8 @@ function ProfilePage() {
 
                 setUserCenter(data.result.center);
 
-                setGameMoneyBalance(data.result.gameMoneyBalance);
+                setGameMoneyBalance(data.result.gameMoneyBalance && data.result.gameMoneyBalance > 0 ? data.result.gameMoneyBalance : 0);
+
 
 
 

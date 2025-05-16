@@ -1737,7 +1737,15 @@ export async function updateOneGameMoney(data: any) {
 
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
-    { $set: {gameMoneyBalance: data.addGameMoney} }
+    { $set: {
+      gameMoneyBalance: {
+        $cond: {
+          if: { $gt: [ { $ifNull: ["$gameMoneyBalance", 0] }, 0 ] },
+          then: { $add: [ "$gameMoneyBalance", data.addGameMoney ] },
+          else: data.addGameMoney
+        }
+      }
+    } }
   )
 
 
