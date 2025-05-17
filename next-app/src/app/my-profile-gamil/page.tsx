@@ -92,7 +92,13 @@ function ProfilePage() {
 
 
 
-    const address = account?.address;
+    //const address = account?.address;
+
+    // test address
+        // test address
+    const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
+  
+
   
   
     // test address
@@ -743,6 +749,37 @@ function ProfilePage() {
         setLoadingCheckAuthValue(false);
 
     }
+
+
+    // get stores from api
+    const [stores, setStores] = useState([] as any);
+    const getStores = async () => {
+        const response = await fetch("/api/gamil/getStores", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                walletAddress: address,
+            }),
+        });
+
+        const data = await response.json();
+
+        //console.log("getStores data", data);
+
+        if (data.result) {
+            setStores(data.result);
+        } else {
+            setStores([]);
+        }
+    }
+
+    useEffect(() => {
+        address && getStores();
+    }, [address]);
+
+
 
 
     return (

@@ -1735,9 +1735,18 @@ export async function updateOneGameMoney(data: any) {
   // if gameMoneyBalance is not exist, then gameMoneyBalance is addGameMoney
   // if gameMoneyBalance is exit. then gameMoneyBalance is plus addGameMoney
 
+  /*
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
     { $set: { gameMoneyBalance: { $add: [data.addGameMoney, "$gameMoneyBalance"] } } }
+  );
+  */
+
+
+  // if gameMoneyBalance is not exist, then gameMoneyBalance is 0 + addGameMoney
+  const result = await collection.updateOne(
+    { walletAddress: data.walletAddress },
+    { $set: { gameMoneyBalance: { $add: [data.addGameMoney, { $ifNull: ["$gameMoneyBalance", 0] }] } } }
   );
 
 
