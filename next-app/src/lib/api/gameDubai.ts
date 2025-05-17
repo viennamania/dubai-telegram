@@ -1032,3 +1032,158 @@ export async function setRaceGamesSettlementByWalletAddressAndSequence(
 
   return findResult;
 }
+
+
+
+
+
+
+
+
+
+
+
+// insertOne
+export async function insertOneOddEvenGame(data: any) {
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('oddEvenGames');
+
+
+  // check if latest data is within 30 seconds
+  // then return waiting message
+
+  // // within 120 seconds
+
+  const latestData = await collection.findOne({ walletAddress: data.walletAddress }, { sort: { createdAt: -1 } });
+
+
+  if (latestData
+    //&& latestData.status === "opened"
+  ) {
+
+
+    if (latestData.status === "opened") {
+      return {
+        status: "success",
+        data: latestData
+      };
+    }
+
+
+    // within 120 seconds
+    if (
+      //isWithinOneMinute(latestData.createdAt)
+      
+      
+      ///new Date().getTime() - new Date(latestData.createdAt).getTime() < 60000
+
+      new Date().getTime() - new Date(latestData.createdAt).getTime() < 1000
+
+
+    ) {
+  
+      return {
+        status: "waiting",
+        waitingTime: 60 - Math.floor((new Date().getTime() - new Date(latestData.createdAt).getTime()) / 1000),
+        data: latestData
+
+      };
+
+
+
+    } else {
+
+      // sequence is last sequence + 1
+
+
+
+      const sequence = latestData.sequence + 1;
+
+      //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
+
+      // winPrice is 1 to 3
+
+      const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+
+      ///const winPrize = Math.floor(Math.random() * 10) + 1
+
+
+      const result = await collection.insertOne(
+        {
+          walletAddress: data.walletAddress,
+          sequence: sequence,
+          status: "opened",
+          winPrize: winPrize,
+          usdtAmount: data.usdtAmount,
+          krwAmount: data.krwAmount,
+          rate: data.rate,
+          createdAt: new Date().toISOString(),
+        }
+      );
+
+      const insertedId = result.insertedId;
+
+      const insertedData = await collection.findOne({ _id: insertedId });
+
+      if (insertedData) {
+        return {
+          status: "success",
+          data: insertedData
+        };
+      } else {
+        return null;
+      }
+
+
+    }
+
+
+
+  }
+
+
+  let sequence = 1;
+
+  const findSequence = await collection.find(
+    {
+      walletAddress: data.walletAddress
+    }
+  ).sort({ sequence: -1 }).limit(1).toArray();
+
+  if (findSequence.length > 0) {
+    sequence = findSequence[0].sequence + 1;
+  }
+
+  //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
+  //const winPrize = Math.floor(Math.random() * 10) + 1;
+  // winPrice is 1 to 3
+  const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+
+
+  const result = await collection.insertOne(
+    {
+      walletAddress: data.walletAddress,
+      sequence: sequence,
+      status: "opened",
+      winPrize: winPrize,
+      usdtAmount: data.usdtAmount,
+      krwAmount: data.krwAmount,
+      rate: data.rate,
+      createdAt: new Date().toISOString(),
+    }
+  );
+
+  const insertedId = result.insertedId;
+
+  const insertedData = await collection.findOne({ _id: insertedId });
+
+  if (insertedData) {
+    return {
+      status: "success",
+      data: insertedData
+    };
+  } else {
+    return null;
+  }
+
+}
