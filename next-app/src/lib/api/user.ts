@@ -1744,6 +1744,7 @@ export async function updateOneGameMoney(data: any) {
 
 
   // if gameMoneyBalance is not exist, then gameMoneyBalance is 0 + addGameMoney
+  /*
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
     { $set: { gameMoneyBalance: { $add: [data.addGameMoney, { $ifNull: ["$gameMoneyBalance", 0] }] } } }
@@ -1761,10 +1762,51 @@ export async function updateOneGameMoney(data: any) {
   } else {
     return null;
   }
+    */
 
 
 
+  // check gameMoneyBalance is exist or not
+  const checkUser = await collection.findOne<UserProps>(
+    { walletAddress: data.walletAddress },
+  );
+  if (checkUser) {
+    // if gameMoneyBalance is not exist, then gameMoneyBalance is 0 + addGameMoney
+    if (!checkUser.gameMoneyBalance) {
+      const result = await collection.updateOne(
+        { walletAddress: data.walletAddress },
+        { $set: { gameMoneyBalance: data.addGameMoney } }
+      );
+      if (result) {
+        const updated = await collection.findOne<UserProps>(
+          { walletAddress: data.walletAddress },
+        );
 
+        return {
+          gameMoneyBalance: updated?.gameMoneyBalance
+        }
+      }
+    } else {
+      // if gameMoneyBalance is exist, then gameMoneyBalance is plus addGameMoney
+      const result = await collection.updateOne(
+        { walletAddress: data.walletAddress },
+        { $set: { gameMoneyBalance: checkUser.gameMoneyBalance + data.addGameMoney } }
+      );
+      if (result) {
+        const updated = await collection.findOne<UserProps>(
+          { walletAddress: data.walletAddress },
+        );
+
+        return {
+          gameMoneyBalance: updated?.gameMoneyBalance
+        }
+      }
+    }
+  } else {
+    return null;
+  }
+
+  return null;
   
 
 }
