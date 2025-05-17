@@ -820,12 +820,15 @@ function ProfilePage() {
 
         <main
             className="p-4 pb-10 min-h-[100vh] flex items-start justify-center container max-w-screen-lg mx-auto"
+            
+            /*
             style={{
                 backgroundImage: "url('/mobile-background-profile2.avif')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
               }}
+            */
         >
 
             <AutoConnect
@@ -839,19 +842,24 @@ function ProfilePage() {
 
                 {/* sticky header */}
                 <div className="sticky top-0 z-50
-                    bg-zinc-800 bg-opacity-90
-                    backdrop-blur-md
+                    bg-red-500 bg-opacity-50
+                    backdrop-blur-sm
+                    border-b border-gray-300
                     p-4 rounded-lg
-                    w-full flex flex-row items-center justify-between">
+                    flex flex-row gap-2 items-center justify-between">
+
 
                     {/* title */}
-                    <div className="text-2xl font-semibold text-zinc-100">
+                    <span className="text-2xl font-semibold text-zinc-100">
+
+
+                        {/* 내 지갑 */}
                         {/* 보상내역 */}
                         {/* english */}
                         Deposit Game Money
 
 
-                    </div>
+                    </span>
                 </div>
 
 
@@ -958,6 +966,10 @@ function ProfilePage() {
 
                                             }
                                         </span>
+                                        <span className="p-2 text-red-500 text-2xl font-semibold">
+                                            {/* 게임머니 */}
+                                            Game Money
+                                        </span>
                                     </div>
 
                                 </div>
@@ -997,15 +1009,18 @@ function ProfilePage() {
 
                                             }
                                         </span>
-                                        <span className="p-2 text-gray-500 text-lg font-semibold">DUBAI</span>
+                                        <span className="p-2 text-green-500 text-2xl font-semibold">
+                                            DUBAI
+                                        </span>
 
                                     </div>
                                 </div>
 
                                 {/* send DUBAI */}
 
-                                <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg
-                                    bg-yellow-500 bg-opacity-50'>
+                                <div className='w-full flex flex-col gap-2 items-start justify-between 
+                                bg-red-500 bg-opacity-10
+                                    border border-gray-300 p-4 rounded-lg'>
                                     
                                     {/*
                                     <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
@@ -1025,14 +1040,14 @@ function ProfilePage() {
 
                                     <div className='flex flex-col xl:flex-row gap-2 items-start justify-between'>
                                         
-                                        <div className="w-full flex flex-col gap-2 items-end justify-between">
+                                        <div className="w-full flex flex-row gap-2 items-center justify-between">
 
                                             <input
                                                 disabled={sending}
                                                 
                                                 //className="flex p-2 text-zinc-100 bg-zinc-800 rounded text-2xl font-semibold"
 
-                                                className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-2xl font-semibold"
+                                                className="p-2 w-full text-zinc-100 bg-zinc-800 rounded text-6xl font-semibold"
 
                                                 placeholder="0"
                                                 type='number'
@@ -1082,19 +1097,41 @@ function ProfilePage() {
                                                 }}
                                             />
 
-                                            {/* balance max button */}
-                                            <button
-                                                disabled={sending}
-                                                onClick={() => {
-                                                    setSendAmount(balance.toString());
-                                                }}
-                                                className="flex p-2 bg-blue-500 text-zinc-100 rounded">
-                                            
-                                                <span className="text-lg font-semibold">
-                                                    {/* 최대 */}
-                                                    Max 
-                                                </span>
-                                            </button>
+                                            <div className="flex flex-col gap-2 items-center justify-between">
+
+                                                {/* balance max button */}
+                                                <button
+                                                    disabled={sending}
+                                                    onClick={() => {
+                                                        setSendAmount(balance.toString());
+                                                    }}
+                                                    className="
+                                                    w-12
+                                                    flex p-2 bg-blue-500 text-zinc-100 rounded">
+                                                
+                                                    <span className="text-sm">
+                                                        {/* 최대 */}
+                                                        Max 
+                                                    </span>
+                                                </button>
+
+                                                {/* reset button */}
+                                                <button
+                                                    disabled={sending}
+                                                    onClick={() => {
+                                                        setSendAmount('');
+                                                    }}
+                                                    className="
+                                                    w-12
+                                                    flex p-2 bg-red-500 text-zinc-100 rounded">
+                                                
+                                                    <span className="text-sm">
+                                                        {/* 초기화 */}
+                                                        Reset
+                                                    </span>
+                                                </button>
+
+                                            </div>
 
 
                                         </div>
@@ -1105,7 +1142,8 @@ function ProfilePage() {
                                             className="
                                                 hidden
                                                 p-2 w-full text-zinc-100 bg-zinc-800 rounded text-sm font-semibold"
-                                            placeholder="받는 사람 지갑주소(0x로 시작)"
+                                            //placeholder="받는 사람 지갑주소(0x로 시작)"
+                                            placeholder="Wallet Address (0x...)"
                                             type='text'
                                             onChange={(e) => {
                                                 // cheack prefix is "0x"
@@ -1118,15 +1156,19 @@ function ProfilePage() {
                                             <button
                                                 disabled={sending || !sendAmount || !toWalletAddress}
                                                 onClick={() => {
-                                                    confirm('DUBAI를 보내시겠습니까?') &&
+                                                    //confirm('DUBAI를 보내시겠습니까?') &&
+                                                    // english
+                                                    confirm('Do you want to send DUBAI?') &&
                                                     sendUsdt();
                                                 }}
-                                                className={`p-2 bg-blue-500 text-zinc-100 rounded
+                                                className={`
+                                                    w-full
+                                                    p-2 bg-blue-500 text-zinc-100 rounded
                                                     ${sending || !sendAmount || !toWalletAddress
                                                      ? 'opacity-50' : ''}`
                                                 }
                                             >
-                                                <div className='flex flex-row gap-2 items-center justify-between'>
+                                                <div className='w-full flex flex-row gap-2 items-center justify-center'>
                                                     {sending && (
                                                         <Image
                                                             src="/loading.png"
@@ -1136,9 +1178,9 @@ function ProfilePage() {
                                                             className="animate-spin"
                                                         />
                                                     )}
-                                                    <span className='text-lg font-semibold'>
+                                                    <span className='text-sm'>
                                                         {/* 보내기 */}
-                                                        Send
+                                                        Buy
                                                     </span>
                                                 </div>
                                             </button>
@@ -1353,8 +1395,9 @@ function ProfilePage() {
                                                 className="animate-spin"
                                             />
                                         )}
-                                        <span className="text-lg font-semibold">
-                                            새로고침
+                                        <span className="text-sm">
+                                            {/* 새로고침 */}
+                                            Reload
                                         </span>
                                     </div>
                                 </button>
