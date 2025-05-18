@@ -595,6 +595,34 @@ export async function updateDiceGameResultByWalletAddressAndSequence(
       data: findResult,
     }
   }
+
+
+
+
+
+  // update user gameMoneyBalance -1
+  const userCollection = client.db('dubai').collection('users');
+  const userResult = await userCollection.updateOne(
+    {
+      walletAddress: walletAddress,
+    },
+    {
+      $inc: {
+        gameMoneyBalance: -1,
+      }
+    }
+  );
+  if (!userResult) {
+    return {
+      status: "fail",
+      message: "fail to update user gameMoneyBalance"
+    };
+  }
+
+
+
+
+
   //const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
   let settlement = 0;
   let result = null;
