@@ -1107,9 +1107,11 @@ export async function insertOneOddEvenGame(data: any) {
 
       // winPrice is 1 to 3
 
-      const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+      ///const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
 
       ///const winPrize = Math.floor(Math.random() * 10) + 1
+
+      const winPrize = "2";
 
 
       const result = await collection.insertOne(
