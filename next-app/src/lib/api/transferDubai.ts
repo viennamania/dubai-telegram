@@ -174,7 +174,9 @@ export async function insertOne(data: any) {
                 const amount = parseFloat(data.value) / 1e18;
 
                 ///const message = "You have received " + Number(amount).toFixed(2) + " DUBAI";
-                const message = Number(amount).toFixed(2) + " DUBAI 를 받았습니다";
+                //const message = Number(amount).toFixed(2) + " DUBAI 를 받았습니다";
+                const message = "You have received " + Number(amount).toFixed(2) + " DUBAI";
+
 
                 const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
