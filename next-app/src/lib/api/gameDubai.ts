@@ -1081,7 +1081,7 @@ export async function insertOneOddEvenGame(data: any) {
       
       ///new Date().getTime() - new Date(latestData.createdAt).getTime() < 60000
 
-      new Date().getTime() - new Date(latestData.createdAt).getTime() < 1000
+      new Date().getTime() - new Date(latestData.createdAt).getTime() < 1
 
 
     ) {
