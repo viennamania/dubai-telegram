@@ -75,9 +75,11 @@ export async function insertOne(data: any) {
 
       // winPrice is 1 to 3
 
-      const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+      //const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
 
       ///const winPrize = Math.floor(Math.random() * 10) + 1
+
+      const winPrize = "2";
 
 
       const result = await collection.insertOne(
@@ -129,7 +131,8 @@ export async function insertOne(data: any) {
   //const winPrize = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
   //const winPrize = Math.floor(Math.random() * 10) + 1;
   // winPrice is 1 to 3
-  const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+  //const winPrize =  (Number(Math.random() * 3) + 1).toFixed(0);
+  const winPrize = "2";
 
 
   const result = await collection.insertOne(
@@ -439,7 +442,10 @@ export async function insertOneDiceGame(data: any) {
     // within 120 seconds
     if (
       //isWithinOneMinute(latestData.createdAt)
-      new Date().getTime() - new Date(latestData.createdAt).getTime() < 120000
+      //new Date().getTime() - new Date(latestData.createdAt).getTime() < 120000
+      new Date().getTime() - new Date(latestData.createdAt).getTime() < 1
+
+
     ) {
       return {
         status: "waiting",
@@ -451,7 +457,11 @@ export async function insertOneDiceGame(data: any) {
       const sequence = latestData.sequence + 1;
       //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(2);
       // winPrice is 1 to 5
-      const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+      
+      //const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+      const winPrize = "6";
+
+
       const result = await collection.insertOne(
         {
           walletAddress: data.walletAddress,
@@ -491,7 +501,10 @@ export async function insertOneDiceGame(data: any) {
   }
   //const winPrize = Number(Math.random() * (1.0 - 0.00001) + 0.00001).toFixed(2);
   // winPrice is 1 to 5
-  const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+  //const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+  const winPrize = "6";
+
+
   const result = await collection.insertOne(
     {
       walletAddress: data.walletAddress,
