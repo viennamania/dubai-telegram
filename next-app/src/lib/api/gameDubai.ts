@@ -1378,3 +1378,62 @@ export async function updateOddEvenGameResultByWalletAddressAndSequence(
   }
 
 }
+
+
+
+
+
+
+// getAllGamesSettlement
+export async function getAllOddEvenGamesSettlement() {
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('oddEvenGames');
+
+  const result = await collection.find(
+    {
+      settlementStatus: false,
+    }
+  ).toArray();
+
+  return result;
+}
+
+
+
+
+// setGaemsSettlementByWalletAddressAndSequence
+export async function setOddEvenGamesSettlementByWalletAddressAndSequence(
+  {
+    walletAddress,
+    sequence,
+  } : {
+    walletAddress: string,
+    sequence: string,
+  }
+) {
+
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('oddEvenGames');
+
+  // finde one and updaate
+  // sequence is integer
+
+  const findResult = await collection.findOneAndUpdate(
+    {
+      walletAddress: walletAddress,
+      sequence: parseInt(sequence),
+    },
+    {
+      $set: {
+        settlementStatus: true,
+        settlementAt: new Date().toISOString(),
+      }
+    }
+  );
+
+  return findResult;
+}
+
+
+
+
