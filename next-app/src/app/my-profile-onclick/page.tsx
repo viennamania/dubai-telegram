@@ -769,7 +769,7 @@ function ProfilePage() {
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
-                        My Profile
+                        나의 프로필설정
                     </div>
                 </div>
 
