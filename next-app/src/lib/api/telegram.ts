@@ -500,3 +500,51 @@ export async function insertOtcMessageByWalletAddress(
     };
 
 }
+
+
+
+// insertMessageByUseridAndStorecode
+export async function insertMessageByUseridAndStorecode(
+    {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    }
+    :
+    {
+        center: string,
+        category: string,
+        userid: string,
+        storecode: string,
+        message: string,
+    }
+) {
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
+
+    const user = await client.db('dubai').collection('users').findOne(
+        { storecode, userid },
+    );
+
+    if (user && user.telegramId) {
+
+        await collectionTelegramMessages.insertOne(
+            {
+                center,
+                category,
+                telegramId: user.telegramId,
+                message,
+            }
+        );
+
+    }
+
+    return {
+        result: "success",
+    };
+
+}
