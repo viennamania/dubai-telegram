@@ -522,12 +522,23 @@ export async function insertMessageByUseridAndStorecode(
     }
 ) {
 
+    console.log("insertMessageByUseridAndStorecode", {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    });
+
     const client = await clientPromise;
 
     const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
     const user = await client.db('dubai').collection('users').findOne(
-        { storecode, userid },
+        {
+            storecode: storecode,
+            nickname: userid,
+        },
     );
 
     if (user && user.telegramId) {
@@ -541,10 +552,17 @@ export async function insertMessageByUseridAndStorecode(
             }
         );
 
+        return {
+            result: "success",
+        };
+
+
+    } else {
+        console.log("user not found", userid, storecode);
+        return {
+            result: "user not found",
+        };
     }
 
-    return {
-        result: "success",
-    };
 
 }
