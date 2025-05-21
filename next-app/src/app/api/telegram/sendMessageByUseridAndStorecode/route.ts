@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
 
   const {
+    center,
     userid,
     storecode,
     message,
@@ -19,7 +20,7 @@ export async function POST(request: NextRequest) {
 
 
   const result = await insertMessageByUseridAndStorecode({
-    center: "LotusWorkerBot",
+    center: center,
     category: "wallet",
     userid,
     storecode,
