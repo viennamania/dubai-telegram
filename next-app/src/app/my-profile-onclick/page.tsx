@@ -63,6 +63,7 @@ import {
 import Uploader from '../components/uploader';
 import { updateUser } from "@/lib/api/userNoahk";
 import { on } from "events";
+import { add } from "thirdweb/extensions/thirdweb";
 
 
 const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
@@ -551,6 +552,49 @@ function ProfilePage() {
 
     }
 
+
+
+
+    // set userStorecode
+    const [userStorecode, setUserStorecode] = useState("");
+    const [loadingSetUserStorecode, setLoadingSetUserStorecode] = useState(false);
+    const updateUserStorecode = async () => {
+        setLoadingSetUserStorecode(true);
+
+        const response = await fetch("/api/user/updateUserStorecode", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                walletAddress: address,
+                storecode: userStorecode,
+            }),
+        });
+
+        if (response.status !== 200) {
+            //toast.error('Error saving Storecode');
+            alert('Storecode 저장에 실패했습니다.');
+            setLoadingSetUserStorecode(false);
+            return;
+        }
+
+        const data = await response.json();
+
+        //console.log("data", data);
+
+        if (data.result) {
+            //toast.success('Storecode saved');
+            alert('Storecode가 저장되었습니다.');
+
+        } else {
+            //toast.error('Error saving Storecode');
+            alert('Storecode 저장에 실패했습니다.');
+        }
+
+        setLoadingSetUserStorecode(false);
+
+    }
 
 
 
@@ -1069,6 +1113,97 @@ function ProfilePage() {
 
                             </div>
                         )}
+
+
+
+
+
+                        {/* userStorecode */}
+                        {address && userCode && userStorecode && (
+                            <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
+                            bg-zinc-800 bg-opacity-90
+                            '>
+                                <div className="w-full flex flex-row gap-2 items-center justify-start">
+                                    {/* dot */}
+                                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm font-semibold text-gray-200">
+                                        Store Code
+                                    </span>
+                                </div>
+
+                                <div className='flex flex-row gap-2 items-center justify-between'>
+                                    <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
+                                        {userStorecode}
+                                    </div>
+                                </div>
+
+                            </div>
+                        )}
+
+
+                        {/* update userStorecode */}
+                        <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
+                        bg-zinc-800 bg-opacity-90
+                        '>
+                            <div className="w-full flex flex-row gap-2 items-center justify-start">
+                                {/* dot */}
+                                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <span className="text-sm font-semibold text-gray-200">
+                                    Store Code
+                                </span>
+                            </div>
+
+                            <div className='flex flex-row gap-2 items-center justify-between'>
+                                <input
+                                    disabled={!address}
+                                    className="p-2 w-full text-2xl text-center font-semibold bg-zinc-800 rounded-lg text-zinc-100
+                                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+
+                                    placeholder="Store Code"
+                                    
+                                    value={userStorecode}
+
+                                    type='text'
+                                    onChange={(e) => {
+                                        setUserStorecode(e.target.value);
+                                    } }
+                                />
+                            </div>
+
+                            {userStorecode && (
+                                <button
+                                    disabled={
+                                        !address
+                                        || !userStorecode
+                                        || loadingSetUserStorecode
+                                    }
+                                    className={`
+                                        ${!address
+                                        || !userStorecode
+                                        || loadingSetUserStorecode
+                                        ? 'bg-gray-500 text-zinc-100'
+                                        : 'bg-blue-500 text-zinc-100'}
+
+                                        p-2 rounded-lg text-sm font-semibold
+                                        w-full mt-5
+                                    `}
+                                    onClick={() => {
+                                        confirm('Store code를 저장하시겠습니까?') && updateUserStorecode();
+                                    }}
+                                >
+                                    {loadingSetUserStorecode ? "저장중..." : "저장"}
+                                    
+                                </button>
+                            )}
+
+                        </div>
+
+
+
+
+
+
+
 
                         {/* 핸드폰번호 just view */}
                         {/*

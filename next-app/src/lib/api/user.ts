@@ -54,6 +54,8 @@ export interface UserProps {
 
   gameMoneyBalance: number,
 
+  storecode: string,
+
 }
 
 export interface ResultProps {
@@ -1810,3 +1812,31 @@ export async function updateOneGameMoney(data: any) {
   
 
 }
+
+
+
+// updateStorecode
+export async function updateStorecode(data: any) {
+
+  if (!data.walletAddress || !data.storecode) {
+    return null;
+  }
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('users');
+  const result = await collection.updateOne(
+    { walletAddress: data.walletAddress },
+    { $set: { storecode: data.storecode } }
+  );
+  if (result) {
+    const updated = await collection.findOne<UserProps>(
+      { walletAddress: data.walletAddress },
+    );
+
+    return {
+      storecode: updated?.storecode
+    }
+  }
+  return null;
+}
+
+
