@@ -94,6 +94,11 @@ function ProfilePage() {
 
 
     const address = account?.address;
+
+        // test address
+    ///const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
+  
+
   
   
     // test address
@@ -154,6 +159,11 @@ function ProfilePage() {
 
     
     const [user, setUser] = useState(null) as any;
+
+    console.log("user", user);
+
+
+
 
     const [userCode, setUserCode] = useState("");
 
@@ -1119,7 +1129,7 @@ function ProfilePage() {
 
 
                         {/* userStorecode */}
-                        {address && userCode && userStorecode && (
+                        {address && userCode && (
                             <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                             bg-zinc-800 bg-opacity-90
                             '>
@@ -1133,7 +1143,7 @@ function ProfilePage() {
 
                                 <div className='flex flex-row gap-2 items-center justify-between'>
                                     <div className="p-2 bg-zinc-800 rounded text-zinc-100 text-xl font-semibold">
-                                        {userStorecode}
+                                        {user?.storecode}
                                     </div>
                                 </div>
 
@@ -1149,7 +1159,7 @@ function ProfilePage() {
                                 {/* dot */}
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="text-sm font-semibold text-gray-200">
-                                    Store Code
+                                    Update Store Code
                                 </span>
                             </div>
 
