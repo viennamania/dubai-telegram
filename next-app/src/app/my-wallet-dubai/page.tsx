@@ -1278,7 +1278,8 @@ function ProfilePage() {
                                             />
                                         )}
                                         <span className="text-lg font-semibold">
-                                            새로고침
+                                            {/*새로고침*/}
+                                            Reload
                                         </span>
                                     </div>
                                 </button>
