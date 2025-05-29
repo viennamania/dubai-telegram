@@ -77,8 +77,9 @@ export async function GET(request: NextRequest) {
   
   //const contractAddress = "0xb3f4f5396075c4141148B02D43bF54C5Da6525dD";
 
-  const contractAddress = "0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd";
+  //const contractAddress = "0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd";
 
+  const contractAddress = "0x82bbf7be0eb9a6024b7a641ba179e00812bdae53"; // https://opensea.io/collection/riot-racers-cars
 
   //const totalSupply = 10; // total supply of the contract
   // tokenId 0 to 9
