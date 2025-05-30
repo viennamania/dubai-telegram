@@ -1,19 +1,6 @@
 {
     "crons": [
 
-
-        {
-            "path": "/api/cronjob/oddEvenGameDubai",
-            "schedule": "* * * * *"
-        },
-        {
-            "path": "/api/cronjob/raceGameDubai",
-            "schedule": "* * * * *"
-        }
-
-
-
-
  
     ]
 }
