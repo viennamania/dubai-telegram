@@ -193,7 +193,7 @@ function AgentPage() {
 
     const [erc721ContractAddress, setErc721ContractAddress] = useState("0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd");
 
-    const [userCenter, setUserCenter] = useState("");
+    const [userCenter, setUserCenter] = useState("LotusWorkerBot");
 
     const [isCenterOwner, setIsCenterOwner] = useState(false);
 
@@ -229,7 +229,7 @@ function AgentPage() {
                 ///setReferralCode(data.result.erc721ContractAddress);
                 ////setErc721ContractAddress(data.result.erc721ContractAddress);
 
-                setUserCenter(data.result.center);
+                ///////////////////setUserCenter(data.result.center);
 
                 setIsCenterOwner(
                     data.result.centerOwner === true
@@ -253,7 +253,7 @@ function AgentPage() {
 
                 setErc721ContractAddress('');
 
-                setUserCenter('');
+                ////////////////setUserCenter('');
             }
 
         };
