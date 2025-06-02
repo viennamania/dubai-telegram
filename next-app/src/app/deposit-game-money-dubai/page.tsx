@@ -725,7 +725,7 @@ function ProfilePage() {
 
                 //alert('200개의 게임 머니를 성공적으로 구입하였습니다.');
                 // english
-                alert('Successfully purchased' + ' ' + sendAmount + ' Game Money');
+                alert('Successfully purchased' + ' ' + sendAmount + ' CHIP');
 
                 setSendAmount('');
 
