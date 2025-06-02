@@ -952,6 +952,29 @@ export async function updateRaceGameResultByWalletAddressAndSequence(
   }
 
 
+
+
+  // update user gameMoneyBalance -1
+  const userCollection = client.db('dubai').collection('users');
+  const userResult = await userCollection.updateOne(
+    {
+      walletAddress: walletAddress,
+    },
+    {
+      $inc: {
+        gameMoneyBalance: -5,
+      }
+    }
+  );
+  if (!userResult) {
+    return {
+      status: "fail",
+      message: "fail to update user gameMoneyBalance"
+    };
+  }
+
+
+
   const settlement = Number(Math.random() * (0.1 - 0.00001) + 0.00001).toFixed(2);
 
   let result = null;
