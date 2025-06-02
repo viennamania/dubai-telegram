@@ -923,7 +923,7 @@ function ProfilePage() {
 
                                             }
                                         </span>
-                                        <span className="p-2 text-gray-500 text-lg font-semibold">DUBAI</span>
+                                        <span className="p-2 text-gray-100 text-lg font-semibold">DUBAI</span>
 
                                     </div>
                                 </div>
