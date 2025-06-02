@@ -768,7 +768,8 @@ export async function insertOneRaceGame(data: any) {
       //const winPrize = Number(Math.random() * (2.0 - 0.00001) + 0.00001).toFixed(2);
 
       // winPrice is 1 to 5
-      const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+      //const winPrize = (Math.floor(Math.random() * 5) + 1).toFixed(0);
+      const winPrize = 5;
 
 
       const result = await collection.insertOne(
