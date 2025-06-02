@@ -856,7 +856,7 @@ function ProfilePage() {
                         {/* 내 지갑 */}
                         {/* 보상내역 */}
                         {/* english */}
-                        Deposit Game Chip
+                        Deposit CHIP
 
 
                     </span>
@@ -949,7 +949,7 @@ function ProfilePage() {
 
                                     <Image
                                         src="/icon-game-money.png"
-                                        alt="Game Chip"
+                                        alt="CHIP"
                                         width={30}
                                         height={30}
                                         className="rounded"
@@ -968,7 +968,7 @@ function ProfilePage() {
                                         </span>
                                         <span className="p-2 text-red-500 text-2xl font-semibold">
                                             {/* 게임머니 */}
-                                            Game Chip
+                                            CHIP
                                         </span>
                                     </div>
 
@@ -1033,7 +1033,7 @@ function ProfilePage() {
                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                         {/* text */}                             
                                         <span className="text-lg font-semibold">
-                                            Buy Game Money
+                                            Buy CHIP
                                         </span>
 
                                     </div>
