@@ -180,10 +180,11 @@ export async function POST(request: NextRequest) {
 
 
 
-
+  /*
   const resultStartLotto = await startLotto({
     timestamp: timestamp,
   });
+  */
 
 
 
