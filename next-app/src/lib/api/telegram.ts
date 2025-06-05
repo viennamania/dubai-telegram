@@ -566,3 +566,72 @@ export async function insertMessageByUseridAndStorecode(
 
 
 }
+
+
+
+
+
+
+
+
+// getAllMessages
+export async function getAllLottoMessages(data: any) {
+
+    const {
+        center,
+        limit,
+        page,
+    } = data;
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramLottoMessages');
+
+    const messages = await collectionTelegramMessages
+    .find({
+        center,
+    })
+    .sort({ _id: -1 })
+    .limit(limit)
+    .skip(limit * page)
+    .toArray();
+
+    // totalTelegramMessages
+
+    const totalMessages = await collectionTelegramMessages
+    .find({
+        center,
+    })
+    .count();
+
+    return {
+        messages,
+        totalMessages,
+    }
+
+}
+
+
+
+
+
+
+// deleteMessage
+export async function deleteLottoMessage(_id: string) {
+
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramLottoMessages');
+
+    await collectionTelegramMessages.deleteOne(
+        {
+            _id: new ObjectId(_id),
+        }
+    );
+
+    return {
+        result: "success",
+    };
+
+}
