@@ -443,32 +443,14 @@ export async function getOneByTelegramId(
 
   const client = await clientPromise;
 
-  if (center === 'owin_eagle_bot'
-    || center === 'we_gogo_bot'
-  ) {
 
-    const collection = client.db('dubai').collection('referrals_center');
+  const collection = client.db('dubai').collection('referrals');
 
-    const results = await collection.findOne<UserProps>(
-      {
-        telegramId: telegramId,
-        center: center,
-      },
-    );
+  const results = await collection.findOne<UserProps>(
+    { telegramId: telegramId },
+  );
 
-    return results;
-
-
-
-  } else {
-    const collection = client.db('dubai').collection('referrals');
-
-    const results = await collection.findOne<UserProps>(
-      { telegramId: telegramId },
-    );
-
-    return results;
-  }
+  return results;
 
 
 }
