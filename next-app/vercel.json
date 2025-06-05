@@ -12,7 +12,7 @@
         },
         {
             "path": "/api/cronjob/lottoGameDubai",
-            "schedule": "* * * * *"
+            "schedule": "*/5 * * * *"
         }
 
 
