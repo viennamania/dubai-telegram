@@ -17,6 +17,11 @@ import {
 } from '@lib/api/transferDubai';
 
 
+import {
+  startLotto,
+} from '@lib/api/lotto';
+
+
 
 export async function POST(request: NextRequest) {
 
@@ -172,6 +177,16 @@ export async function POST(request: NextRequest) {
 
   ///console.log("insertOne", result);
 
+
+
+
+
+  const resultStartLotto = await startLotto({
+    timestamp: timestamp,
+  });
+
+
+
   
 
   return NextResponse.json({
@@ -239,6 +254,14 @@ body {
 
 
   ///console.log("body", body);
+
+
+
+
+
+
+
+
 
 
   
