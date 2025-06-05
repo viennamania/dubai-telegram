@@ -94,7 +94,7 @@ const tokenContractAddressCEBIEN = '0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d';
 
 
 // smw contract address
-const contractAddressSMW = "0xb3f4f5396075c4141148B02D43bF54C5Da6525dD";
+const contractAddressSMW = "0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd";
 
 
 
@@ -251,6 +251,12 @@ export async function GET(request: NextRequest) {
           //const sendAmount = game.settlement;
 
           const sendAmount = game.winPrize;
+
+
+          console.log("sendAmount: ", sendAmount);
+          console.log("toWalletAddress: ", toWalletAddress);
+
+
 
           const transaction = transfer({
             contract: contractCEBIEN,

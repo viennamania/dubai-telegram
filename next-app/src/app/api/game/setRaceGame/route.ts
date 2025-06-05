@@ -74,7 +74,7 @@ export async function GET(request: NextRequest) {
   // non duplicate random numbers
 
   // smw nft contract
-  const contractAddress = "0xb3f4f5396075c4141148B02D43bF54C5Da6525dD";
+  const contractAddress = "0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd";
   //const totalSupply = 10; // total supply of the contract
   // tokenId 0 to 9
   // select 8 horses from 0 to 9
@@ -228,7 +228,7 @@ export async function GET(request: NextRequest) {
   
         console.log("telegramId=======>", telegramId);
   
-        // https://shinemywinter.vercel.app/my-nft-smw/0xb3f4f5396075c4141148B02D43bF54C5Da6525dD/1
+        // https://shinemywinter.vercel.app/my-nft-smw/0x2B5f93B4384ebdded630Cf5f0b825b7d58Cf76Bd/1
 
         const message = `당신의 말 ${horse.nft.metadata.name} 이(가) 경주에 출전하였습니다. \n\n` +
         `경주에 출전한 말의 정보는 아래 링크를 클릭하세요. \n\n` +
