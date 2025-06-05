@@ -9,6 +9,10 @@
         {
             "path": "/api/cronjob/raceGameDubai",
             "schedule": "* * * * *"
+        },
+        {
+            "path": "/api/cronjob/lottoGameDubai",
+            "schedule": "* * * * *"
         }
 
 
