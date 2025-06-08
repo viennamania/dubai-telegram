@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import {
-	insertOneRaceGame,
+	insertOneLottoGame,
 } from '@lib/api/gameDubai';
 
 
@@ -200,7 +200,7 @@ export async function GET(request: NextRequest) {
 
   
 
-  const result = await insertOneRaceGame({
+  const result = await insertOneLottoGame({
     walletAddress: walletAddress,
     horses: horses,
     usdtAmount: 0,
@@ -209,8 +209,6 @@ export async function GET(request: NextRequest) {
   });
 
   if (result) {
-
-    
 
     /*
     //horses.map(async (horse: any) => {
@@ -260,7 +258,6 @@ export async function GET(request: NextRequest) {
   
   
     });
-
     */
     
 
