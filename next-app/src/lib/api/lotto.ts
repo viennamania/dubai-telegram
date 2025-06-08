@@ -16,6 +16,9 @@ export async function startLotto(data: any) {
 
     const collectionUsers = client.db('dubai').collection('users');
 
+    const collectionTelegramMessages = client.db('dubai').collection('telegramLottoMessages');
+
+
 
     const allUsers = await collectionUsers.find({},
         { projection: { walletAddress: 1, telegramId: 1, center: 1 } }
@@ -42,7 +45,6 @@ export async function startLotto(data: any) {
 
 
 
-            const collectionTelegramMessages = client.db('dubai').collection('telegramLottoMessages');
 
             await collectionTelegramMessages.insertOne(
             {

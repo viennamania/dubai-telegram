@@ -1694,6 +1694,15 @@ export async function getOneLottoGame() {
 }
 
 
+
+
+
+
+
+
+
+
+
 // updateOneLottoGameClose
 export async function updateOneLottoGameClose(
   {
@@ -1708,6 +1717,13 @@ export async function updateOneLottoGameClose(
 
   const client = await clientPromise;
   const collection = client.db('dubai').collection('lottoGames');
+
+
+  const userCollection = client.db('dubai').collection('users');
+
+  const collectionTelegramMessages = client.db('dubai').collection('telegramLottoMessages');
+
+
 
   // finde one
   // sequence is integer
@@ -1755,6 +1771,57 @@ export async function updateOneLottoGameClose(
     };
   }
 
+
+
+  // send telegram message
+
+  const bets = findResult.bets || [];
+
+
+
+  for (const bet of bets) {
+
+    const user = await userCollection.findOne(
+      {
+        walletAddress: bet.walletAddress,
+      }
+    );
+
+    const telegramId = user?.telegramId;
+    const center = user?.center;
+    const walletAddress = bet.walletAddress;
+    
+
+
+    const message = "Lotto Game Result\n" +
+      "Sequence: " + sequence + "\n" +
+      "Result Number: " + resultNumber + "\n" +
+      "Your Bet: " + bet.selectedNumber + "\n" +
+      "Your Bet Amount: " + bet.betAmount + "\n" +
+      "Result Number: " + resultNumber + "\n" +
+      "You " + (bet.selectedNumber === resultNumber ? "Win" : "Lose") + "\n";
+
+
+
+
+    await collectionTelegramMessages.insertOne(
+    {
+        center: center,
+        category: "start",
+        walletAddress: walletAddress,
+        telegramId: telegramId,
+        message: message,
+        timestamp: new Date().toISOString(),
+    } );
+
+  }
+
+
+
+
+
+
+
   if (updateResult.modifiedCount > 0) {
     // find updated data
     const updatedData = await collection.findOne(
@@ -1771,6 +1838,7 @@ export async function updateOneLottoGameClose(
     } else {
       return null;
     }
+
   } else {
     return {
       status: "fail",
