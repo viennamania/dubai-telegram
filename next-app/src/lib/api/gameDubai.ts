@@ -1763,6 +1763,33 @@ export async function updateOneLottoGameForBet(
     };
   }
 
+  
+
+
+
+  interface LottoBet {
+    walletAddress: string;
+    selectedNumber: string;
+    betAmount: number;
+    createdAt: string;
+  }
+
+  const bets: LottoBet[] = findResult.bets || [];
+
+  const totalBetAmount: number = bets.reduce((acc: number, bet: LottoBet) => acc + bet.betAmount, 0);
+
+  bets.push({
+    walletAddress: walletAddress,
+    selectedNumber: selectedNumber,
+    betAmount: betAmount,
+    createdAt: new Date().toISOString(),
+  });
+
+
+
+  // push bets array if not exists
+  // if exists, then update bets array
+  // if bets array exists, then update bets array
 
   // update lotto game
   const result = await collection.updateOne(
@@ -1771,23 +1798,25 @@ export async function updateOneLottoGameForBet(
     },
     {
       $set: {
-        bets: {
-          walletAddress: walletAddress,
-          selectedNumber: selectedNumber,
-          betAmount: betAmount,
-          createdAt: new Date().toISOString(),
-        }
-      },
-      $inc: {
-        totalBetAmount: betAmount,
-      },
-      $setOnInsert: {
-        status: "opened",
+        bets: bets,
+        totalBetAmount: totalBetAmount,
         updatedAt: new Date().toISOString(),
       }
-
     }
   );
+
+
+    
+
+
+  if (!result) {
+    return {
+      status: "fail",
+      message: "fail to update lotto game"
+    };
+  }
+
+
 
   if (result.modifiedCount > 0) {
     // find updated data
