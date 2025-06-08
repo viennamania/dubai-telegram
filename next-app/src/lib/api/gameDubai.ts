@@ -1694,6 +1694,101 @@ export async function getOneLottoGame() {
 }
 
 
+// updateOneLottoGameClose
+export async function updateOneLottoGameClose(
+  {
+    sequence,
+    resultNumber,
+  } : {
+    sequence: string,
+    resultNumber: string,
+  }
+
+) {
+
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('lottoGames');
+
+  // finde one
+  // sequence is integer
+
+  const findResult = await collection.findOne(
+    {
+      sequence: parseInt(sequence),
+    }
+  );
+
+  if (!findResult) {
+    return {
+      status: "fail",
+      message: "no data found"
+    }
+  }
+
+  if (findResult.status === "closed") {
+    return {
+      status: "fail",
+      data: findResult,
+    }
+  }
+
+  // update user gameMoneyBalance -1
+
+
+  const updateResult = await collection.updateOne(
+    {
+      sequence: parseInt(sequence),
+    },
+    {
+      $set: {
+        status: "closed",
+        resultNumber: resultNumber,
+        updatedAt: new Date().toISOString(),
+      }
+    }
+  );
+
+  if (!updateResult) {
+    return {
+      status: "fail",
+      message: "fail to update lotto game"
+    };
+  }
+
+  if (updateResult.modifiedCount > 0) {
+    // find updated data
+    const updatedData = await collection.findOne(
+      {
+        sequence: parseInt(sequence),
+      }
+    );
+
+    if (updatedData) {
+      return {
+        status: "success",
+        data: updatedData
+      };
+    } else {
+      return null;
+    }
+  } else {
+    return {
+      status: "fail",
+      message: "fail to update"
+    };
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 // updateOneLottoGameForBet
 export async function updateOneLottoGameForBet(

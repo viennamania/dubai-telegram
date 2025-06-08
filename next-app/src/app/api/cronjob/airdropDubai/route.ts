@@ -64,6 +64,14 @@ import {
 } from "thirdweb/extensions/erc1155";
 
 
+// getOneLottoGame
+import {
+  getOneLottoGame,
+  updateOneLottoGameClose,
+} from '@lib/api/gameDubai';
+
+
+
 ///import { Network, Alchemy } from 'alchemy-sdk';
 
 
@@ -109,6 +117,12 @@ export async function GET(request: NextRequest) {
     }
 
 
+    // check every on time hour and 30 minutes
+    const minutes = date.getMinutes();
+    if (minutes !== 0 && minutes !== 30) {
+      return;
+    }
+
 
 
 
@@ -151,6 +165,39 @@ export async function GET(request: NextRequest) {
 
 
 
+    // get one lotto game
+    const lottoGame = await getOneLottoGame();
+
+    if (!lottoGame) {
+      return NextResponse.json({
+        error: "No active lotto game found.",
+      });
+    }
+
+    //console.log("lottoGame: ", lottoGame);
+
+    // resultNumber
+    // "00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, ... 36"
+
+    // randomly generate a result number between "00" and "36"
+    const resultNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
+
+
+
+    // updateOneLottoGameClose
+    const updatedLottoGame = await updateOneLottoGameClose({
+      sequence: lottoGame.sequence,
+      resultNumber: resultNumber,
+    });
+
+    if (!updatedLottoGame) {
+      return NextResponse.json({
+        error: "Failed to update lotto game.",
+      });
+    }
+
+
+    /*
     // get all users
     const result = await getAllUsers(
       {
@@ -222,7 +269,7 @@ export async function GET(request: NextRequest) {
             users: users.length,
         },
     });
-
+    *?
 
 
 
