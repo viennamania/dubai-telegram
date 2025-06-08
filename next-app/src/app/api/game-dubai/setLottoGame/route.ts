@@ -175,19 +175,19 @@ export async function GET(request: NextRequest) {
 
         // getnft contractAddress and tokenId
 
+        /*
         const nft = await getNFT({
           contract: contractErc721,
           tokenId: BigInt(randomNumber),
         });
+        */
 
         horses.push({
           tokenId: randomNumber,
-          nft: nft,
+          //nft: nft,
         });
 
-
       }
-
 
 
     }
