@@ -67,6 +67,7 @@ import {
 // getOneLottoGame
 import {
   getOneLottoGame,
+
   updateOneLottoGameClose,
 } from '@lib/api/gameDubai';
 
@@ -109,18 +110,47 @@ export async function GET(request: NextRequest) {
     // check time 
     
     const date = new Date();
-    const hours = date.getHours() + 9;
+    const hours = (date.getHours() + 9) % 24; // Convert to UTC+9
+
+    console.log("hours: ", hours);
+
+    /*
     if (hours >= 22 || hours < 9) {
 
       
-      return;
+      return NextResponse.json({
+        error: "This function can only be run between 09:00 and 22:00 (UTC+9).",
+      });
+
+    }
+    */
+
+
+    // get the latest lotto game
+    const lottoGame = await getOneLottoGame();
+    
+
+    if (!lottoGame) {
+      return NextResponse.json({
+        error: "No active lotto game found.",
+      });
     }
 
 
-    // check every on time hour and 30 minutes
-    const minutes = date.getMinutes();
-    if (minutes !== 0 && minutes !== 30) {
-      return;
+
+
+    const createdAt = lottoGame.createdAt;
+
+    // if current time is more than 10 minutes after the createdAt time, then close the game
+    const currentTime = moment();
+    const createdAtTime = moment(createdAt);
+    const duration = moment.duration(currentTime.diff(createdAtTime)).asMinutes();
+    console.log("duration: ", duration);
+
+    if (duration < 10) {
+      return NextResponse.json({
+        error: "The game is still active. Please wait until it is closed.",
+      });
     }
 
 
@@ -165,14 +195,7 @@ export async function GET(request: NextRequest) {
 
 
 
-    // get one lotto game
-    const lottoGame = await getOneLottoGame();
 
-    if (!lottoGame) {
-      return NextResponse.json({
-        error: "No active lotto game found.",
-      });
-    }
 
     //console.log("lottoGame: ", lottoGame);
 
@@ -269,8 +292,17 @@ export async function GET(request: NextRequest) {
             users: users.length,
         },
     });
-    *?
+    */
 
+
+
+    return NextResponse.json({
+      result: {
+        gameWalletAddress,
+        resultNumber,
+        lottoGame: updatedLottoGame,
+      },
+    });
 
 
 }
