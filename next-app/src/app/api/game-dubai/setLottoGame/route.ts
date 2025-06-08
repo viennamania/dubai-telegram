@@ -148,7 +148,7 @@ export async function GET(request: NextRequest) {
 
   const horses = [];
   const randomNumbers = [] as number[];
-  while (randomNumbers.length < 8) {
+  while (randomNumbers.length < 37) {
     
     const randomNumber = Math.floor(Math.random() * totalSupplyNumber);
 

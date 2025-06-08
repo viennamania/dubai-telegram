@@ -1753,6 +1753,52 @@ export async function updateOneGameMoney(data: any) {
 }
 
 
+// updateOneGameMoneyMinus
+export async function updateOneGameMoneyMinus(data: any) {
+  if (!data.walletAddress || !data.minusGameMoney) {
+    return null;
+  }
+
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('users');
+  // check gameMoneyBalance is exist or not
+  const checkUser = await collection.findOne<UserProps>(
+    { walletAddress: data.walletAddress },
+  );
+  if (checkUser) {
+    // if gameMoneyBalance is not exist, then gameMoneyBalance is 0 - minusGameMoney
+    if (!checkUser.gameMoneyBalance) {
+      
+      return null; // cannot minus game money if gameMoneyBalance is not exist
+    } else {
+
+      // if gameMoneyBalance is exist, then gameMoneyBalance is minus minusGameMoney
+      const result = await collection.updateOne(
+        { walletAddress: data.walletAddress },
+        { $set: { gameMoneyBalance: checkUser.gameMoneyBalance - data.minusGameMoney } }
+      );
+      if (result) {
+        const updated = await collection.findOne<UserProps>(
+          { walletAddress: data.walletAddress },
+        );
+
+        return {
+          gameMoneyBalance: updated?.gameMoneyBalance
+        }
+      }
+    }
+
+  } else {
+    return null;
+  }
+
+  return null;
+}
+
+
+
+
+
 
 // updateStorecode
 export async function updateStorecode(data: any) {

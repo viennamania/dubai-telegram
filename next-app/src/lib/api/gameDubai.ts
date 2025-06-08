@@ -1671,3 +1671,25 @@ export async function insertOneLottoGame(data: any) {
 
 }
 
+
+
+// getOneLottoGame
+// status is opened
+export async function getOneLottoGame() {
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('lottoGames');
+
+  const result = await collection.findOne(
+    {
+      status: "opened"
+    }
+  );
+
+  if (result) {
+    return result;
+  } else {
+    return null;
+  }
+
+}
+

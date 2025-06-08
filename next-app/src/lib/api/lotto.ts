@@ -72,3 +72,57 @@ export async function startLotto(data: any) {
 
 
 }
+
+
+
+
+// updateOneLottoGameForBet
+/*
+
+export async function updateOneLottoGameForBet(data: any) {
+
+    const client = await clientPromise;
+
+    const collectionLottoGames = client.db('dubai').collection('lottoGames');
+
+
+    // update selectedNumber array in lottoGames collection
+    // update sum of betAmount in selectedNumber array
+
+    const existingGame = await collectionLottoGames.findOne({ sequence: data.sequence });
+    if (!existingGame) {
+        return null; // No game found with the given sequence
+    }
+
+    // selectNumber is from '00' - '36'
+
+
+
+    const result = await collectionLottoGames.updateOne(
+        { sequence: data.sequence },
+        {
+            $push: {
+                bets: {
+                    walletAddress: data.walletAddress,
+                    selectedNumber: data.selectedNumber,
+                    betAmount: data.betAmount,
+                    timestamp: new Date(),
+                },
+            },
+        }
+    );
+
+    if (result.modifiedCount === 0) {
+        return null;
+    }
+
+    return {
+        sequence: data.sequence,
+        walletAddress: data.walletAddress,
+        selectedNumber: data.selectedNumber,
+        betAmount: data.betAmount,
+    };
+
+}
+    */
+  
