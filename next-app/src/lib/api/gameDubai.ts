@@ -1693,3 +1693,125 @@ export async function getOneLottoGame() {
 
 }
 
+
+
+// updateOneLottoGameForBet
+export async function updateOneLottoGameForBet(
+  {
+    walletAddress,
+    sequence,
+    selectedNumber,
+    betAmount
+  } : {
+    walletAddress: string,
+    sequence: string,
+    selectedNumber: string,
+    betAmount: number
+  }
+
+) {
+
+  const client = await clientPromise;
+  const collection = client.db('dubai').collection('lottoGames');
+
+  // finde one
+  // sequence is integer
+
+  const findResult = await collection.findOne(
+    {
+      sequence: parseInt(sequence),
+    }
+  );
+
+  if (!findResult) {
+    return {
+      params : {
+        walletAddress: walletAddress,
+        sequence: sequence,
+        selectedNumber: selectedNumber,
+        betAmount: betAmount
+      },
+      status: "fail",
+      message: "no data found"
+    }
+  }
+
+
+  if (findResult.status === "closed") {
+    return {
+      status: "fail",
+      data: findResult,
+    }
+  }
+
+  // update user gameMoneyBalance - betAmount
+  const userCollection = client.db('dubai').collection('users');
+  const userResult = await userCollection.updateOne(
+    {
+      walletAddress: walletAddress,
+    },
+    {
+      $inc: {
+        gameMoneyBalance: -betAmount,
+      }
+    }
+  );
+  if (!userResult) {
+    return {
+      status: "fail",
+      message: "fail to update user gameMoneyBalance"
+    };
+  }
+
+
+  // update lotto game
+  const result = await collection.updateOne(
+    {
+      sequence: parseInt(sequence),
+    },
+    {
+      $set: {
+        bets: {
+          walletAddress: walletAddress,
+          selectedNumber: selectedNumber,
+          betAmount: betAmount,
+          createdAt: new Date().toISOString(),
+        }
+      },
+      $inc: {
+        totalBetAmount: betAmount,
+      },
+      $setOnInsert: {
+        status: "opened",
+        updatedAt: new Date().toISOString(),
+      }
+
+    }
+  );
+
+  if (result.modifiedCount > 0) {
+    // find updated data
+    const updatedData = await collection.findOne(
+      {
+        sequence: parseInt(sequence),
+      }
+    );
+
+    if (updatedData) {
+      return {
+        status: "success",
+        data: updatedData
+      };
+    } else {
+      return null;
+    }
+  } else {
+    return {
+      status: "fail",
+      message: "fail to update"
+    };
+  }
+}
+
+
+

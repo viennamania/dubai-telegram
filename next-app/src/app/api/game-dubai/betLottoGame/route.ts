@@ -4,13 +4,13 @@ import {
 	//insertOneLottoGame,
   getOneLottoGame,
   
-  //updateOneLottoGameForBet,
+  updateOneLottoGameForBet,
 
 } from '@lib/api/gameDubai';
 
-import {
-  updateOneGameMoneyMinus,
-} from '@lib/api/user';
+//import {
+//  updateOneGameMoneyMinus,
+//} from '@lib/api/user';
 
 
 import {
@@ -70,22 +70,8 @@ export async function POST(request: NextRequest) {
 
   const sequence = result.sequence;
 
-
-  // gameMoney update
-  // updateOneGameMoneyMinus
-  const updateResult = await updateOneGameMoneyMinus({
-    walletAddress,
-    minusGameMoney: betAmount,
-  } );
-  if (!updateResult) {
-    return NextResponse.json({
-      error: "Failed to update game money.",
-    }, { status: 500 });
-  }
-
-
-  /*
-  // minusGameMoney
+  
+  
   const updateGameResult = await updateOneLottoGameForBet({
     sequence,
     walletAddress,
@@ -98,13 +84,13 @@ export async function POST(request: NextRequest) {
     }, { status: 500 });
   }
 
-  */
+
 
 
  
   return NextResponse.json({
 
-    result,
+    updateGameResult,
     
   });
   
