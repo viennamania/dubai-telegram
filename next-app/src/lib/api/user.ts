@@ -506,6 +506,9 @@ export async function getAllUsers(
   console.log('limit: ' + limit);
   console.log('page: ' + page);
 
+
+
+
   // walletAddress is not empty and not null
   // order by nickname asc
 
@@ -541,7 +544,6 @@ export async function getAllUsers(
       nickname: user.nickname,
       mobile: user.mobile,
       email: user.email,
-      tronWalletAddress: user.tronWalletAddress,
     };
   } );
 
@@ -559,6 +561,9 @@ export async function getAllUsers(
 
   
 }
+
+
+
 
 
 // get all users telegram id by center
@@ -584,133 +589,67 @@ export async function getAllUsersTelegramIdByCenter(
   const collection = client.db('dubai').collection('users');
 
 
-  //console.log('limit: ' + limit);
 
-  // telegramId is not empty and not null and not empty string
+  const users = await collection.aggregate([
+    {
+      $match: {
+        center: center,
+        telegramId: { $exists: true, $ne: '' },
 
-  // referrals collection
-  /*
-  {
-    "_id": {
-      "$oid": "67860af11cbd056942632b2d"
+        // errmsg: '$regex has to be a string',
+
+        nickname: { $regex: searchNickname, $options: 'i' },
+
+      
+
+      }
     },
-    "telegramId": "441516803",
-    "referralCode": "0x4BC23C679e3E2aac58D43Bb5257281562FB01e04_0"
-  } 
-  */
-  // join with referrals collection and get referralCode
-
-
-  ///const referralsCollection = client.db('dubai').collection('referrals');
-
-
-  if (center === 'owin_eagle_bot') {
-
-    // referrals_center collection
-
-    const users = await collection.aggregate([
-      {
-        $match: {
-          center: center,
-          telegramId: { $exists: true, $ne: '' },
-
-          nickname: { $regex: searchNickname, $options: 'i' },
-
-        }
-      },
-      {
-        $lookup: {
-          from: 'referrals_center',
-          localField: 'telegramId',
-          foreignField: 'telegramId',
-          as: 'referral'
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          telegramId: 1,
-          nickname: 1,
-          walletAddress: 1,
-          createdAt: 1,
-          avatar: 1,
-          center: 1,
-          centerOwner: 1,
-
-          referralCode: { $arrayElemAt: ['$referral.referralCode', 0] }
-        }
-      },
-      {
-        $limit: limit,
-      },
-      {
-        $skip: page * limit,
-      },
-
-      // order by createdAt desc
-      {
-        $sort: { createdAt: -1 }
+    {
+      $lookup: {
+        from: 'referrals',
+        localField: 'telegramId',
+        foreignField: 'telegramId',
+        as: 'referral'
       }
-    ]).toArray();
+    },
+    {
+      $project: {
+        _id: 0,
+        telegramId: 1,
+        nickname: 1,
+        walletAddress: 1,
+        createdAt: 1,
+        avatar: 1,
+        center: 1,
+        centerOwner: 1,
 
-    return users;
-
-
-  } else {
-
-    const users = await collection.aggregate([
-      {
-        $match: {
-          center: center,
-          telegramId: { $exists: true, $ne: '' },
-
-          // errmsg: '$regex has to be a string',
-
-          nickname: { $regex: searchNickname, $options: 'i' },
-
-        
-
-        }
-      },
-      {
-        $lookup: {
-          from: 'referrals',
-          localField: 'telegramId',
-          foreignField: 'telegramId',
-          as: 'referral'
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          telegramId: 1,
-          nickname: 1,
-          walletAddress: 1,
-          createdAt: 1,
-          avatar: 1,
-          center: 1,
-          centerOwner: 1,
-
-          referralCode: { $arrayElemAt: ['$referral.referralCode', 0] }
-        }
-      },
-      {
-        $limit: limit,
-      },
-      {
-        $skip: page * limit,
-      },
-      // order by createdAt desc
-      {
-        $sort: { createdAt: -1 }
+        referralCode: { $arrayElemAt: ['$referral.referralCode', 0] }
       }
-    ]).toArray();
+    },
+    {
+      $limit: limit,
+    },
+    {
+      $skip: page * limit,
+    },
+    // order by createdAt desc
+    {
+      $sort: { createdAt: -1 }
+    }
+  ]).toArray();
 
-    return users;
 
-  }
+
+  return users;
+
 
 }
+
+
+
+
+
+
 
 
 // get all members by center excluding center owner

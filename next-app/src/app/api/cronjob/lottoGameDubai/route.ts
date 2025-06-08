@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
     
     const date = new Date();
     const hours = date.getHours() + 9;
-    if (hours >= 23 || hours < 9) {
+    if (hours >= 22 || hours < 9) {
 
       
       return;

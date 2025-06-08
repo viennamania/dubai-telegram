@@ -13,6 +13,10 @@
         {
             "path": "/api/cronjob/lottoGameDubai",
             "schedule": "*/5 * * * *"
+        },
+        {
+            "path": "/api/cronjob/airdropDubai",
+            "schedule": "*/5 * * * *"
         }
 
 
