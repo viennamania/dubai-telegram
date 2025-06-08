@@ -128,7 +128,7 @@ export async function GET(request: NextRequest) {
 
     // get the latest lotto game
     const lottoGame = await getOneLottoGame();
-    
+
 
     if (!lottoGame) {
       return NextResponse.json({
@@ -153,6 +153,8 @@ export async function GET(request: NextRequest) {
       });
     }
 
+
+    const tatalBetAmount = lottoGame.totalBetAmount;
 
 
 
@@ -204,6 +206,68 @@ export async function GET(request: NextRequest) {
 
     // randomly generate a result number between "00" and "36"
     const resultNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
+
+ 
+
+    // find bets that match selectedNumber is equal to resultNumber
+    interface Bet {
+      walletAddress: string;
+      selectedNumber: string;
+      betAmount: number;
+
+    }
+
+
+    const bets: Bet[] = (lottoGame.bets as Bet[]);
+
+    const winningBets: Bet[] = bets.filter((bet: Bet) => bet.selectedNumber === resultNumber);
+
+    console.log("winningBets: ", winningBets);
+
+ 
+
+
+
+    const transactions = [] as any[];
+
+    for (const bet of winningBets) {
+      const userWalletAddress = bet.walletAddress;
+      const betAmount = bet.betAmount;
+
+      console.log("userWalletAddress: ", userWalletAddress);
+      console.log("betAmount: ", betAmount);
+
+      const winningAmount = tatalBetAmount / winningBets.length; // distribute total bet amount equally among winners
+
+      // transfer USDT to the user
+      if (userWalletAddress && userWalletAddress !== gameWalletAddress) {
+        const transaction = transfer({
+          contract: contractUSDT,
+          to: userWalletAddress,
+          amount: winningAmount, // send winning amount to the user
+        });
+
+        transactions.push(transaction);
+      }
+    }
+
+
+    let transactionHash = "";
+    if (transactions.length > 0) {
+      const batchOptions: SendBatchTransactionOptions = {
+        account: account,
+        transactions: transactions,
+      };
+      const batchResponse = await sendBatchTransaction(batchOptions);
+ 
+      transactionHash = batchResponse.transactionHash;
+      console.log("transactionHash: ", transactionHash);
+      // return the transaction hash
+
+    }
+
+
+
 
 
 
