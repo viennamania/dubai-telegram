@@ -83,13 +83,14 @@ export async function POST(request: NextRequest) {
     }, { status: 500 });
   }
 
-
+  /*
   const botWalletAddress = process.env.GAME_WALLET_ADDRESS;
   if (!botWalletAddress) {
     return NextResponse.json({
       error: "Bot wallet address is not configured.",
     }, { status: 500 });
   }
+  */
 
 
   // "00" - "36"
