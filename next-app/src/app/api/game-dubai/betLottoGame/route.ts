@@ -71,7 +71,6 @@ export async function POST(request: NextRequest) {
   const sequence = result.sequence;
 
   
-  
   const updateGameResult = await updateOneLottoGameForBet({
     sequence,
     walletAddress,
@@ -84,6 +83,25 @@ export async function POST(request: NextRequest) {
     }, { status: 500 });
   }
 
+
+  const botWalletAddress = process.env.GAME_WALLET_ADDRESS;
+  if (!botWalletAddress) {
+    return NextResponse.json({
+      error: "Bot wallet address is not configured.",
+    }, { status: 500 });
+  }
+
+
+  // "00" - "36"
+  const botSelectedNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
+  const botBetAmount = 1;
+
+  await updateOneLottoGameForBet({
+    sequence,
+    walletAddress: botWalletAddress,
+    selectedNumber: botSelectedNumber,
+    betAmount: botBetAmount,
+  });
 
 
 
