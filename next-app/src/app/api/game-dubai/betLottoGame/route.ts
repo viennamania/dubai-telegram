@@ -77,6 +77,8 @@ export async function POST(request: NextRequest) {
     selectedNumber,
     betAmount,
   });
+
+  
   if (!updateGameResult) {
     return NextResponse.json({
       error: "Failed to update lotto game.",

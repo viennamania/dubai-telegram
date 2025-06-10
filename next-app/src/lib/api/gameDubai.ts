@@ -1798,7 +1798,6 @@ export async function updateOneLottoGameClose(
       "Result Number: " + resultNumber + "\n" +
       "Your Bet: " + bet.selectedNumber + "\n" +
       "Your Bet Amount: " + bet.betAmount + "\n" +
-      "Result Number: " + resultNumber + "\n" +
       "You " + (bet.selectedNumber === resultNumber ? "Win" : "Lose") + "\n";
 
 
