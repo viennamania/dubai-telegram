@@ -93,6 +93,7 @@ export async function POST(request: NextRequest) {
 
 
   // "00" - "36"
+  /*
   const botSelectedNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
   const botBetAmount = 1;
 
@@ -102,6 +103,7 @@ export async function POST(request: NextRequest) {
     selectedNumber: botSelectedNumber,
     betAmount: botBetAmount,
   });
+  */
 
 
 
