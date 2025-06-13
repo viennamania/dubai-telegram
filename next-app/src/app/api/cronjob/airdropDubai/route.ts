@@ -207,7 +207,13 @@ export async function GET(request: NextRequest) {
     // "00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, ... 36"
 
     // randomly generate a result number between "00" and "36"
-    const resultNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
+    //const resultNumber = Math.floor(Math.random() * 37).toString().padStart(2, '0');
+
+
+    // "00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20"
+    const resultNumber = Math.floor(Math.random() * 21).toString().padStart(2, '0');
+    console.log("resultNumber: ", resultNumber);
+
 
  
 
