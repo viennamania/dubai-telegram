@@ -427,6 +427,7 @@ function ProfilePage() {
                 }),
             });
 
+            /*
             if (response.status !== 200) {
                 //toast.error('Error saving nickname');
                 alert('회원아이디 저장에 실패했습니다.'
@@ -438,6 +439,7 @@ function ProfilePage() {
                 setLoadingSetUserData(false);
                 return;
             }
+            */
 
             const data = await response.json();
 
