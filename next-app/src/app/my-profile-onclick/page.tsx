@@ -427,19 +427,21 @@ function ProfilePage() {
                 }),
             });
 
-            /*
+            
             if (response.status !== 200) {
                 //toast.error('Error saving nickname');
+                /*
                 alert('회원아이디 저장에 실패했습니다.'
                     + "address: " + address
                     + "nickname: " + editedNickname
                     + "telegramId: " + telegramId
                     + "center: " + center
                 );
+                */
                 setLoadingSetUserData(false);
                 return;
             }
-            */
+            
 
             const data = await response.json();
 
