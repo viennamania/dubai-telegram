@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
 
 
 
-
   const result = await insertMessageByUseridAndStorecode({
     center: center,
     category: "wallet",

@@ -536,7 +536,7 @@ export async function insertMessageByUseridAndStorecode(
 
     const user = await client.db('dubai').collection('users').findOne(
         {
-            storecode: storecode,
+            ////storecode: storecode,
             nickname: userid,
         },
     );
