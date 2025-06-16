@@ -36,7 +36,7 @@ export async function startLotto(data: any) {
 
 
             
-
+        /*
         if (telegramId) {
 
 
@@ -58,6 +58,7 @@ export async function startLotto(data: any) {
             );
 
         }
+        */
 
     });
 
