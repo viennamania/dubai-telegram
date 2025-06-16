@@ -69,6 +69,8 @@ import { add } from "thirdweb/extensions/thirdweb";
 const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 
+
+
 function ProfilePage() {
 
     const searchParams = useSearchParams();
@@ -799,6 +801,9 @@ function ProfilePage() {
     }
 
 
+
+
+
     return (
 
         <main
@@ -975,7 +980,7 @@ function ProfilePage() {
                                     } }
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
-                                    {nicknameEdit ? "취소" : "수정"*/}
+                                    {nicknameEdit ? "취소" : "수정"}
                                     
                                 </button>
 
@@ -1948,88 +1953,16 @@ function ProfilePage() {
 
     );
 
+
 }
 
-          
-
-function Header(
-    {
-        center,
-        agent,
-        tokenId,
-    } : {
-        center: string
-        agent: string
-        tokenId: string
-    }
-) {
-
-    const router = useRouter();
-  
-  
-    return (
-      <header className="flex flex-col items-center mb-5 md:mb-10">
-  
-        {/* header menu */}
-        <div className="w-full flex flex-row justify-between items-center gap-2
-          bg-green-500 p-4 rounded-lg mb-5
-        ">
-            {/* logo */}
-            <button
-                onClick={() => {
-                    router.push('/?center=' + center + '&agent=' + agent + '&tokenId=' + tokenId);
-                }}
-            >            
-                <div className="flex flex-row gap-2 items-center">
-                    <Image
-                    src="/logo-aiagent.png"
-                    alt="Circle Logo"
-                    width={35}
-                    height={35}
-                    className="rounded-full w-10 h-10 xl:w-14 xl:h-14"
-                    />
-                    <span className="text-lg xl:text-3xl text-gray-800 font-semibold">
-                    AI Agent
-                    </span>
-                </div>
-            </button>
-
-            {/*}
-            <div className="flex flex-row gap-2 items-center">
-                <button
-                onClick={() => {
-                    router.push(
-                        "/tbot?center=" + center + "agent=" + agent + "&tokenId=" + tokenId
-                    );
-                }}
-                className="text-gray-600 hover:underline text-sm xl:text-lg"
-                >
-                TBOT
-                </button>
-                <button
-                onClick={() => {
-                    router.push('/profile?center=' + center + 'agent=' + agent + '&tokenId=' + tokenId);
-                }}
-                className="text-gray-600 hover:underline text-sm xl:text-lg"
-                >
-                SETTINGS
-                </button>
-            </div>
-            */}
-
-
-        </div>
-        
-      </header>
-    );
-  }
 
 
 
-  export default function Profile() {
+export default function Profile() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <ProfilePage />
         </Suspense>
     );
-  }
+}
