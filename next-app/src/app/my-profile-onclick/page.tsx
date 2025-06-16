@@ -346,13 +346,13 @@ function ProfilePage() {
 
         if (editedNickname.length < 5 || editedNickname.length > 10) {
 
-            //toast.error("회원아이디는 5자 이상 10자 이하로 입력해주세요");
+            //toast.error("회원코드는 5자 이상 10자 이하로 입력해주세요");
             return;
         }
         
         ///if (!/^[a-z0-9]*$/.test(nickname)) {
         if (!/^[a-z0-9]*$/.test(editedNickname)) {
-            //toast.error("회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.");
+            //toast.error("회원코드는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.");
             return;
         }
 
@@ -378,7 +378,7 @@ function ProfilePage() {
 
             if (response.status !== 200) {
                 //toast.error('Error saving nickname');
-                alert('회원아이디 저장에 실패했습니다.'
+                alert('회원코드 저장에 실패했습니다.'
                     + "address: " + address
                     + "nickname: " + editedNickname
                 );
@@ -431,7 +431,7 @@ function ProfilePage() {
             if (response.status !== 200) {
                 //toast.error('Error saving nickname');
                 /*
-                alert('회원아이디 저장에 실패했습니다.'
+                alert('회원코드 저장에 실패했습니다.'
                     + "address: " + address
                     + "nickname: " + editedNickname
                     + "telegramId: " + telegramId
@@ -918,15 +918,15 @@ function ProfilePage() {
 
 
 
-                    {/* 회원아이디을 저장하면 나의 소속 센터 봇가 설정됩니다 */}
+                    {/* 회원코드을 저장하면 나의 소속 센터 봇가 설정됩니다 */}
                     {/*
                     {address && !userCenter && (
                         <div className='w-full flex flex-col gap-2 items-start justify-between border border-gray-300 p-4 rounded-lg'>
                             <div className="bg-green-500 text-sm text-zinc-100 p-2 rounded">
-                                회원아이디을 저장하면 나의 소속 센터 봇이 설정됩니다
+                                회원코드을 저장하면 나의 소속 센터 봇이 설정됩니다
                             </div>
                             <span className='text-sm font-semibold text-gray-500'>
-                                회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
+                                회원코드는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
                             </span>
 
                             <div className="flex flex-row gap-2 items-center justify-between">
@@ -956,7 +956,7 @@ function ProfilePage() {
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className="text-sm font-semibold text-gray-200">
-                                        회원아이디
+                                        회원코드
                                     </span>
                                 </div>
 
@@ -968,7 +968,7 @@ function ProfilePage() {
                                 <button
                                     onClick={() => {
                                         navigator.clipboard.writeText(nickname);
-                                        alert('회원아이디가 복사되었습니다.');
+                                        alert('회원코드가 복사되었습니다.');
                                     }}
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
@@ -1014,9 +1014,9 @@ function ProfilePage() {
                                         className="text-sm font-semibold text-gray-200"
                                     >
                                         {
-                                        !userCode ? "회원 아이디 설정" :
-                                        nicknameEdit ? "회원아이디 수정"
-                                        : "회원아이디 수정"
+                                        !userCode ? "회원코드 설정" :
+                                        nicknameEdit ? "회원코드 수정"
+                                        : "회원코드 수정"
                                         }
                                     </span>
                                 </div>
@@ -1040,7 +1040,7 @@ function ProfilePage() {
                                             // check if the value is alphanumeric and lowercase
 
                                             if (!/^[a-z0-9]*$/.test(e.target.value)) {
-                                                //toast.error('회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.');
+                                                //toast.error('회원코드는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.');
                                                 
                                                 return;
                                             }
@@ -1066,7 +1066,7 @@ function ProfilePage() {
                                     {editedNickname && isNicknameDuplicate && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-red-500'>
-                                                이미 사용중인 회원아이디입니다.
+                                                이미 사용중인 회원코드입니다.
                                             </span>
                                         </div>
                                     )}
@@ -1077,7 +1077,7 @@ function ProfilePage() {
                                     && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-green-500'>
-                                                사용가능한 회원아이디입니다.
+                                                사용가능한 회원코드입니다.
                                             </span>
                                         </div>
                                     )}
@@ -1087,7 +1087,7 @@ function ProfilePage() {
                                 <div className='flex flex-row gap-2 items-center justify-between'>
                                     <span className='text-sm text-zinc-100 font-semibold'>
 
-                                        회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
+                                        회원코드는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
 
                                     </span>
                                 </div>
@@ -1112,7 +1112,7 @@ function ProfilePage() {
                                         w-full mt-5
                                     `}
                                     onClick={() => {
-                                        confirm('회원아이디를 저장하시겠습니까?') && setUserData();
+                                        confirm('회원코드를 저장하시겠습니까?') && setUserData();
                                     }}
                                 >
                                     {loadingSetUserData ? "저장중..." : "저장"}
