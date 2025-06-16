@@ -832,6 +832,8 @@ function ProfilePage() {
 
                 <div className="flex flex-col items-start justify-center space-y-4">
 
+
+                    {/*
                    <div className="flex justify-center mt-5">
                         {address ? (
                             <div className="flex flex-row gap-2 items-center justify-between">
@@ -879,7 +881,6 @@ function ProfilePage() {
                         bg-zinc-800 bg-opacity-90
                         '>
                             <div className="flex flex-row gap-2 items-center justify-between">
-                                {/* dot */}
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="text-sm font-semibold text-gray-200">
                                     Telegram ID
@@ -891,7 +892,6 @@ function ProfilePage() {
                                     {telegramId}
                                 </div>
                             </div>
-                            {/* 복사 버튼 */}
                             <button
                                 onClick={() => {
                                     navigator.clipboard.writeText(telegramId as string);
@@ -902,16 +902,10 @@ function ProfilePage() {
                                 Copy
                             </button>
 
-                            {/*}
-                            {isCenterOwner && (
-                                <span className='text-sm font-semibold text-green-500'>
-                                    센터 소유자 입니다.
-                                </span>
-                            )}
-                            */}
-
                         </div>
                     )}
+                        
+                    */}
 
 
 
@@ -953,7 +947,7 @@ function ProfilePage() {
                                     {/* dot */}
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className="text-sm font-semibold text-gray-200">
-                                        Member ID
+                                        회원아이디
                                     </span>
                                 </div>
 
@@ -965,11 +959,11 @@ function ProfilePage() {
                                 <button
                                     onClick={() => {
                                         navigator.clipboard.writeText(nickname);
-                                        alert('Member ID has been copied.');
+                                        alert('회원아이디가 복사되었습니다.');
                                     }}
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
-                                    Copy
+                                    복사
                                 </button>
 
                                 
@@ -981,8 +975,8 @@ function ProfilePage() {
                                     } }
                                     className="p-2 bg-blue-500 text-zinc-100 rounded"
                                 >
-                                    {/*nicknameEdit ? "취소" : "수정"*/}
-                                    {nicknameEdit ? "Cancel" : "Edit"}
+                                    {nicknameEdit ? "취소" : "수정"*/}
+                                    
                                 </button>
 
                                 <Image
@@ -1010,8 +1004,10 @@ function ProfilePage() {
                                     <span
                                         className="text-sm font-semibold text-gray-200"
                                     >
-                                        {!userCode ? "Set Member ID" :
-                                        nicknameEdit ? "Update Member ID" : "Set new Member ID"
+                                        {
+                                        !userCode ? "회원 아이디 설정" :
+                                        nicknameEdit ? "회원아이디 수정"
+                                        : "회원아이디 수정"
                                         }
                                     </span>
                                 </div>
@@ -1023,8 +1019,8 @@ function ProfilePage() {
                                         className="p-2 w-full text-2xl text-center font-semibold bg-zinc-800 rounded-lg text-zinc-100
                                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
 
-                                        placeholder="Alphabet and numbers"
-                                        //placeholder="영문 소문자와 숫자"
+
+                                        placeholder="영문 소문자와 숫자"
                                         
                                         //value={nickname}
                                         value={editedNickname}
@@ -1061,8 +1057,7 @@ function ProfilePage() {
                                     {editedNickname && isNicknameDuplicate && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-red-500'>
-                                                {/*이미 사용중인 회원아이디입니다.*/}
-                                                Member ID is already in use.
+                                                이미 사용중인 회원아이디입니다.
                                             </span>
                                         </div>
                                     )}
@@ -1073,8 +1068,7 @@ function ProfilePage() {
                                     && (
                                         <div className='flex flex-row gap-2 items-center justify-between'>
                                             <span className='text-sm font-semibold text-green-500'>
-                                                {/*사용가능한 회원아이디입니다.*/}
-                                                Member ID is available.
+                                                사용가능한 회원아이디입니다.
                                             </span>
                                         </div>
                                     )}
@@ -1084,8 +1078,7 @@ function ProfilePage() {
                                 <div className='flex flex-row gap-2 items-center justify-between'>
                                     <span className='text-sm text-zinc-100 font-semibold'>
 
-                                        {/*회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.*/}
-                                        Member ID must be 5 to 10 characters long and contain only lowercase letters and numbers.
+                                        회원아이디는 영문 소문자와 숫자로 5자 이상 10자 이하로 입력해주세요.
 
                                     </span>
                                 </div>
@@ -1110,12 +1103,10 @@ function ProfilePage() {
                                         w-full mt-5
                                     `}
                                     onClick={() => {
-                                        //confirm('회원아이디를 저장하시겠습니까?') && setUserData();
-                                        confirm('Are you sure you want to save the Member ID?') && setUserData();
+                                        confirm('회원아이디를 저장하시겠습니까?') && setUserData();
                                     }}
                                 >
-                                    {/*loadingSetUserData ? "저장중..." : "저장"*/}
-                                    {loadingSetUserData ? "Saving..." : "Save"}
+                                    {loadingSetUserData ? "저장중..." : "저장"}
                                     
                                 </button>
 
@@ -1129,12 +1120,12 @@ function ProfilePage() {
 
 
                         {/* userStorecode */}
+                        {/*
                         {address && userCode && (
                             <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                             bg-zinc-800 bg-opacity-90
                             '>
                                 <div className="w-full flex flex-row gap-2 items-center justify-start">
-                                    {/* dot */}
                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     <span className="text-sm font-semibold text-gray-200">
                                         Store Code
@@ -1149,14 +1140,15 @@ function ProfilePage() {
 
                             </div>
                         )}
+                        */}
 
 
                         {/* update userStorecode */}
+                        {/*
                         <div className='w-full flex flex-col gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                         bg-zinc-800 bg-opacity-90
                         '>
                             <div className="w-full flex flex-row gap-2 items-center justify-start">
-                                {/* dot */}
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="text-sm font-semibold text-gray-200">
                                     Update Store Code
@@ -1207,7 +1199,7 @@ function ProfilePage() {
                             )}
 
                         </div>
-
+                        */}
 
 
 
