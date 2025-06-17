@@ -101,11 +101,9 @@ export async function POST(request: NextRequest) {
     center: center,
   });
 
-
   
   const user = await getOneByTelegramId(telegramId, center);
 
-  
 
   if (user) {
     const referralCode = user.referralCode;
