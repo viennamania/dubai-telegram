@@ -398,52 +398,63 @@ function ProfilePage() {
 
         } else {
 
-            const response = await fetch("/api/user/setUserVerified", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    walletAddress: address,                    
-                    //nickname: nickname,
-                    nickname: editedNickname,
-                    userType: "",
-                    mobile: "",
-                    telegramId: telegramId,
-                    center: center,
-                }),
-            });
 
-            if (response.status !== 200) {
-                //toast.error('Error saving nickname');
-                alert('회원아이디 저장에 실패했습니다.'
-                    + "address: " + address
-                    + "nickname: " + editedNickname
-                    + "telegramId: " + telegramId
-                    + "center: " + center
-                );
-                setLoadingSetUserData(false);
-                return;
+            try {
+
+                const response = await fetch("/api/user/setUserVerified", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        walletAddress: address,                    
+                        //nickname: nickname,
+                        nickname: editedNickname,
+                        userType: "",
+                        mobile: "",
+                        telegramId: telegramId,
+                        center: center,
+                    }),
+                });
+
+                /*
+                if (response.status !== 200) {
+                    //toast.error('Error saving nickname');
+                    alert('회원아이디 저장에 실패했습니다.'
+                        + "address: " + address
+                        + "nickname: " + editedNickname
+                        + "telegramId: " + telegramId
+                        + "center: " + center
+                    );
+                    setLoadingSetUserData(false);
+                    return;
+                }
+                */
+
+                const data = await response.json();
+
+                //console.log("data", data);
+
+                if (data.result) {
+
+                    setUserCode(data.result.id);
+                    setNickname(data.result.nickname);
+                    setIsValideTelegramId(true);
+
+                    setNicknameEdit(false);
+                    setEditedNickname('');
+
+                    //toast.success('Nickname saved');
+
+                } else {
+                    //toast.error('Error saving nickname');
+                }
+
+            } catch (error) {
+                console.error("Error setting user data:", error);
+
             }
 
-            const data = await response.json();
-
-            //console.log("data", data);
-
-            if (data.result) {
-
-                setUserCode(data.result.id);
-                setNickname(data.result.nickname);
-                setIsValideTelegramId(true);
-
-                setNicknameEdit(false);
-                setEditedNickname('');
-
-                //toast.success('Nickname saved');
-
-            } else {
-                //toast.error('Error saving nickname');
-            }
         }
 
         setLoadingSetUserData(false);
