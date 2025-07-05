@@ -842,8 +842,8 @@ function ProfilePage() {
                 <div className="flex flex-col items-start justify-center space-y-4">
 
 
-                    {/*
-                   <div className="flex justify-center mt-5">
+                    
+                    <div className="flex justify-center mt-5">
                         {address ? (
                             <div className="flex flex-row gap-2 items-center justify-between">
 
@@ -884,7 +884,7 @@ function ProfilePage() {
                     </div>
 
 
-
+                    {/*
                     {userCode && isValideTelegramId && (
                         <div className='w-full flex flex-row gap-2 items-center justify-between border border-gray-300 p-4 rounded-lg
                         bg-zinc-800 bg-opacity-90
