@@ -216,7 +216,7 @@ function ProfilePage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("/api/user/getUser", {
+            const response = await fetch("/api/userGoodPay/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -537,7 +537,7 @@ function ProfilePage() {
             alert('핸드폰번호가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/user/getUser", {
+            const response = await fetch("/api/userGoodPay/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -768,7 +768,7 @@ function ProfilePage() {
             
 
             // get user data
-            const response = await fetch("/api/user/getUser", {
+            const response = await fetch("/api/userGoodPay/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

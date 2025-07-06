@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
 	getOneByWalletAddress,
-} from '@lib/api/user';
+} from '@lib/api/userGoodPay';
 
 
 
