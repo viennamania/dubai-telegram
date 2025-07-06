@@ -574,6 +574,78 @@ export async function insertMessageByUseridAndStorecode(
 
 
 
+
+
+// insertMessageByUseridAndStorecode
+export async function insertMessageByUseridAndStorecodeGoodPay(
+    {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    }
+    :
+    {
+        center: string,
+        category: string,
+        userid: string,
+        storecode: string,
+        message: string,
+    }
+) {
+
+    console.log("insertMessageByUseridAndStorecodeGoodPay", {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    });
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
+
+    const user = await client.db('dubai').collection('usersGoodPay').findOne(
+        {
+            ////storecode: storecode,
+            nickname: userid,
+        },
+    );
+
+    if (user && user.telegramId) {
+
+        await collectionTelegramMessages.insertOne(
+            {
+                center,
+                category,
+                telegramId: user.telegramId,
+                message,
+            }
+        );
+
+        return {
+            result: "success",
+        };
+
+
+    } else {
+        console.log("user not found", userid, storecode);
+        return {
+            result: "user not found",
+        };
+    }
+
+
+}
+
+
+
+
+
+
+
 // getAllMessages
 export async function getAllLottoMessages(data: any) {
 

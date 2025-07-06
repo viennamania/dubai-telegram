@@ -362,7 +362,7 @@ function ProfilePage() {
         if (nicknameEdit) {
 
 
-            const response = await fetch("/api/user/updateUser", {
+            const response = await fetch("/api/userGoodPay/updateUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -411,7 +411,7 @@ function ProfilePage() {
 
         } else {
 
-            const response = await fetch("/api/user/setUserVerified", {
+            const response = await fetch("/api/userGoodPay/setUserVerified", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
