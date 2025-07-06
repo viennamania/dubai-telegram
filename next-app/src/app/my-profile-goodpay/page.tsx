@@ -308,7 +308,7 @@ function ProfilePage() {
 
     const checkNicknameIsDuplicate = async ( nickname: string ) => {
 
-        const response = await fetch("/api/user/checkUserByNickname", {
+        const response = await fetch("/api/userGoodPay/checkUserByNickname", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -475,7 +475,7 @@ function ProfilePage() {
         
         setLoadingSetUserTelegramId(true);
 
-        const response = await fetch("/api/user/updateUserTelegramId", {
+        const response = await fetch("/api/userGoodPay/updateUserTelegramId", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -504,13 +504,13 @@ function ProfilePage() {
 
 
     // update User mobile
-    // /api/user/updateUserMobile
+    // /api/userGoodPay/updateUserMobile
     const [loadingSetUserMobile, setLoadingSetUserMobile] = useState(false);
     const setUserMobile = async () => {
         
         setLoadingSetUserMobile(true);
 
-        const response = await fetch("/api/user/updateUserMobile", {
+        const response = await fetch("/api/userGoodPay/updateUserMobile", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -577,7 +577,7 @@ function ProfilePage() {
     const updateUserStorecode = async () => {
         setLoadingSetUserStorecode(true);
 
-        const response = await fetch("/api/user/updateUserStorecode", {
+        const response = await fetch("/api/userGoodPay/updateUserStorecode", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -636,7 +636,7 @@ function ProfilePage() {
 
         setLoadingSetSeller(true);
 
-        const response = await fetch("/api/user/updateSellerSnt", {
+        const response = await fetch("/api/userGoodPay/updateSellerSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -676,7 +676,7 @@ function ProfilePage() {
             alert('판매자 정보가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/user/getUser", {
+            const response = await fetch("/api/userGoodPay/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -733,7 +733,7 @@ function ProfilePage() {
 
         setLoadingCheckAuthValue(true);
 
-        const response = await fetch("/api/user/updateSellerConfirmSnt", {
+        const response = await fetch("/api/userGoodPay/updateSellerConfirmSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
