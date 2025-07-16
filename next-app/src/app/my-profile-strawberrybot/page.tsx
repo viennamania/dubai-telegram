@@ -308,7 +308,7 @@ function ProfilePage() {
 
     const checkNicknameIsDuplicate = async ( nickname: string ) => {
 
-        const response = await fetch("/api/userAppleBot/checkUserByNickname", {
+        const response = await fetch("/api/userStrawberryBot/checkUserByNickname", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -362,7 +362,7 @@ function ProfilePage() {
         if (nicknameEdit) {
 
 
-            const response = await fetch("/api/userAppleBot/updateUser", {
+            const response = await fetch("/api/userStrawberryBot/updateUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -411,7 +411,7 @@ function ProfilePage() {
 
         } else {
 
-            const response = await fetch("/api/userAppleBot/setUserVerified", {
+            const response = await fetch("/api/userStrawberryBot/setUserVerified", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -475,7 +475,7 @@ function ProfilePage() {
         
         setLoadingSetUserTelegramId(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserTelegramId", {
+        const response = await fetch("/api/userStrawberryBot/updateUserTelegramId", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -504,13 +504,13 @@ function ProfilePage() {
 
 
     // update User mobile
-    // /api/userAppleBot/updateUserMobile
+    // /api/userStrawberryBot/updateUserMobile
     const [loadingSetUserMobile, setLoadingSetUserMobile] = useState(false);
     const setUserMobile = async () => {
         
         setLoadingSetUserMobile(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserMobile", {
+        const response = await fetch("/api/userStrawberryBot/updateUserMobile", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -537,7 +537,7 @@ function ProfilePage() {
             alert('핸드폰번호가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userStrawberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -577,7 +577,7 @@ function ProfilePage() {
     const updateUserStorecode = async () => {
         setLoadingSetUserStorecode(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserStorecode", {
+        const response = await fetch("/api/userStrawberryBot/updateUserStorecode", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -636,7 +636,7 @@ function ProfilePage() {
 
         setLoadingSetSeller(true);
 
-        const response = await fetch("/api/userAppleBot/updateSellerSnt", {
+        const response = await fetch("/api/userStrawberryBot/updateSellerSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -676,7 +676,7 @@ function ProfilePage() {
             alert('판매자 정보가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userStrawberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -733,7 +733,7 @@ function ProfilePage() {
 
         setLoadingCheckAuthValue(true);
 
-        const response = await fetch("/api/userAppleBot/updateSellerConfirmSnt", {
+        const response = await fetch("/api/userStrawberryBot/updateSellerConfirmSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -768,7 +768,7 @@ function ProfilePage() {
             
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userStrawberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
