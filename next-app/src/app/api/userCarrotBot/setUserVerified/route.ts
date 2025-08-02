@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
 	insertOneVerified,
-} from '@lib/api/userGrapeBot';
+} from '@lib/api/userCarrotBot';
 
 import {
   getOneByTelegramId,
