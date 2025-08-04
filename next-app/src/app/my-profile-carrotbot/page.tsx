@@ -834,6 +834,23 @@ function ProfilePage() {
                     <div className="text-2xl font-semibold text-zinc-100">
                         나의 프로필설정
                     </div>
+                    {/* telegramId */}
+                    <div className="flex flex-row items-center justify-between w-full mt-2">
+                        <div className="text-sm text-zinc-400">
+                            텔레그램 ID: {telegramId || "설정되지 않음"}
+                        </div>
+                        {/* 복사 버튼 */}
+                        <button
+                            onClick={() => {
+                                navigator.clipboard.writeText(telegramId || '');
+                                alert('Telegram ID가 복사되었습니다.');
+                            }}
+                            className="p-2 bg-blue-500 text-zinc-100 rounded"
+                        >
+                            복사
+                        </button>
+                    </div>
+
                 </div>
 
         
