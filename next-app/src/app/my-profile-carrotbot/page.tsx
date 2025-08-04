@@ -828,7 +828,7 @@ function ProfilePage() {
                     bg-zinc-800 bg-opacity-90
                     backdrop-blur-md
                     p-4 rounded-lg
-                    w-full flex flex-row items-center justify-between">
+                    w-full flex flex-col items-center justify-between">
 
                     {/* title */}
                     <div className="text-2xl font-semibold text-zinc-100">
