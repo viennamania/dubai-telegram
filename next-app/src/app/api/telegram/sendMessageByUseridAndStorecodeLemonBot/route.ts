@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import {
-	insertMessageByUseridAndStorecodeCarrotBot,
+	insertMessageByUseridAndStorecodeLemonBot,
 } from '@lib/api/telegram';
 
 
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
 
 
-  const result = await insertMessageByUseridAndStorecodeCarrotBot({
+  const result = await insertMessageByUseridAndStorecodeLemonBot({
     center: center,
     category: "wallet",
     userid,
