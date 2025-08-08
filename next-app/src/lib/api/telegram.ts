@@ -1139,6 +1139,154 @@ export async function insertMessageByUseridAndStorecodeOrangeBot(
 
 
 
+export async function insertMessageByUseridAndStorecodeLemonBot(
+    {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    }
+    :
+    {
+        center: string,
+        category: string,
+        userid: string,
+        storecode: string,
+        message: string,
+    }
+) {
+
+    console.log("insertMessageByUseridAndStorecodeLemonBot", {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    });
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
+
+    const user = await client.db('dubai').collection('usersLemonBot').findOne(
+        {
+            ////storecode: storecode,
+            nickname: userid,
+        },
+    );
+
+    if (user && user.telegramId) {
+
+        await collectionTelegramMessages.insertOne(
+            {
+                center,
+                category,
+                telegramId: user.telegramId,
+                message,
+            }
+        );
+
+        return {
+            result: "success",
+        };
+
+
+    } else {
+        console.log("user not found", userid, storecode);
+        return {
+            result: "user not found",
+        };
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+export async function insertMessageByUseridAndStorecodeBot(
+    {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    }
+    :
+    {
+        center: string,
+        category: string,
+        userid: string,
+        storecode: string,
+        message: string,
+    }
+) {
+
+    console.log("insertMessageByUseridAndStorecodeOrangeBot", {
+        center,
+        category,
+        userid,
+        storecode,
+        message,
+    });
+
+    const client = await clientPromise;
+
+    const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
+
+    const user = await client.db('dubai').collection('usersOrangeBot').findOne(
+        {
+            ////storecode: storecode,
+            nickname: userid,
+        },
+    );
+
+    if (user && user.telegramId) {
+
+        await collectionTelegramMessages.insertOne(
+            {
+                center,
+                category,
+                telegramId: user.telegramId,
+                message,
+            }
+        );
+
+        return {
+            result: "success",
+        };
+
+
+    } else {
+        console.log("user not found", userid, storecode);
+        return {
+            result: "user not found",
+        };
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
