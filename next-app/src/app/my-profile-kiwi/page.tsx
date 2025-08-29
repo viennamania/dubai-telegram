@@ -95,7 +95,12 @@ function ProfilePage() {
 
 
 
-    const address = account?.address;
+    //const address = account?.address;
+
+    const address = paramTelegramId;
+
+
+
 
         // test address
     //const address = "0x820401adfF23A01E2CaCF913A2642B781d470a95";
@@ -228,7 +233,7 @@ function ProfilePage() {
 
             const data = await response.json();
 
-            console.log("getUser data", data);
+            ////console.log("getUser data", data);
 
 
 
