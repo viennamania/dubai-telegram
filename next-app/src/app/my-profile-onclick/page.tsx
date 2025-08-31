@@ -60,12 +60,6 @@ import {
 } from "next//navigation";
 
 
-import Uploader from '../components/uploader';
-import { updateUser } from "@/lib/api/userNoahk";
-import { on } from "events";
-import { add } from "thirdweb/extensions/thirdweb";
-
-
 const contractAddress = "0xeCfa44db6B9C3B8F7540ffa28F515B05c2D5a35d"; // DUBAI on Polygon
 
 

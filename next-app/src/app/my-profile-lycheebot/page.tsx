@@ -91,7 +91,6 @@ function ProfilePage() {
 
 
     //const address = account?.address;
-
     const address = paramTelegramId;
 
         // test address
@@ -213,7 +212,7 @@ function ProfilePage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userLycheeBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -305,7 +304,7 @@ function ProfilePage() {
 
     const checkNicknameIsDuplicate = async ( nickname: string ) => {
 
-        const response = await fetch("/api/userAppleBot/checkUserByNickname", {
+        const response = await fetch("/api/userLycheeBot/checkUserByNickname", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -359,7 +358,7 @@ function ProfilePage() {
         if (nicknameEdit) {
 
 
-            const response = await fetch("/api/userAppleBot/updateUser", {
+            const response = await fetch("/api/userLycheeBot/updateUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -408,7 +407,7 @@ function ProfilePage() {
 
         } else {
 
-            const response = await fetch("/api/userAppleBot/setUserVerified", {
+            const response = await fetch("/api/userLycheeBot/setUserVerified", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -472,7 +471,7 @@ function ProfilePage() {
         
         setLoadingSetUserTelegramId(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserTelegramId", {
+        const response = await fetch("/api/userLycheeBot/updateUserTelegramId", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -501,13 +500,13 @@ function ProfilePage() {
 
 
     // update User mobile
-    // /api/userAppleBot/updateUserMobile
+    // /api/userLycheeBot/updateUserMobile
     const [loadingSetUserMobile, setLoadingSetUserMobile] = useState(false);
     const setUserMobile = async () => {
         
         setLoadingSetUserMobile(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserMobile", {
+        const response = await fetch("/api/userLycheeBot/updateUserMobile", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -534,7 +533,7 @@ function ProfilePage() {
             alert('핸드폰번호가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userLycheeBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -574,7 +573,7 @@ function ProfilePage() {
     const updateUserStorecode = async () => {
         setLoadingSetUserStorecode(true);
 
-        const response = await fetch("/api/userAppleBot/updateUserStorecode", {
+        const response = await fetch("/api/userLycheeBot/updateUserStorecode", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -633,7 +632,7 @@ function ProfilePage() {
 
         setLoadingSetSeller(true);
 
-        const response = await fetch("/api/userAppleBot/updateSellerSnt", {
+        const response = await fetch("/api/userLycheeBot/updateSellerSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -673,7 +672,7 @@ function ProfilePage() {
             alert('판매자 정보가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userLycheeBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -730,7 +729,7 @@ function ProfilePage() {
 
         setLoadingCheckAuthValue(true);
 
-        const response = await fetch("/api/userAppleBot/updateSellerConfirmSnt", {
+        const response = await fetch("/api/userLycheeBot/updateSellerConfirmSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -765,7 +764,7 @@ function ProfilePage() {
             
 
             // get user data
-            const response = await fetch("/api/userAppleBot/getUser", {
+            const response = await fetch("/api/userLycheeBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
