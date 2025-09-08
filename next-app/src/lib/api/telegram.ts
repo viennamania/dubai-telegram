@@ -87,6 +87,8 @@ export async function getAllMessages(data: any) {
         page,
     } = data;
 
+    console.log("getAllMessages", data);
+
     const client = await clientPromise;
 
     const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
@@ -1528,11 +1530,6 @@ export async function insertMessageByUseridAndStorecodeBot(
 
 
 
-
-
-
-
-// getAllMessages
 export async function getAllLottoMessages(data: any) {
 
     const {
