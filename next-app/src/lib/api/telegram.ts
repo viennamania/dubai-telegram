@@ -1392,7 +1392,7 @@ export async function insertMessageByUseridAndStorecodeLycheeBot(
 
 
 
-export async function insertMessageByUseridAndStorecodeMelberryBot(
+export async function insertMessageByUseridAndStorecodeMulberryBot(
     {
         center,
         category,
@@ -1414,7 +1414,7 @@ export async function insertMessageByUseridAndStorecodeMelberryBot(
 
     const collectionTelegramMessages = client.db('dubai').collection('telegramMessages');
 
-    const user = await client.db('dubai').collection('usersMelberryBot').findOne(
+    const user = await client.db('dubai').collection('usersMulberryBot').findOne(
         {
             ////storecode: storecode,
             nickname: userid,

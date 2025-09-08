@@ -74,7 +74,7 @@ export async function insertOne(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   // check same walletAddress or smae nickname
 
@@ -146,7 +146,7 @@ export async function insertOneVerified(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   // check same walletAddress or smae nickname
 
@@ -232,7 +232,7 @@ export async function updateOne(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   // update and return updated user
@@ -273,7 +273,7 @@ export async function updateOne(data: any) {
 
 export async function updateAvatar(data: any) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   // update and return updated user
@@ -306,7 +306,7 @@ export async function updateAvatar(data: any) {
 
 export async function updateSellerStatus(data: any) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   // update and return updated user
@@ -350,7 +350,7 @@ export async function updateSellerStatus(data: any) {
 
 export async function updateTelegramId(data: any) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
@@ -371,7 +371,7 @@ export async function getOneByWalletAddress(
 
   const client = await clientPromise;
 
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -399,7 +399,7 @@ export async function getOneByTelegramId(
 
   const client = await clientPromise;
 
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   const results = await collection.findOne<UserProps>(
     { telegramId: telegramId },
@@ -418,7 +418,7 @@ export async function getOneByNickname(
 
   const client = await clientPromise;
 
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   const results = await collection.findOne<UserProps>(
     { nickname: nickname },
@@ -439,7 +439,7 @@ export async function getOneByContractAddress(
 
   const client = await clientPromise;
 
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -465,7 +465,7 @@ export async function getOneByTronWalletAddress(
 
   const client = await clientPromise;
 
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -500,7 +500,7 @@ export async function getAllUsers(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -586,7 +586,7 @@ export async function getAllUsersTelegramIdByCenter(
   }
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -676,7 +676,7 @@ export async function getAllMembersByCenter(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -742,7 +742,7 @@ export async function getAllMembersByMarketingCenter(
   }
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   // marketingCenter is prefix of center
 
@@ -782,7 +782,7 @@ export async function getBestSellers(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -839,7 +839,7 @@ export async function getUserWalletPrivateKeyByWalletAddress(
 ): Promise<string | null> {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   const results = await collection.findOne<UserProps>(
     { walletAddress },
@@ -864,7 +864,7 @@ export async function getUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   return await collection.findOne<UserProps>(
@@ -881,7 +881,7 @@ export async function getUserByTelegramId(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   return await collection.findOne<UserProps>(
@@ -899,7 +899,7 @@ export async function checkUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   const results = await collection.findOne<UserProps>(
@@ -932,7 +932,7 @@ export async function loginUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   const results = await collection.findOne<UserProps>(
@@ -978,7 +978,7 @@ export async function loginUserByEmail(
 
 export async function searchUser(query: string): Promise<UserProps[]> {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   
   return await collection
@@ -1059,7 +1059,7 @@ export async function searchUser(query: string): Promise<UserProps[]> {
 
 export async function getUserCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
   return await collection.countDocuments();
 }
 
@@ -1067,7 +1067,7 @@ export async function getUserCount(): Promise<number> {
 
 export async function updateUser(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   // check dupplicated nickname
@@ -1085,7 +1085,7 @@ export async function checkUser(id: string, password: string): Promise<UserProps
   
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
   const results = await collection.findOne<UserProps>(
     {
       id,
@@ -1116,7 +1116,7 @@ export async function getAllUsersForSettlement(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -1165,7 +1165,7 @@ export async function getAllUsersForSettlementOfStore(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -1225,7 +1225,7 @@ export async function updateSettlementAmountOfFee(
   console.log('updateSettlementAmountOfFee walletAddress: ' + walletAddress + ' settlementAmountOfFee: ' + settlementAmountOfFee);
   
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1247,7 +1247,7 @@ export async function getAllUsersForSettlementOfFee(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -1306,7 +1306,7 @@ export async function setEscrowWalletAddressByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1332,7 +1332,7 @@ export async function setTronWalletAddressByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1354,7 +1354,7 @@ export async function setErc721ContractAddressByWalletAddress(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1377,7 +1377,7 @@ export async function setMasterBotContractAddressByWalletAddress(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1411,7 +1411,7 @@ export async function getAllAgents(
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   console.log('limit: ' + limit);
@@ -1488,7 +1488,7 @@ export async function getAllAgents(
 export async function getAllErc721ContractAddresses(): Promise<string[]> {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   const results = await collection.distinct('erc721ContractAddress');
 
@@ -1514,7 +1514,7 @@ export async function getAllCenters(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
   // if marketingCenter is not null,
@@ -1570,7 +1570,7 @@ export async function getCenterOwnerByCenter(
 ): Promise<UserProps | null> {
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.findOne<UserProps>(
     { center: center, centerOwner: true },
@@ -1608,7 +1608,7 @@ export async function updateSeller({
   console.log('updateSeller walletAddress: ' + walletAddress + ' seller: ' + JSON.stringify(seller));
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { walletAddress },
@@ -1637,7 +1637,7 @@ export async function updateCenterByTelegramId({
   console.log('updateCenterByTelegramId telegramId: ' + telegramId + ' center: ' + center);
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
   return await collection.updateOne(
     { telegramId },
@@ -1669,7 +1669,7 @@ export async function updateOneGameMoney(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
 
 
 
@@ -1760,7 +1760,7 @@ export async function updateOneGameMoneyMinus(data: any) {
   }
 
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
   // check gameMoneyBalance is exist or not
   const checkUser = await collection.findOne<UserProps>(
     { walletAddress: data.walletAddress },
@@ -1807,7 +1807,7 @@ export async function updateStorecode(data: any) {
     return null;
   }
   const client = await clientPromise;
-  const collection = client.db('dubai').collection('usersMelberryBot');
+  const collection = client.db('dubai').collection('usersMulberryBot');
   const result = await collection.updateOne(
     { walletAddress: data.walletAddress },
     { $set: { storecode: data.storecode } }

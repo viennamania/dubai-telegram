@@ -216,7 +216,7 @@ function ProfilePage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("/api/userMelberryBot/getUser", {
+            const response = await fetch("/api/user/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -308,7 +308,7 @@ function ProfilePage() {
 
     const checkNicknameIsDuplicate = async ( nickname: string ) => {
 
-        const response = await fetch("/api/userMelberryBot/checkUserByNickname", {
+        const response = await fetch("/api/userMulberryBot/checkUserByNickname", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -362,7 +362,7 @@ function ProfilePage() {
         if (nicknameEdit) {
 
 
-            const response = await fetch("/api/userMelberryBot/updateUser", {
+            const response = await fetch("/api/userMulberryBot/updateUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -411,7 +411,7 @@ function ProfilePage() {
 
         } else {
 
-            const response = await fetch("/api/userMelberryBot/setUserVerified", {
+            const response = await fetch("/api/userMulberryBot/setUserVerified", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -475,7 +475,7 @@ function ProfilePage() {
         
         setLoadingSetUserTelegramId(true);
 
-        const response = await fetch("/api/userMelberryBot/updateUserTelegramId", {
+        const response = await fetch("/api/userMulberryBot/updateUserTelegramId", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -504,13 +504,13 @@ function ProfilePage() {
 
 
     // update User mobile
-    // /api/userMelberryBot/updateUserMobile
+    // /api/userMulberryBot/updateUserMobile
     const [loadingSetUserMobile, setLoadingSetUserMobile] = useState(false);
     const setUserMobile = async () => {
         
         setLoadingSetUserMobile(true);
 
-        const response = await fetch("/api/userMelberryBot/updateUserMobile", {
+        const response = await fetch("/api/userMulberryBot/updateUserMobile", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -537,7 +537,7 @@ function ProfilePage() {
             alert('핸드폰번호가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userMelberryBot/getUser", {
+            const response = await fetch("/api/userMulberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -577,7 +577,7 @@ function ProfilePage() {
     const updateUserStorecode = async () => {
         setLoadingSetUserStorecode(true);
 
-        const response = await fetch("/api/userMelberryBot/updateUserStorecode", {
+        const response = await fetch("/api/userMulberryBot/updateUserStorecode", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -636,7 +636,7 @@ function ProfilePage() {
 
         setLoadingSetSeller(true);
 
-        const response = await fetch("/api/userMelberryBot/updateSellerSnt", {
+        const response = await fetch("/api/userMulberryBot/updateSellerSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -676,7 +676,7 @@ function ProfilePage() {
             alert('판매자 정보가 저장되었습니다.');
 
             // get user data
-            const response = await fetch("/api/userMelberryBot/getUser", {
+            const response = await fetch("/api/userMulberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -733,7 +733,7 @@ function ProfilePage() {
 
         setLoadingCheckAuthValue(true);
 
-        const response = await fetch("/api/userMelberryBot/updateSellerConfirmSnt", {
+        const response = await fetch("/api/userMulberryBot/updateSellerConfirmSnt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -768,7 +768,7 @@ function ProfilePage() {
             
 
             // get user data
-            const response = await fetch("/api/userMelberryBot/getUser", {
+            const response = await fetch("/api/userMulberryBot/getUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

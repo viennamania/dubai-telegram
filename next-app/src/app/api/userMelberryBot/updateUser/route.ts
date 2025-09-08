@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
 	updateOne,
-} from '@lib/api/userMelberryBot';
+} from '@lib/api/userMulberryBot';
 
 
 
